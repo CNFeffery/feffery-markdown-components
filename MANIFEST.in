@@ -1,0 +1,11 @@
+include feffery_markdown_components/feffery_markdown_components.min.js
+include feffery_markdown_components/feffery_markdown_components.min.js.map
+include feffery_markdown_components/async-*.js
+include feffery_markdown_components/async-*.js.map
+include feffery_markdown_components/*-shared.js
+include feffery_markdown_components/*-shared.js.map
+include feffery_markdown_components/metadata.json
+include feffery_markdown_components/package-info.json
+include README.md
+include LICENSE
+include package.json
