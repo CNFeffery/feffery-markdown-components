@@ -31,3 +31,17 @@ feffery_markdown_components.min.js.map
 package-lock.json
 
 feffery_markdown_components.min.js.LICENSE.txt
+
+.Rbuildignore
+
+.babelrc
+
+.eslintignore
+
+.eslintrc
+
+.npmignore
+
+.prettierrc
+
+.pylintrc
