@@ -63,11 +63,10 @@ module.exports = (env, argv) => {
                     use: ["url-loader"],
                 },
                 {
-                    test: /\.jsx?$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: 'babel-loader',
-                    },
+                    test: /\.(js|jsx)$/,
+                    exclude: /(node_modules|bower_components)/,
+                    loader: 'babel-loader',
+                    options: { presets: ['@babel/env', '@babel/preset-react'] },
                 },
                 {
                     test: /\.(css|less)$/,
