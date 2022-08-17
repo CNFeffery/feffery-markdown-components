@@ -1,6 +1,7 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WebpackDashDynamicImport = require('@plotly/webpack-dash-dynamic-import');
 const packagejson = require('./package.json');
 
@@ -100,7 +101,18 @@ module.exports = (env, argv) => {
                         warnings: false,
                         ie8: false
                     }
-                })
+                }),
+                new UglifyJsPlugin(
+                    {
+                        parallel: true,
+                        uglifyOptions: {
+                            output: {
+                                comments: false,
+                            },
+                            warnings: false
+                        }
+                    }
+                )
             ],
             splitChunks: {
                 name: true,

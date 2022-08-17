@@ -31,17 +31,19 @@ Keyword arguments:
 - markdownStr (string; optional)
 
 - renderHtml (boolean; optional)"""
+    _children_props = []
+    _base_nodes = ['children']
+    _namespace = 'feffery_markdown_components'
+    _type = 'FefferyMarkdown'
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, markdownStr=Component.UNDEFINED, codeStyle=Component.UNDEFINED, renderHtml=Component.UNDEFINED, linkTarget=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'codeStyle', 'linkTarget', 'loading_state', 'markdownStr', 'renderHtml']
-        self._type = 'FefferyMarkdown'
-        self._namespace = 'feffery_markdown_components'
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'codeStyle', 'linkTarget', 'loading_state', 'markdownStr', 'renderHtml']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
-        _locals.update(kwargs)  # For wildcard attrs
+        _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
         for k in []:
             if k not in args:
