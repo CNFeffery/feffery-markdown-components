@@ -1,6 +1,6 @@
 import feffery_markdown_components as fmc
 import dash
-import dash_html_components as html
+from dash import html
 
 app = dash.Dash(__name__)
 
@@ -8,8 +8,17 @@ app.layout = html.Div(
     [
         fmc.FefferyMarkdown(
             renderHtml=True,
-            codeStyle='dracula',
+            # codeTheme='z-touch',
+            codeBlockStyle={
+                'maxHeight': 200,
+                'border': 'none'
+            },
             markdownStr=r'''
+<details><summary>Open example</summary>
+
+这是折叠内容测试巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
+
+</details>
 
 这是行内数学公式测试$c = \pm\sqrt{a^2 + b^2}$
 
@@ -173,10 +182,16 @@ app = dash.Dash(serve_locally=False)
 - [ ] 进度条：`AntdProgress`
 - [ ] 回到顶部：`AntdBackTop`
 - [ ] 图片：`AntdImage`
-
 '''
         )
-    ]
+    ],
+    style={
+        'width': '800px',
+        'margin': '0 auto',
+        'background': 'white',
+        'boxShadow': '0px 0px 12px rgba(0, 0, 0, .12)',
+        'padding': '25px'
+    }
 )
 
 

@@ -11,6 +11,20 @@
         "required": false,
         "description": ""
       },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "markdownStr": {
         "type": {
           "name": "string"
@@ -18,14 +32,120 @@
         "required": false,
         "description": ""
       },
-      "codeStyle": {
+      "codeTheme": {
         "type": {
-          "name": "string"
+          "name": "enum",
+          "value": [
+            {
+              "value": "'a11y-dark'",
+              "computed": false
+            },
+            {
+              "value": "'atom-dark'",
+              "computed": false
+            },
+            {
+              "value": "'coldark-cold'",
+              "computed": false
+            },
+            {
+              "value": "'coldark-dark'",
+              "computed": false
+            },
+            {
+              "value": "'coy'",
+              "computed": false
+            },
+            {
+              "value": "'coy-without-shadows'",
+              "computed": false
+            },
+            {
+              "value": "'darcula'",
+              "computed": false
+            },
+            {
+              "value": "'dracula'",
+              "computed": false
+            },
+            {
+              "value": "'nord'",
+              "computed": false
+            },
+            {
+              "value": "'okaidia'",
+              "computed": false
+            },
+            {
+              "value": "'prism'",
+              "computed": false
+            },
+            {
+              "value": "'solarizedlight'",
+              "computed": false
+            },
+            {
+              "value": "'twilight'",
+              "computed": false
+            },
+            {
+              "value": "'duotone-sea'",
+              "computed": false
+            },
+            {
+              "value": "'duotone-dark'",
+              "computed": false
+            },
+            {
+              "value": "'duotone-light'",
+              "computed": false
+            },
+            {
+              "value": "'duotone-space'",
+              "computed": false
+            },
+            {
+              "value": "'gh-colors'",
+              "computed": false
+            },
+            {
+              "value": "'gruvbox-dark'",
+              "computed": false
+            },
+            {
+              "value": "'material-dark'",
+              "computed": false
+            },
+            {
+              "value": "'night-owl'",
+              "computed": false
+            },
+            {
+              "value": "'one-light'",
+              "computed": false
+            },
+            {
+              "value": "'pojoaque'",
+              "computed": false
+            },
+            {
+              "value": "'solarized-dark-atom'",
+              "computed": false
+            },
+            {
+              "value": "'synthwave84'",
+              "computed": false
+            },
+            {
+              "value": "'z-touch'",
+              "computed": false
+            }
+          ]
         },
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "'coy-without-shadows'",
+          "value": "'gh-colors'",
           "computed": false
         }
       },
@@ -44,6 +164,31 @@
         "description": "",
         "defaultValue": {
           "value": "'_blank'",
+          "computed": false
+        }
+      },
+      "codeBlockStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "codeStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "showLineNumbers": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "true",
           "computed": false
         }
       },

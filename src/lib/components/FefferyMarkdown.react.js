@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
-import rehypeRaw from 'rehype-raw'
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { AiOutlineCheck, AiOutlineCopy } from "react-icons/ai";
+import {
+    CheckOutlined,
+    CopyOutlined
+} from '@ant-design/icons';
 import {
     a11yDark,
     atomDark,
@@ -21,48 +24,115 @@ import {
     okaidia,
     prism,
     solarizedlight,
-    twilight
+    twilight,
+    duotoneSea,
+    duotoneDark,
+    duotoneLight,
+    duotoneSpace,
+    ghcolors,
+    gruvboxDark,
+    materialDark,
+    nightOwl,
+    oneLight,
+    pojoaque,
+    solarizedDarkAtom,
+    synthwave84,
+    zTouch
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import 'katex/dist/katex.min.css'
-import 'github-markdown-css'
-import './styles.css'
+import 'katex/dist/katex.min.css';
+import 'github-markdown-css';
+import './styles.css';
 
+const str2theme = new Map([
+    ['a11y-dark', a11yDark],
+    ['atom-dark', atomDark],
+    ['coldark-cold', coldarkCold],
+    ['coldark-dark', coldarkDark],
+    ['coy', coy],
+    ['coy-without-shadows', coyWithoutShadows],
+    ['darcula', darcula],
+    ['dracula', dracula],
+    ['nord', nord],
+    ['okaidia', okaidia],
+    ['prism', prism],
+    ['solarizedlight', solarizedlight],
+    ['twilight', twilight],
+    ['duotone-sea', duotoneSea],
+    ['duotone-dark', duotoneDark],
+    ['duotone-light', duotoneLight],
+    ['duotone-space', duotoneSpace],
+    ['gh-colors', ghcolors],
+    ['gruvbox-dark', gruvboxDark],
+    ['material-dark', materialDark],
+    ['night-owl', nightOwl],
+    ['one-light', oneLight],
+    ['pojoaque', pojoaque],
+    ['solarized-dark-atom', solarizedDarkAtom],
+    ['synthwave84', synthwave84],
+    ['z-touch', zTouch]
+])
 
 // 定义markdown渲染组件FefferyMarkdown，api参数参考https://github.com/remarkjs/react-markdown
 const FefferyMarkdown = (props) => {
     // 取得必要属性或参数
     let {
         id,
+        style,
+        className,
         markdownStr,
-        codeStyle,
+        codeTheme,
         renderHtml,
         linkTarget,
+        codeBlockStyle,
+        codeStyle,
+        showLineNumbers,
         setProps
     } = props;
 
-    const str2style = new Map([
-        ['a11y-dark', a11yDark],
-        ['atom-dark', atomDark],
-        ['coldark-cold', coldarkCold],
-        ['coldark-dark', coldarkDark],
-        ['coy', coy],
-        ['coy-without-shadows', coyWithoutShadows],
-        ['darcula', darcula],
-        ['dracula', dracula],
-        ['nord', nord],
-        ['okaidia', okaidia],
-        ['prism', prism],
-        ['solarizedlight', solarizedlight],
-        ['twilight', twilight]
-    ])
+    // 配置相关插件
+    const remarkPlugins = [remarkGfm, remarkMath]
+    const rehypePlugins = [rehypeKatex]
+
+    // 检查是否允许渲染html代码
+    if (renderHtml) {
+        rehypePlugins.push(rehypeRaw)
+    }
+
+    codeTheme = codeTheme || 'gh-colors'
+    let currentCodeStyle = str2theme.get(codeTheme)
+    if (codeTheme === 'gh-colors') {
+        currentCodeStyle = {
+            ...currentCodeStyle,
+            'pre[class*="language-"]': {
+                ...currentCodeStyle['pre[class*="language-"]'],
+                'background': '#f6f8fa'
+            }
+        }
+    }
+
+    currentCodeStyle = {
+        ...currentCodeStyle,
+        'pre[class*="language-"]': {
+            ...currentCodeStyle['pre[class*="language-"]'],
+            'borderRadius': '5px',
+            ...codeBlockStyle
+        },
+        'code[class*="language-"]': {
+            ...currentCodeStyle['code[class*="language-"]'],
+            'fontSize': '14px',
+            ...codeStyle
+        }
+    }
 
     return (
-        <div className='markdown-body' style={{ marginBottom: '10px' }}>
-            <ReactMarkdown id={id}
+        <div id={id}
+            style={style}
+            className={className ? `markdown-body ${className}` : 'markdown-body'}>
+            <ReactMarkdown
                 linkTarget={linkTarget}
-                remarkPlugins={[remarkGfm, remarkMath]}
-                rehypePlugins={renderHtml ? [rehypeRaw, rehypeKatex] : [rehypeKatex]}
+                remarkPlugins={remarkPlugins}
+                rehypePlugins={rehypePlugins}
                 components={{
                     code: ({ node, inline, className, children, ...props }) => {
                         const [isCopied, setIsCopied] = useState(false);
@@ -77,27 +147,32 @@ const FefferyMarkdown = (props) => {
                                     style={
                                         {
                                             position: 'absolute',
-                                            right: '5px',
-                                            top: '5px',
-                                            padding: '6px',
+                                            right: '9px',
+                                            top: '9px',
+                                            padding: '4px',
                                             margin: 0,
                                             background: 'transparent',
-                                            border: 'none transparent',
+                                            border: '1px solid rgba(27,31,36,0.15)',
                                             cursor: 'pointer',
-                                            zIndex: 999
+                                            zIndex: 999,
+                                            borderRadius: '5px'
                                         }
                                     }
                                     text={String(children).replace(/\n$/, '')}
                                 >
-                                    <button type="button" aria-label="Copy to Clipboard Button">
-                                        {isCopied ? <AiOutlineCheck style={{ color: 'rgb(91, 199, 38)', fontSize: '18px' }} />
-                                            : <AiOutlineCopy style={{ color: 'rgb(24, 144, 255)', fontSize: '18px' }} />}
+                                    <button
+                                        type="button"
+                                        aria-label="Copy to Clipboard Button"
+                                        className={'copy-to-clipboard-button'}
+                                    >
+                                        {isCopied ? <CheckOutlined style={{ color: 'rgb(91, 199, 38)', fontSize: '16px' }} />
+                                            : <CopyOutlined style={{ color: '#57606a', fontSize: '16px' }} />}
                                     </button>
                                 </CopyToClipboard>
                                 <SyntaxHighlighter
                                     children={String(children).replace(/\n$/, '')}
-                                    style={str2style.get(codeStyle)}
-                                    showLineNumbers={true}
+                                    style={currentCodeStyle}
+                                    showLineNumbers={showLineNumbers}
                                     language={match[1]}
                                     PreTag="div"
                                     {...props} />
@@ -117,20 +192,40 @@ const FefferyMarkdown = (props) => {
 
 // 定义参数或属性
 FefferyMarkdown.propTypes = {
-    // 部件id
+    // id
     id: PropTypes.string,
+
+    // 父容器css样式
+    style: PropTypes.object,
+
+    // 父容器css类名
+    className: PropTypes.string,
 
     // 设置要渲染的原始markdown内容
     markdownStr: PropTypes.string,
 
-    // 设置代码风格，默认为'coy-without-shadows'
-    codeStyle: PropTypes.string,
+    // 设置代码风格主题，默认为'gh-colors'
+    codeTheme: PropTypes.oneOf([
+        'a11y-dark', 'atom-dark', 'coldark-cold', 'coldark-dark', 'coy', 'coy-without-shadows', 'darcula', 'dracula',
+        'nord', 'okaidia', 'prism', 'solarizedlight', 'twilight', 'duotone-sea', 'duotone-dark', 'duotone-light',
+        'duotone-space', 'gh-colors', 'gruvbox-dark', 'material-dark', 'night-owl', 'one-light', 'pojoaque',
+        'solarized-dark-atom', 'synthwave84', 'z-touch'
+    ]),
 
     // 设置是否渲染markdown中的html源码，默认为false
     renderHtml: PropTypes.bool,
 
     // 设置markdown中链接的跳转方式，默认为'_blank'
     linkTarget: PropTypes.string,
+
+    // 额外设置代码块容器css样式
+    codeBlockStyle: PropTypes.object,
+
+    // 额外设置代码内容css样式
+    codeStyle: PropTypes.object,
+
+    // 设置代码块是否显示行号，默认为true
+    showLineNumbers: PropTypes.bool,
 
     loading_state: PropTypes.shape({
         /**
@@ -157,7 +252,8 @@ FefferyMarkdown.propTypes = {
 // 设置默认参数
 FefferyMarkdown.defaultProps = {
     linkTarget: '_blank',
-    codeStyle: 'coy-without-shadows'
+    codeTheme: 'gh-colors',
+    showLineNumbers: true
 }
 
 export default FefferyMarkdown;
