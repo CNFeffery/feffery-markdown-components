@@ -155,7 +155,8 @@ const FefferyMarkdown = (props) => {
                                             border: '1px solid rgba(27,31,36,0.15)',
                                             cursor: 'pointer',
                                             zIndex: 999,
-                                            borderRadius: '5px'
+                                            borderRadius: '5px',
+                                            lineHeight: '16px',
                                         }
                                     }
                                     text={String(children).replace(/\n$/, '')}
