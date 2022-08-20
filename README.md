@@ -3,12 +3,11 @@
 </p>
 <h1 align="center">feffery-markdown-components</h1>
 <div align="center">
-
 [![GitHub](https://img.shields.io/github/license/plotly/dash.svg?color=dark-green)](https://github.com/plotly/dash/blob/master/LICENSE)
-[![PyPI](https://img.shields.io/pypi/v/feffery-antd-components.svg?color=dark-green)](https://pypi.org/project/feffery-antd-components/)
-[![Downloads](https://pepy.tech/badge/feffery-antd-components)](https://pepy.tech/project/feffery-antd-components)
-[![Downloads](https://pepy.tech/badge/feffery-antd-components/month)](https://pepy.tech/project/feffery-antd-components)
-[![Downloads](https://pepy.tech/badge/feffery-antd-components/week)](https://pepy.tech/project/feffery-antd-components)
+[![PyPI](https://img.shields.io/pypi/v/feffery-markdown-components.svg?color=dark-green)](https://pypi.org/project/feffery-markdown-components/)
+[![Downloads](https://pepy.tech/badge/feffery-markdown-components)](https://pepy.tech/project/feffery-markdown-components)
+[![Downloads](https://pepy.tech/badge/feffery-markdown-components/month)](https://pepy.tech/project/feffery-markdown-components)
+[![Downloads](https://pepy.tech/badge/feffery-markdown-components/week)](https://pepy.tech/project/feffery-markdown-components)
 
 </div>
 
