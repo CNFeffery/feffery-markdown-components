@@ -1,6 +1,6 @@
 {
   "name": "feffery_markdown_components",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A more complete markdown implementation in dash.",
   "repository": {
     "type": "git",
@@ -64,6 +64,7 @@
     "terser-webpack-plugin": "^2.3.0",
     "url-loader": "^4.1.1",
     "webpack": "4.36.1",
+    "webpack-bundle-analyzer": "^4.6.0",
     "webpack-cli": "3.3.6",
     "webpack-serve": "3.1.0"
   },

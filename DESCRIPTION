@@ -1,6 +1,6 @@
 Package: fefferyMarkdownComponents
 Title: A more complete markdown implementation in dash.
-Version: 0.0.2
+Version: 0.1.0
 Description: A more complete markdown implementation in dash.
 Depends: R (>= 3.0.2)
 Imports: 

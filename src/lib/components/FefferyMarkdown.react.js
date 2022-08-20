@@ -148,7 +148,7 @@ const FefferyMarkdown = (props) => {
                                         {
                                             position: 'absolute',
                                             right: '9px',
-                                            top: '9px',
+                                            top: '7px',
                                             padding: '4px',
                                             margin: 0,
                                             background: 'transparent',

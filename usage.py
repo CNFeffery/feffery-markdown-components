@@ -8,10 +8,12 @@ app.layout = html.Div(
     [
         fmc.FefferyMarkdown(
             renderHtml=True,
-            # codeTheme='z-touch',
             codeBlockStyle={
                 'maxHeight': 200,
                 'border': 'none'
+            },
+            codeStyle={
+                'fontSize': '15px'
             },
             markdownStr=r'''
 <details><summary>Open example</summary>
