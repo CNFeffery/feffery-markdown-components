@@ -8,6 +8,13 @@ app.layout = html.Div(
     [
         fmc.FefferyMarkdown(
             renderHtml=True,
+            # showCopyButton=False,
+            imagePreview=True,
+            # imageForceAlignCenter=True,
+            # imageWidth='50%',
+            forceTableAlignCenter=True,
+            forceTableHeaderTextAlignCenter=True,
+            forceTableContentTextAlignCenter=True,
             codeBlockStyle={
                 'maxHeight': 200,
                 'border': 'none'
@@ -16,6 +23,27 @@ app.layout = html.Div(
                 'fontSize': '15px'
             },
             markdownStr=r'''
+
+> 测试<br>
+> 测试<br>
+
+当你需要序列化的对象中涉及到`dataclass`自定义数据结构时，可以配合`orjson.OPT_PASSTHROUGH_DATACLASS`，再通过对`default`参数传入自定义处理函数，来实现更为自由的数据转换逻辑，譬如下面简单的例子中，我们可以利用此特性进行原始数据的脱敏操作：
+
+
+| Feature    | Support              |
+| ---------: | :------------------- |
+| CommonMark | 100%                 |
+| GFM        | 100% w/ `remark-gfm` |
+
+
+- 基于markdown语法渲染图片
+
+![image](http://fmc.feffery.tech/assets/imgs/fmc-lgo.svg)
+
+<p align="center"><img src="http://fmc.feffery.tech/assets/imgs/fmc-logo.svg" /></ p>
+
+---
+
 <details><summary>Open example</summary>
 
 这是折叠内容测试巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
