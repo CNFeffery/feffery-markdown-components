@@ -9,6 +9,10 @@ A FefferyMarkdown component.
 
 Keyword arguments:
 - `id` (String; optional)
+- `aClassName` (String; optional)
+- `aStyle` (Dict; optional)
+- `blockquoteClassName` (String; optional)
+- `blockquoteStyle` (Dict; optional)
 - `className` (String; optional)
 - `codeBlockStyle` (Dict; optional)
 - `codeStyle` (Dict; optional)
@@ -16,11 +20,27 @@ Keyword arguments:
 - `forceTableAlignCenter` (Bool; optional)
 - `forceTableContentTextAlignCenter` (Bool; optional)
 - `forceTableHeaderTextAlignCenter` (Bool; optional)
+- `h1ClassName` (String; optional)
+- `h1Style` (Dict; optional)
+- `h2ClassName` (String; optional)
+- `h2Style` (Dict; optional)
+- `h3ClassName` (String; optional)
+- `h3Style` (Dict; optional)
+- `h4ClassName` (String; optional)
+- `h4Style` (Dict; optional)
+- `h5ClassName` (String; optional)
+- `h5Style` (Dict; optional)
+- `h6ClassName` (String; optional)
+- `h6Style` (Dict; optional)
+- `hrClassName` (String; optional)
+- `hrStyle` (Dict; optional)
 - `imageFallback` (String; optional)
 - `imageForceAlignCenter` (Bool; optional)
 - `imageHeight` (String | Real; optional)
 - `imagePreview` (Bool; optional)
 - `imageWidth` (String | Real; optional)
+- `inlineCodeClassName` (String; optional)
+- `inlineCodeStyle` (Dict; optional)
 - `linkTarget` (String; optional)
 - `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
 Those elements have the following types:
@@ -33,9 +53,19 @@ Those elements have the following types:
 - `showCopyButton` (Bool; optional)
 - `showLineNumbers` (Bool; optional)
 - `style` (Dict; optional)
+- `tableClassName` (String; optional)
+- `tableStyle` (Dict; optional)
+- `tdClassName` (String; optional)
+- `tdStyle` (String; optional)
+- `thClassName` (String; optional)
+- `thStyle` (Dict; optional)
+- `theadClassName` (String; optional)
+- `theadStyle` (Dict; optional)
+- `trClassName` (String; optional)
+- `trStyle` (String; optional)
 """
 function ''_fefferymarkdown(; kwargs...)
-        available_props = Symbol[:id, :className, :codeBlockStyle, :codeStyle, :codeTheme, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :linkTarget, :loading_state, :locale, :markdownStr, :renderHtml, :showCopyButton, :showLineNumbers, :style]
+        available_props = Symbol[:id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :className, :codeBlockStyle, :codeStyle, :codeTheme, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :linkTarget, :loading_state, :locale, :markdownStr, :renderHtml, :showCopyButton, :showLineNumbers, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :trClassName, :trStyle]
         wild_props = Symbol[]
         return Component("''_fefferymarkdown", "FefferyMarkdown", "feffery_markdown_components", available_props, wild_props; kwargs...)
 end

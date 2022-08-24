@@ -104,6 +104,36 @@ const FefferyMarkdown = (props) => {
         forceTableAlignCenter,
         forceTableHeaderTextAlignCenter,
         forceTableContentTextAlignCenter,
+        h1Style,
+        h1ClassName,
+        h2Style,
+        h2ClassName,
+        h3Style,
+        h3ClassName,
+        h4Style,
+        h4ClassName,
+        h5Style,
+        h5ClassName,
+        h6Style,
+        h6ClassName,
+        tableStyle,
+        tableClassName,
+        theadStyle,
+        theadClassName,
+        trStyle,
+        trClassName,
+        thStyle,
+        thClassName,
+        tdStyle,
+        tdClassName,
+        aStyle,
+        aClassName,
+        blockquoteStyle,
+        blockquoteClassName,
+        inlineCodeStyle,
+        inlineCodeClassName,
+        hrStyle,
+        hrClassName,
         setProps
     } = props;
 
@@ -154,53 +184,65 @@ const FefferyMarkdown = (props) => {
                     code: ({ node, inline, className, children, ...props }) => {
                         const [isCopied, setIsCopied] = useState(false);
                         const match = /language-(\w+)/.exec(className || '')
-                        return !inline && match ? (
-                            <div style={{ position: 'relative' }}>
-                                {showCopyButton ?
-                                    <CopyToClipboard
-                                        onCopy={() => {
-                                            setIsCopied(true);
-                                            setTimeout(() => setIsCopied(false), 1500);
-                                        }}
-                                        style={
-                                            {
-                                                position: 'absolute',
-                                                right: '9px',
-                                                top: '7px',
-                                                padding: '4px',
-                                                margin: 0,
-                                                background: 'transparent',
-                                                border: '1px solid rgba(27,31,36,0.15)',
-                                                cursor: 'pointer',
-                                                zIndex: 999,
-                                                borderRadius: '5px',
-                                                lineHeight: '16px',
+
+                        if (!inline && match) {
+                            return (
+                                <div style={{ position: 'relative' }}>
+                                    {showCopyButton ?
+                                        <CopyToClipboard
+                                            onCopy={() => {
+                                                setIsCopied(true);
+                                                setTimeout(() => setIsCopied(false), 1500);
+                                            }}
+                                            style={
+                                                {
+                                                    position: 'absolute',
+                                                    right: '9px',
+                                                    top: '7px',
+                                                    padding: '4px',
+                                                    margin: 0,
+                                                    background: 'transparent',
+                                                    border: '1px solid rgba(27,31,36,0.15)',
+                                                    cursor: 'pointer',
+                                                    zIndex: 999,
+                                                    borderRadius: '5px',
+                                                    lineHeight: '16px',
+                                                }
                                             }
-                                        }
-                                        text={String(children).replace(/\n$/, '')}
-                                    >
-                                        <button
-                                            type="button"
-                                            aria-label="Copy to Clipboard Button"
-                                            className={'copy-to-clipboard-button'}
+                                            text={String(children).replace(/\n$/, '')}
                                         >
-                                            {isCopied ? <CheckOutlined style={{ color: 'rgb(91, 199, 38)', fontSize: '16px' }} />
-                                                : <CopyOutlined style={{ color: '#57606a', fontSize: '16px' }} />}
-                                        </button>
-                                    </CopyToClipboard> : null}
-                                <SyntaxHighlighter
-                                    children={String(children).replace(/\n$/, '')}
-                                    style={currentCodeStyle}
-                                    showLineNumbers={showLineNumbers}
-                                    language={match[1]}
-                                    PreTag="div"
-                                    {...props} />
-                            </div>
-                        ) : (
-                            <code className={className} {...props}>
-                                {children}
-                            </code>
-                        )
+                                            <button
+                                                type="button"
+                                                aria-label="Copy to Clipboard Button"
+                                                className={'copy-to-clipboard-button'}
+                                            >
+                                                {isCopied ? <CheckOutlined style={{ color: 'rgb(91, 199, 38)', fontSize: '16px' }} />
+                                                    : <CopyOutlined style={{ color: '#57606a', fontSize: '16px' }} />}
+                                            </button>
+                                        </CopyToClipboard> : null}
+                                    <SyntaxHighlighter
+                                        children={String(children).replace(/\n$/, '')}
+                                        style={currentCodeStyle}
+                                        showLineNumbers={showLineNumbers}
+                                        language={match[1]}
+                                        PreTag="div"
+                                        {...props} />
+                                </div>
+                            );
+                        } else {
+                            props.style = {
+                                ...props.style,
+                                ...inlineCodeStyle
+                            }
+                            if (inlineCodeClassName) {
+                                className = `${className} ${inlineCodeClassName}`
+                            }
+                            return (
+                                <code className={className} {...props}>
+                                    {children}
+                                </code>
+                            );
+                        }
                     },
                     img: ({ ...props }) => {
                         return <ConfigProvider locale={str2locale.get(locale)}>
@@ -219,6 +261,10 @@ const FefferyMarkdown = (props) => {
                         </ConfigProvider>
                     },
                     table: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...tableStyle
+                        }
                         if (forceTableAlignCenter) {
                             props.style = {
                                 ...props.style,
@@ -226,26 +272,164 @@ const FefferyMarkdown = (props) => {
                                 marginRight: 'auto'
                             }
                         }
+                        if (tableClassName) {
+                            props.className = `${props.className} ${tableClassName}`
+                        }
                         return <table {...props} />
                     },
+                    thead: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...theadStyle
+                        }
+                        if (theadClassName) {
+                            props.className = `${props.className} ${theadClassName}`
+                        }
+
+                        return <thead {...props} />
+                    },
+                    tr: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...trStyle
+                        }
+                        if (trClassName) {
+                            props.className = `${props.className} ${trClassName}`
+                        }
+
+                        return <tr {...props} />
+                    },
                     th: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...thStyle
+                        }
                         if (forceTableHeaderTextAlignCenter) {
                             props.style = {
                                 ...props.style,
                                 textAlign: 'center'
                             }
                         }
+                        if (thClassName) {
+                            props.className = `${props.className} ${thClassName}`
+                        }
                         return <th {...props} />
                     },
                     td: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...tdStyle
+                        }
                         if (forceTableContentTextAlignCenter) {
                             props.style = {
                                 ...props.style,
                                 textAlign: 'center'
                             }
                         }
+                        if (tdClassName) {
+                            props.className = `${props.className} ${tdClassName}`
+                        }
                         return <td {...props} />
-                    }
+                    },
+                    h1: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...h1Style
+                        }
+                        if (h1ClassName) {
+                            props.className = `${props.className} ${h1ClassName}`
+                        }
+
+                        return <h1 {...props} />
+                    },
+                    h2: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...h2Style
+                        }
+                        if (h2ClassName) {
+                            props.className = `${props.className} ${h2ClassName}`
+                        }
+
+                        return <h2 {...props} />
+                    },
+                    h3: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...h3Style
+                        }
+                        if (h3ClassName) {
+                            props.className = `${props.className} ${h3ClassName}`
+                        }
+
+                        return <h3 {...props} />
+                    },
+                    h4: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...h4Style
+                        }
+                        if (h4ClassName) {
+                            props.className = `${props.className} ${h4ClassName}`
+                        }
+
+                        return <h4 {...props} />
+                    },
+                    h5: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...h5Style
+                        }
+                        if (h5ClassName) {
+                            props.className = `${props.className} ${h5ClassName}`
+                        }
+
+                        return <h5 {...props} />
+                    },
+                    h6: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...h6Style
+                        }
+                        if (h6ClassName) {
+                            props.className = `${props.className} ${h6ClassName}`
+                        }
+
+                        return <h6 {...props} />
+                    },
+                    a: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...aStyle
+                        }
+                        if (aClassName) {
+                            props.className = `${props.className} ${aClassName}`
+                        }
+
+                        return <a {...props} />
+                    },
+                    blockquote: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...blockquoteStyle
+                        }
+                        if (blockquoteClassName) {
+                            props.className = `${props.className} ${blockquoteClassName}`
+                        }
+
+                        return <blockquote {...props} />
+                    },
+                    hr: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...hrStyle
+                        }
+                        if (hrClassName) {
+                            props.className = `${props.className} ${hrClassName}`
+                        }
+
+                        return <hr {...props} />
+                    },
                 }}>
                 {markdownStr}
             </ReactMarkdown>
@@ -325,6 +509,97 @@ FefferyMarkdown.propTypes = {
 
     // 设置是否强制所有表格内容单元格文字居中，默认为false
     forceTableContentTextAlignCenter: PropTypes.bool,
+
+    // 用于设置各个元素角色的css样式及类名
+    // 一级标题css样式
+    h1Style: PropTypes.object,
+
+    // 一级标题css类名
+    h1ClassName: PropTypes.string,
+
+    // 二级标题css样式
+    h2Style: PropTypes.object,
+
+    // 二级标题css类名
+    h2ClassName: PropTypes.string,
+
+    // 三级标题css样式
+    h3Style: PropTypes.object,
+
+    // 三级标题css类名
+    h3ClassName: PropTypes.string,
+
+    // 四级标题css样式
+    h4Style: PropTypes.object,
+
+    // 四级标题css类名
+    h4ClassName: PropTypes.string,
+
+    // 五级标题css样式
+    h5Style: PropTypes.object,
+
+    // 五级标题css类名
+    h5ClassName: PropTypes.string,
+
+    // 六级标题css样式
+    h6Style: PropTypes.object,
+
+    // 六级标题css类名
+    h6ClassName: PropTypes.string,
+
+    // 表格css样式
+    tableStyle: PropTypes.object,
+
+    // 表格css类名
+    tableClassName: PropTypes.string,
+
+    // 表头css样式
+    theadStyle: PropTypes.object,
+
+    // 表头css类名
+    theadClassName: PropTypes.string,
+
+    // 数据行css样式
+    trStyle: PropTypes.string,
+
+    // 数据行css类名
+    trClassName: PropTypes.string,
+
+    // 表头单元格css样式
+    thStyle: PropTypes.object,
+
+    // 表头单元格css类名
+    thClassName: PropTypes.string,
+
+    // 数据单元格css样式
+    tdStyle: PropTypes.string,
+
+    // 数据单元格css类名
+    tdClassName: PropTypes.string,
+
+    // 链接css样式
+    aStyle: PropTypes.object,
+
+    // 链接css类名
+    aClassName: PropTypes.string,
+
+    // 引用块css样式
+    blockquoteStyle: PropTypes.object,
+
+    // 引用块css类名
+    blockquoteClassName: PropTypes.string,
+
+    // 行内代码css样式
+    inlineCodeStyle: PropTypes.object,
+
+    // 行内代码css类名
+    inlineCodeClassName: PropTypes.string,
+
+    // 水平分割线css样式
+    hrStyle: PropTypes.object,
+
+    // 水平分割线css类名
+    hrClassName: PropTypes.string,
 
     loading_state: PropTypes.shape({
         /**
