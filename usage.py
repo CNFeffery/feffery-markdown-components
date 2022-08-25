@@ -7,6 +7,9 @@ app = dash.Dash(__name__)
 app.layout = html.Div(
     [
         fmc.FefferyMarkdown(
+            checkExternalLink=True,
+            safeRedirectUrlPrefix='/safe-redirect?',
+            externalLinkPrefixWhiteList=['http://fac.feffery.tech'],
             renderHtml=True,
             # showCopyButton=False,
             imagePreview=True,
@@ -195,6 +198,8 @@ app = dash.Dash(serve_locally=False)
 ## 5 在线交互式说明文档
 
 <a href='http://fac.feffery.tech/' target='_blank'>文档地址</a>（待同步至最新pypi版本）
+
+<a href='/demo-page' target='_blank'>文档地址</a>（待同步至最新pypi版本）
 
 ## 6 TODO计划
 

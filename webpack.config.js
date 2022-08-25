@@ -128,7 +128,7 @@ module.exports = (env, argv) => {
                         chunks: 'all',
                         minSize: 0,
                         minChunks: 2,
-                        name: 'feffery_utils_components-shared'
+                        name: 'feffery_markdown_components-shared'
                     }
                 }
             }
