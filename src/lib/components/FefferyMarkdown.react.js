@@ -134,6 +134,8 @@ const FefferyMarkdown = (props) => {
         inlineCodeClassName,
         hrStyle,
         hrClassName,
+        strongStyle,
+        strongClassName,
         checkExternalLink,
         externalLinkPrefixWhiteList,
         safeRedirectUrlPrefix,
@@ -432,6 +434,17 @@ const FefferyMarkdown = (props) => {
                         }
 
                         return <hr {...props} />
+                    },
+                    strong: ({ ...props }) => {
+                        props.style = {
+                            ...props.style,
+                            ...strongStyle
+                        }
+                        if (strongClassName) {
+                            props.className = `${props.className} ${strongClassName}`
+                        }
+
+                        return <strong {...props} />
                     }
                 }}
                 transformLinkUri={(href, children, title) => {
@@ -614,6 +627,12 @@ FefferyMarkdown.propTypes = {
 
     // 水平分割线css类名
     hrClassName: PropTypes.string,
+
+    // 加粗内容css样式
+    strongStyle: PropTypes.object,
+
+    // 加粗内容css类名
+    strongClassName: PropTypes.string,
 
     // 设置是否对markdown内容中的外部链接进行检查，默认为false
     // 当checkExternalLink=true且safeRedirectUrlPrefix有定义时才会开启链接安全跳转功能

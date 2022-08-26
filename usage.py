@@ -7,6 +7,9 @@ app = dash.Dash(__name__)
 app.layout = html.Div(
     [
         fmc.FefferyMarkdown(
+            strongStyle={
+                'color': 'red'
+            },
             checkExternalLink=True,
             safeRedirectUrlPrefix='/safe-redirect?',
             externalLinkPrefixWhiteList=['http://fac.feffery.tech'],
@@ -27,7 +30,7 @@ app.layout = html.Div(
             },
             markdownStr=r'''
 
-> 测试<br>
+> **测试**<br>
 > 测试<br>
 
 当你需要序列化的对象中涉及到`dataclass`自定义数据结构时，可以配合`orjson.OPT_PASSTHROUGH_DATACLASS`，再通过对`default`参数传入自定义处理函数，来实现更为自由的数据转换逻辑，譬如下面简单的例子中，我们可以利用此特性进行原始数据的脱敏操作：
@@ -37,7 +40,6 @@ app.layout = html.Div(
 | ---------: | :------------------- |
 | CommonMark | 100%                 |
 | GFM        | 100% w/ `remark-gfm` |
-
 
 - 基于markdown语法渲染图片
 

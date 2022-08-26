@@ -530,6 +530,20 @@
         "required": false,
         "description": ""
       },
+      "strongStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "strongClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "checkExternalLink": {
         "type": {
           "name": "bool"
