@@ -7,9 +7,7 @@ app = dash.Dash(__name__)
 app.layout = html.Div(
     [
         fmc.FefferyMarkdown(
-            strongStyle={
-                'color': 'red'
-            },
+            markdownBaseClassName='theme-forest',
             checkExternalLink=True,
             safeRedirectUrlPrefix='/safe-redirect?',
             externalLinkPrefixWhiteList=['http://fac.feffery.tech'],
@@ -223,7 +221,7 @@ app = dash.Dash(serve_locally=False)
         )
     ],
     style={
-        'width': '800px',
+        'width': '1000px',
         'margin': '0 auto',
         'background': 'white',
         'boxShadow': '0px 0px 12px rgba(0, 0, 0, .12)',

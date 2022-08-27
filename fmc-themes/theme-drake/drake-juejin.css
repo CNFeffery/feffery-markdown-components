@@ -1,0 +1,356 @@
+/*
+ * Copyright (C) 2018 Drake, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * GitHub https://github.com/liangjingkanji/DrakeTyporaTheme
+ */
+@import url(./drake/font.css);
+@include-when-export url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --text-color: #333333;
+  --bg-color: #ffffff;
+  --control-text-color: var(--text-color);
+  --meta-content-color: var(--text-color);
+  --active-file-border-color: var(--drake-accent);
+  --rawblock-edit-panel-bd: var(--code-block-bg-color);
+  --item-hover-bg-color: #e5e5e596;
+  --active-file-bg-color: var(--item-hover-bg-color);
+
+  --blur-text-color: rgba(51, 51, 51, 0.5);
+  --drake-accent: #e95f59;
+  --drake-highlight: #d63200;
+  --a-color: #036aca;
+  --variable-color: var(--drake-highlight);
+  --outline-active-color: var(--a-color);
+  --code-block-bg-color: #2b2b2b;
+  --code-block-color: #a9b7c6;
+  --title-color: #135ce0;
+  --blockquote-border-color: #106ebe;
+  --blockquote-color: #2b88d8;
+  --blockquote-bg-color: #eff6fc;
+  --strong-color: var(--title-color);
+  --h2-underline-color: var(--title-color);
+  --horizontal-divider-color: var(--title-color);
+  --height-light-color: var(--drake-highlight);
+  --height-light-border-color: var(--drake-highlight);
+  --yaml-color: #777777;
+  --yaml-bg-color: #f7f7f7;
+  --footnotes-bg-color: #3c3d3e;
+  --footnotes-highlight: #ffd760;
+  --table-border-color: #dfe2e5;
+  --table-header-bg-color: #f6f8fa;
+  --table-bg-color: var(--bg-color);
+  --table-n2-bg-color: #f6f8fa;
+  --input-bg-color: var(--item-hover-bg-color);
+  --btn-hover-bg-color: var(--item-hover-bg-color);
+  --checkbox-checked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M425.984 726.016l384-384-59.99-61.995-324.01 324.011-152.021-152.021L213.973 512zm384-598.016q36.01 0 61.013 25.984T896 213.974v596.01q0 34.005-25.003 59.99t-61.013 25.983h-596.01q-36.011 0-61.014-25.984t-25.003-59.989v-596.01q0-34.006 25.003-59.99T213.973 128h596.011z' fill='%2365b73b'/%3E%3C/svg%3E");
+  --checkbox-unchecked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M810.667 213.333v597.334H213.333V213.333h597.334m0-85.333H213.333C166.4 128 128 166.4 128 213.333v597.334C128 857.6 166.4 896 213.333 896h597.334C857.6 896 896 857.6 896 810.667V213.333C896 166.4 857.6 128 810.667 128z' fill='%23333333'/%3E%3C/svg%3E");
+}
+
+.theme-drake-juejin p {
+  line-height: var(--text-line-height);
+}
+
+.theme-drake-juejin {
+  background-image: linear-gradient(
+      90deg,
+      rgba(60, 10, 30, 0.04) 3%,
+      transparent 0
+    ),
+    linear-gradient(1turn, rgba(60, 10, 30, 0.04) 3%, transparent 0);
+  background-size: 20px 20px;
+  background-position: 50%;
+}
+
+.theme-drake-juejin blockquote:before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 4px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: var(--blockquote-border-color);
+  border-radius: 2px;
+}
+
+.theme-drake-juejin blockquote {
+  color: var(--blockquote-color);
+  border-radius: 2px;
+  padding: 10px 16px;
+  background-color: var(--blockquote-bg-color);
+  position: relative;
+  border-left: none;
+}
+
+.theme-drake-juejin strong {
+  color: var(--strong-color);
+  font-weight: bold;
+}
+.theme-drake-juejin blockquote strong {
+  color: var(--blockquote-color);
+}
+
+.theme-drake-juejin a {
+  color: var(--a-color);
+  text-decoration: none;
+  border-bottom: 0.2rem solid var(--a-color);
+}
+.theme-drake-juejin h2 a {
+  border-bottom: 0.2rem solid var(--a-color);
+}
+
+.theme-drake-juejin img {
+  border-left: none;
+  border-right: none;
+  vertical-align: baseline;
+  border-radius: 2px;
+}
+
+.theme-drake-juejin {
+  margin: 0 auto;
+  padding: 20px 30px 100px;
+}
+
+.theme-drake-juejin > ul:first-child,
+.theme-drake-juejin > ol:first-child {
+  margin-top: 30px;
+}
+
+.theme-drake-juejin h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--title-font);
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  line-height: 1.4;
+  cursor: text;
+  color: var(--title-color);
+}
+
+.theme-drake-juejin h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 0;
+}
+
+.theme-drake-juejin h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+.theme-drake-juejin h2 .md-plain {
+  padding-bottom: 0.3rem;
+  border-bottom: 0.2rem solid var(--h2-underline-color);
+  line-height: 3rem;
+}
+
+.theme-drake-juejin h3 {
+  font-size: 1.4rem;
+}
+
+.theme-drake-juejin h4 {
+  font-size: 1.2rem;
+}
+
+.theme-drake-juejin h5 {
+  font-size: 1rem;
+}
+
+.theme-drake-juejin h6 {
+  font-size: 1rem;
+}
+
+.theme-drake-juejin h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+  text-decoration: none;
+}
+
+.theme-drake-juejin h1 tt,
+h1 code {
+  font-size: inherit !important;
+}
+
+.theme-drake-juejin h2 tt,
+h2 code {
+  font-size: inherit !important;
+}
+
+.theme-drake-juejin h3 tt,
+h3 code {
+  font-size: inherit !important;
+}
+
+.theme-drake-juejin h4 tt,
+h4 code {
+  font-size: inherit !important;
+}
+
+.theme-drake-juejin h5 tt,
+h5 code {
+  font-size: inherit !important;
+}
+
+.theme-drake-juejin h6 tt,
+h6 code {
+  font-size: inherit !important;
+}
+
+.theme-drake-juejin p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+  margin: var(--p-spacing) 0;
+}
+
+.theme-drake-juejin li > ol,
+li > ul {
+  margin: 0 0;
+}
+
+.theme-drake-juejin li {
+  margin: 0.5em 0;
+}
+
+.theme-drake-juejin hr {
+  height: 2px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: var(--horizontal-divider-color);
+  border: 0 none;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+.theme-drake-juejin a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.theme-drake-juejin h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+  margin-top: 0;
+}
+
+.theme-drake-juejin li p.first {
+  display: inline-block;
+}
+
+.theme-drake-juejin ul,
+ol {
+  padding-inline-start: 2em;
+}
+
+.theme-drake-juejin ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+
+.theme-drake-juejin ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+.theme-drake-juejin table {
+  margin-top: 1rem;
+  word-break: initial;
+  background-color: var(--table-bg-color);
+}
+
+.theme-drake-juejin table tr {
+  border-top: 0.1em solid var(--table-border-color);
+  margin: 0;
+  padding: 0;
+}
+
+.theme-drake-juejin table th {
+  font-weight: bold;
+  border: 0.1em solid var(--table-border-color);
+  border-bottom: 0;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+.theme-drake-juejin table td {
+  border: 0.1em solid var(--table-border-color);
+  margin: 0;
+  padding: 6px 13px;
+}
+
+.theme-drake-juejin table thead {
+  background-color: var(--table-header-bg-color);
+}
+
+.theme-drake-juejin table tr:nth-child(2n) {
+  background-color: var(--table-n2-bg-color);
+}
+
+.theme-drake-juejin table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+
+.theme-drake-juejin table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
+}
+
+.theme-drake-juejin em {
+  padding: 0 5px 0 2px;
+}
+
+.theme-drake-juejin .highlight pre,
+.theme-drake-juejin pre {
+  padding: 0 !important;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+}
+
+.theme-drake-juejin *::-webkit-scrollbar-thumb {
+  background-color: #bfbfbf;
+  outline: none;
+  border-radius: 6px;
+}
+
+.theme-drake-juejin *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/*火狐浏览器*/
+.theme-drake-juejin * {
+  scrollbar-width: thin;
+}

@@ -1,0 +1,393 @@
+@charset "UTF-8";
+@import url("./forest/fonts.css");
+@import url("./forest/code-mirror.css");
+
+/** color vars **/
+:root {
+  /* system vars*/
+  --primary-color: #f0f0f0; /* color of primary buttons */
+  --side-bar-bg-color: #003444;
+  --active-file-bg-color: #004144; /* sidebar active & hover */
+  --active-file-text-color: #ffffff;
+  --active-file-border-color: #757575;
+  --item-hover-text-color: #fff;
+  --item-hover-bg-color: #005c44; /* sidebar footer item hover*/
+  --control-text-color: #ddd;
+  --control-text-hover-color: #fff;
+  --monospace: "SourceHanSansSC", "JetBrains Mono", -apple-system, sans-serif;
+
+  /* custom vars */
+  --theme-primary-color: #00997b; /* rgb(0, 153, 123) */
+  --white-color: #fff;
+
+  /* head */
+  --head-text-color: #333444;
+  --h1-text-color: rgba(0, 52, 68, 0.9);
+  --h5-text-color: var(--theme-primary-color);
+  --h6-text-color: rgba(0, 153, 123, 0.838);
+  --head-prefix-color: #d0d0d0;
+
+  /* text */
+  --text-color: #363c42;
+  --text-search-hit-color: rosybrown;
+
+  /* highlight */
+  --highlight-bg-color: #fff3f3;
+  --highlight-text-color: #ff2f2f;
+
+  /* a link */
+  --a-text-color: var(--theme-primary-color);
+
+  /* annotate */
+  --annotate-text-color: #8caa16;
+
+  /* inline code */
+  --inline-code-bg-color: #f3f3f3;
+  --inline-code-text-color: #00769a;
+
+  /* selection */
+  --selection-text-color: rgba(0, 153, 123, 0.2);
+
+  /* check-box */
+  --checked-text-color: #adb5bd;
+  --line-through-color: #cfd4da;
+  --border-color: #868e96;
+
+  /* table */
+  --table-border-color: #dadcde;
+  --table-cell-bg-color: rgba(0, 153, 123, 0.03);
+
+  /* quote */
+  --quote-bg-color: rgba(0, 153, 123, 0.05);
+  --quote-text-color: #81888d;
+
+  /* sidebar */
+  --sidebar-footer-dropdown-menu-border-color: #212529;
+  --sidebar-footer-dropdown-menu-item-border-color: #adb5bd;
+  --sidebar-footer-item-hover-bg-color: #004544;
+  --siderbar-dropdown-menu-text-color: #fff;
+
+  /* sidebar resizer */
+  --sidebar-resizer: #6eace2;
+
+  /*--window-border: #e5e5e5;*/
+  --window-border: #1f6f57; /*sidebar layout border*/
+}
+
+.theme-forest {
+  line-height: 1.6;
+  padding: 36px 0 70px;
+}
+
+.theme-forest p {
+  font-size: 1em;
+  font-family: "SourceHanSansSC", "JetBrains Mono", -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.theme-forest h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  width: auto;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.theme-forest h2,
+h3,
+h4 {
+  color: var(--head-text-color);
+}
+.theme-forest h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--head-prefix-color);
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-variant: "small-caps";
+  line-height: 2;
+  padding: 0;
+  border: 0;
+}
+
+.theme-forest h1 {
+  font-size: 2.1rem;
+  font-weight: 900;
+  text-align: center;
+  color: var(--h1-text-color);
+}
+.theme-forest h1 > span {
+  position: relative;
+  display: inline-block;
+}
+.theme-forest h1 > span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-top: 3px double var(--h1-text-color);
+  height: 3px;
+  width: 15rem;
+  max-width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.theme-forest h2 {
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+.theme-forest > h2::before {
+  content: "H2";
+}
+
+.theme-forest h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.theme-forest > h3::before {
+  content: "H3";
+}
+
+.theme-forest h4,
+#write h5,
+#write h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.theme-forest h5 {
+  color: var(--h5-text-color);
+}
+.theme-forest h6 {
+  color: var(--h6-text-color);
+}
+.theme-forest > h4::before {
+  content: "H4";
+}
+.theme-forest > h5::before {
+  content: "H5";
+}
+.theme-forest > h6::before {
+  content: "H6";
+}
+
+.theme-forest a {
+  color: var(--a-text-color);
+  cursor: pointer;
+  padding: 0 3px 0 3px;
+  text-decoration: none;
+}
+.theme-forest a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid;
+}
+
+.theme-forest strong {
+  font-weight: 700;
+}
+
+.theme-forest mark {
+  background: var(--highlight-bg-color);
+  color: var(--highlight-text-color);
+  font-weight: 500;
+  padding: 0 2px 0 2px;
+  margin: 0 2px 0 2px;
+  border-radius: 2px;
+}
+
+.theme-forest img {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+.theme-forest u {
+  text-decoration: none;
+}
+.theme-forest u > span {
+  border-bottom: 1px solid;
+}
+
+.theme-forest span::selection,
+*::selection {
+  background: var(--selection-text-color);
+}
+
+.theme-forest blockquote {
+  position: relative;
+  padding: 1rem;
+  background-color: var(--quote-bg-color);
+  border-radius: 6px;
+  line-height: 1;
+}
+.theme-forest blockquote p {
+  color: var(--quote-text-color);
+  margin: 0;
+}
+.theme-forest blockquote::before {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  height: 100%;
+  width: 0.3rem;
+  background: var(--theme-primary-color);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.theme-forest hr {
+  border-top: 1px dashed var(--theme-primary-color);
+  transform: scaleY(0.5);
+  width: 90%;
+}
+
+.theme-forest ul > li > ul > li {
+  list-style-type: circle;
+}
+.theme-forest ul > li > ul > li > ul > li {
+  list-style-type: disc;
+}
+.theme-forest ul > li > ul > li > ul > li > ul > li {
+  list-style-type: circle;
+}
+.theme-forest ul > li > ul > li > ul > li > ul > li > ul > li {
+  list-style-type: disc;
+}
+.theme-forest ul > li > ul > li > ul > li > ul > li > ul > li > ul > li {
+  list-style-type: circle;
+}
+
+.theme-forest ol ul li {
+  list-style-type: circle;
+}
+.theme-forest ol ul > li > ul > li {
+  list-style-type: disc;
+}
+.theme-forest ol ul > li > ul > li > ul > li {
+  list-style-type: circle;
+}
+.theme-forest ol ul > li > ul > li > ul > li > ul > li {
+  list-style-type: disc;
+}
+.theme-forest ol ul > li > ul > li > ul > li > ul > li > ul > li {
+  list-style-type: circle;
+}
+.theme-forest ol ul > li > ul > li > ul > li > ul > li > ul > li > ul > li {
+  list-style-type: circle;
+}
+
+.theme-forest ol > li > ol > li {
+  list-style-type: lower-alpha;
+}
+.theme-forest ol > li > ol > li > ol > li {
+  list-style-type: decimal;
+}
+.theme-forest ol > li > ol > li > ol > li > ol > li {
+  list-style-type: lower-alpha;
+}
+.theme-forest ol > li > ol > li > ol > li > ol > li > ol > li {
+  list-style-type: decimal;
+}
+.theme-forest ol > li > ol > li > ol > li > ol > li > ol > li > ol > li {
+  list-style-type: lower-alpha;
+}
+.theme-forest
+  ol
+  > li
+  > ol
+  > li
+  > ol
+  > li
+  > ol
+  > li
+  > ol
+  > li
+  > ol
+  > li
+  > ol
+  > li {
+  list-style-type: decimal;
+}
+
+.theme-forest table tr:nth-child(2n),
+table thead {
+  background-color: var(--table-cell-bg-color);
+}
+.theme-forest table thead {
+  font-weight: 900;
+}
+
+.theme-forest table tbody tr {
+  border-bottom: 1px solid var(--table-border-color);
+}
+.theme-forest table tr:first-of-type {
+  border-top: 1px solid var(--table-border-color);
+}
+.theme-forest table tr th,
+table tr td {
+  border-left: 1px solid var(--table-border-color);
+  padding: 6px 13px;
+}
+.theme-forest table tr th:last-of-type,
+table tr td:last-of-type {
+  border-right: 1px solid var(--table-border-color);
+}
+
+.theme-forest .highlight pre,
+.theme-forest pre {
+  padding: 0 !important;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+}
+
+.theme-forest *::-webkit-scrollbar-thumb {
+  background-color: #bfbfbf;
+  outline: none;
+  border-radius: 6px;
+}
+
+.theme-forest *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/*火狐浏览器*/
+.theme-forest * {
+  scrollbar-width: thin;
+}
+
+.theme-forest .contains-task-list {
+  list-style-type: none;
+}
+
+.theme-forest .task-list-item > input,
+.theme-forest .task-list-item > input[type="checkbox"]:before {
+  margin-left: -1.6rem;
+  height: 1rem;
+  width: 1rem;
+  transform: translateY(0.2rem);
+}
+
+.theme-forest code:not([class^="language-"]) {
+  color: #1d7fa2;
+  background: #f3f3f3;
+  margin: 0 2px;
+  padding: 0px 4px;
+  font-size: 0.95rem;
+  display: inline;
+  vertical-align: top;
+  line-height: 1.6;
+  border-radius: 6px;
+  font-weight: 700;
+}
