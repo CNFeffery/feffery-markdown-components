@@ -576,6 +576,17 @@
         "required": false,
         "description": ""
       },
+      "markdownBaseClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'markdown-body'",
+          "computed": false
+        }
+      },
       "loading_state": {
         "type": {
           "name": "shape",
