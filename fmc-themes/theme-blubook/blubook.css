@@ -1,0 +1,407 @@
+@charset "UTF-8";
+
+/*** Color setting ***/
+:root {
+  --side-bar-bg-color: #183055;
+  --active-file-bg-color: #2f4566;
+  --active-file-text-color: #ffffff;
+  --active-file-border-color: #757575;
+  --active-search-item-bg-color: #23242b;
+  --item-hover-bg-color: #ececec;
+  --item-hover-text-color: #000000;
+  --control-text-color: #ddd;
+  --window-border: 1px solid #183055;
+  --code-cursor: #f0f0f0;
+  --search-select-bg-color: rgba(248, 192, 116, 0.3);
+  --search-select-text-color: rgb(59, 69, 78);
+}
+
+.md-search-hit.md-search-select {
+  background-color: rgb(248, 192, 116);
+}
+
+/*** Btn in search bar ***/
+#filesearch-case-option-btn,
+#filesearch-word-option-btn {
+  background: var(--side-bar-bg-color);
+}
+
+.theme-blubook h1,
+.theme-blubook h2,
+.theme-blubook h3,
+.theme-blubook h4,
+.theme-blubook h5,
+.theme-blubook h6,
+.theme-blubook p {
+  width: auto;
+}
+
+.theme-blubook > h1::before,
+.theme-blubook > h2::before,
+.theme-blubook > h3::before,
+.theme-blubook > h4::before,
+.theme-blubook > h5::before,
+.theme-blubook > h6::before {
+  position: absolute;
+  right: calc(100% + 10px);
+  bottom: 0;
+  color: #b4b4b4;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 0;
+  border-radius: 0;
+  left: auto;
+  float: none;
+  padding: 0;
+  line-height: 2;
+}
+
+.theme-blubook h1 {
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook > h1::before {
+  content: "H1";
+  bottom: 1rem;
+}
+
+.theme-blubook h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook > h2::before {
+  content: "H2";
+  bottom: 0.85rem;
+}
+
+.theme-blubook h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook > h3::before {
+  content: "H3";
+  top: 0.44rem;
+  padding: 3px 0 3px 0;
+}
+
+.theme-blubook h4 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook > h4::before {
+  content: "H4";
+  top: 0.4rem;
+}
+
+.theme-blubook h5,
+.theme-blubook h6 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook h5::before,
+.theme-blubook h6::before {
+  top: 0.2rem;
+}
+
+.theme-blubook > h5::before {
+  content: "H5";
+}
+
+.theme-blubook > h6::before {
+  content: "H6";
+}
+
+.theme-blubook hr {
+  border-color: #e6ecf1;
+  height: 2px;
+  border-top: 2px solid #e6ecf1;
+}
+
+.theme-blubook img {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.theme-blubook ul > li > ul > li {
+  list-style-type: circle;
+}
+
+.theme-blubook ul > li > ul > li > ul > li {
+  list-style-type: square;
+}
+
+.theme-blubook ol,
+.theme-blubook ul:not(#sidebar-files-menu, #context-menu, .outline-children) {
+  padding-left: 2rem;
+  line-height: 1;
+  font-size: 16px;
+}
+
+.theme-blubook ul > li:first-child {
+  margin-top: 0.5rem;
+}
+
+.theme-blubook ol > li {
+  list-style-type: decimal;
+}
+
+.theme-blubook ol > li > ol > li {
+  list-style-type: lower-alpha;
+}
+
+.theme-blubook ol > li > ol > li > ol > li {
+  list-style-type: lower-roman;
+}
+
+.theme-blubook table {
+  padding: 0;
+  word-break: initial;
+}
+
+.theme-blubook table tr {
+  border-top: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 0;
+}
+
+.theme-blubook table tr:nth-child(2n),
+.theme-blubook thead {
+  background-color: #f6f9fb;
+}
+
+.theme-blubook table tr th {
+  font-weight: bold;
+  border: 1px solid #dfe2e5;
+  border-bottom: 0;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+.theme-blubook table tr td {
+  border: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+.theme-blubook table tr th:first-child,
+.theme-blubook table tr td:first-child {
+  margin-top: 0;
+}
+
+.theme-blubook table tr th:last-child,
+.theme-blubook table tr td:last-child {
+  margin-bottom: 0;
+}
+
+.theme-blubook p {
+  font-size: 1.14rem;
+  font-weight: 500;
+  line-height: 1.6;
+  font-style: normal;
+  color: rgb(59, 69, 78);
+}
+
+.theme-blubook a {
+  color: rgb(56, 132, 254);
+  text-decoration: none;
+  text-decoration-style: none;
+  cursor: pointer;
+  padding: 0 3px 0 3px;
+}
+
+.theme-blubook a:hover {
+  color: rgb(56, 132, 254);
+  text-decoration: underline;
+  text-decoration-style: solid;
+}
+
+.theme-blubook strong {
+  font-weight: 700;
+}
+
+.theme-blubook mark {
+  background: #87cefa;
+  padding: 0 2px 0 2px;
+  margin: 0 2px 0 2px;
+  border-radius: 3px;
+}
+
+.theme-blubook h1 {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook h5,
+.theme-blubook h6 {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.theme-blubook table code {
+  vertical-align: baseline;
+}
+
+.theme-blubook blockquote {
+  position: relative;
+  padding: 1rem;
+  color: #827676;
+  background-color: #f5f7f9;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.theme-blubook blockquote::before {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  height: 100%;
+  width: 0.3rem;
+  background: #3884ff;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+/****** task list style ******/
+.theme-blubook .contains-task-list {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.theme-blubook .task-list-item > input {
+  top: -0.2rem;
+  margin-left: -1.6rem;
+  margin-top: 0.2rem;
+  -webkit-appearance: initial;
+  transform: translateY(0.35em);
+  position: relative;
+}
+
+.theme-blubook .task-list-item > input:before {
+  border: 1px solid#0185ff;
+  border-radius: 1rem;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  content: " ";
+  display: block;
+}
+
+.theme-blubook .task-list-item > input:checked:before,
+.theme-blubook .task-list-item > input[checked]:before {
+  background: #0185ff;
+  border-width: 1px;
+}
+
+.theme-blubook .task-list-item > input:checked:after,
+.theme-blubook .task-list-item > input[checked]:after {
+  opacity: 1;
+}
+
+.theme-blubook .task-list-item > input:after {
+  opacity: 1;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0.25rem;
+  left: 0.19rem;
+  width: 0.6rem;
+  height: 0.375rem;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  content: " ";
+  opacity: 0;
+}
+
+.theme-blubook code:not([class^="language-"]) {
+  color: #3b454e;
+  background: #f3f3f3;
+  margin: 0 2px;
+  padding: 0px 4px;
+  display: inline;
+  border-radius: 6px;
+  font-size: 1.1rem;
+}
+
+.theme-blubook li {
+  margin: 0.75rem 0;
+  box-sizing: content-box;
+}
+
+.theme-blubook *::-webkit-scrollbar-thumb {
+  background-color: #bfbfbf;
+  outline: none;
+  border-radius: 6px;
+}
+
+.theme-blubook *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/*火狐浏览器*/
+.theme-blubook * {
+  scrollbar-width: thin;
+}

@@ -135,6 +135,7 @@ h6 {
   line-height: 1.4;
   cursor: text;
   color: var(--title-color);
+  display: inline-block;
 }
 
 .theme-drake h1 {
@@ -339,4 +340,67 @@ table tr td:last-child {
 /*火狐浏览器*/
 .theme-drake * {
   scrollbar-width: thin;
+}
+
+.theme-drake .contains-task-list {
+  list-style-type: none;
+}
+
+.theme-drake .task-list-item {
+  position: relative;
+}
+
+.theme-drake .task-list-item > input:checked:before,
+.task-list-item > input[checked]:before {
+  background: rgb(101, 183, 59);
+  border-width: 1px;
+  border: 2px solid rgb(101, 183, 59);
+}
+
+.theme-drake .task-list-item > input:before {
+  border: 2px solid rgb(102, 102, 102);
+  width: 1rem;
+  height: 1rem;
+  background: white;
+  content: " ";
+  transition: background-color 200ms ease-in-out;
+  display: block;
+}
+
+.theme-drake .task-list-item > input:checked:after,
+.task-list-item > input[checked]:after {
+  opacity: 1;
+}
+
+.theme-drake .task-list-item > input:after {
+  opacity: 1;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0.25rem;
+  left: 0.19rem;
+  width: 0.6rem;
+  height: 0.375rem;
+  border: 2px solid white;
+  border-top: 0;
+  border-right: 0;
+  content: " ";
+  opacity: 0;
+}
+
+.theme-drake .task-list-item > input,
+.theme-drake .task-list-item > input[type="checkbox"] {
+  margin-left: -1.6rem;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.theme-drake .task-list-item > input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: -1.2em;
+  margin-top: calc(1em - 11px);
+  border: none;
 }

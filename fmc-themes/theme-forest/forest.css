@@ -97,25 +97,46 @@ h6 {
   font-style: normal;
   margin-top: 14px;
   margin-bottom: 14px;
+  position: relative;
 }
 .theme-forest h2,
 h3,
 h4 {
   color: var(--head-text-color);
 }
+
+.theme-forest h2::before {
+  content: "H2";
+}
+
+.theme-forest h3::before {
+  content: "H3";
+}
+
+.theme-forest h4::before {
+  content: "H4";
+}
+
+.theme-forest h5::before {
+  content: "H5";
+}
+
+.theme-forest h6::before {
+  content: "H6";
+}
+
 .theme-forest h2::before,
 h3::before,
 h4::before,
 h5::before,
 h6::before {
   position: absolute;
-  right: calc(100% + 10px);
+  right: calc(100% + 2px);
   top: 50%;
   transform: translateY(-50%);
   color: var(--head-prefix-color);
   font-size: 0.8rem;
   font-weight: bold;
-  font-variant: "small-caps";
   line-height: 2;
   padding: 0;
   border: 0;
@@ -249,6 +270,11 @@ h6::before {
   width: 90%;
 }
 
+.theme-forest ol,
+.theme-forest ul {
+  position: relative;
+}
+
 .theme-forest ul > li > ul > li {
   list-style-type: circle;
 }
@@ -371,12 +397,63 @@ table tr td:last-of-type {
   list-style-type: none;
 }
 
-.theme-forest .task-list-item > input,
-.theme-forest .task-list-item > input[type="checkbox"]:before {
-  margin-left: -1.6rem;
-  height: 1rem;
+.theme-forest .task-list-item {
+  position: relative;
+}
+
+.theme-forest .task-list-item > input:checked:before,
+.task-list-item > input[checked]:before {
+  background: var(--theme-primary-color);
+  border-width: 1px;
+  border: 2px solid var(--theme-primary-color);
+}
+
+.theme-forest .task-list-item > input:before {
+  border: 2px solid var(--border-color);
   width: 1rem;
-  transform: translateY(0.2rem);
+  height: 1rem;
+  background: var(--white-color);
+  content: " ";
+  transition: background-color 200ms ease-in-out;
+  display: block;
+}
+
+.theme-forest .task-list-item > input:checked:after,
+.task-list-item > input[checked]:after {
+  opacity: 1;
+}
+
+.theme-forest .task-list-item > input:after {
+  opacity: 1;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0.25rem;
+  left: 0.19rem;
+  width: 0.6rem;
+  height: 0.375rem;
+  border: 2px solid var(--white-color);
+  border-top: 0;
+  border-right: 0;
+  content: " ";
+  opacity: 0;
+}
+
+.theme-forest .task-list-item > input,
+.theme-forest .task-list-item > input[type="checkbox"] {
+  margin-left: -1.6rem;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.theme-forest .task-list-item > input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: -1.2em;
+  margin-top: calc(1em - 11px);
+  border: none;
 }
 
 .theme-forest code:not([class^="language-"]) {

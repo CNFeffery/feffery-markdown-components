@@ -354,3 +354,66 @@ table tr td:last-child {
 .theme-drake-juejin * {
   scrollbar-width: thin;
 }
+
+.theme-drake-juejin .contains-task-list {
+  list-style-type: none;
+}
+
+.theme-drake-juejin .task-list-item {
+  position: relative;
+}
+
+.theme-drake-juejin .task-list-item > input:checked:before,
+.task-list-item > input[checked]:before {
+  background: #2b88d8;
+  border-width: 1px;
+  border: 2px solid #2b88d8;
+}
+
+.theme-drake-juejin .task-list-item > input:before {
+  border: 2px solid rgb(102, 102, 102);
+  width: 1rem;
+  height: 1rem;
+  background: white;
+  content: " ";
+  transition: background-color 200ms ease-in-out;
+  display: block;
+}
+
+.theme-drake-juejin .task-list-item > input:checked:after,
+.task-list-item > input[checked]:after {
+  opacity: 1;
+}
+
+.theme-drake-juejin .task-list-item > input:after {
+  opacity: 1;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0.25rem;
+  left: 0.19rem;
+  width: 0.6rem;
+  height: 0.375rem;
+  border: 2px solid white;
+  border-top: 0;
+  border-right: 0;
+  content: " ";
+  opacity: 0;
+}
+
+.theme-drake-juejin .task-list-item > input,
+.theme-drake-juejin .task-list-item > input[type="checkbox"] {
+  margin-left: -1.6rem;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.theme-drake-juejin .task-list-item > input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: -1.2em;
+  margin-top: calc(1em - 11px);
+  border: none;
+}
