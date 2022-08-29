@@ -181,7 +181,7 @@ const FefferyMarkdown = (props) => {
     return (
         <div id={id}
             style={style}
-            className={className ? `${markdownBaseClassName} ${className}` : markdownBaseClassName}>
+            className={[markdownBaseClassName, className].filter(s => s).join(' ').replace(/(^\s*)|(\s*$)/g, '')}>
             <ReactMarkdown
                 linkTarget={linkTarget}
                 remarkPlugins={remarkPlugins}
