@@ -39,11 +39,6 @@
   margin-bottom: 14px;
 }
 
-.theme-blubook > h1::before {
-  content: "H1";
-  bottom: 1rem;
-}
-
 .theme-blubook h2 {
   font-size: 2rem;
   font-weight: 800;
@@ -51,11 +46,6 @@
   line-height: 2;
   margin-top: 14px;
   margin-bottom: 14px;
-}
-
-.theme-blubook > h2::before {
-  content: "H2";
-  bottom: 0.85rem;
 }
 
 .theme-blubook h3 {
@@ -67,12 +57,6 @@
   margin-bottom: 14px;
 }
 
-.theme-blubook > h3::before {
-  content: "H3";
-  top: 0.44rem;
-  padding: 3px 0 3px 0;
-}
-
 .theme-blubook h4 {
   font-size: 1.4rem;
   font-weight: 800;
@@ -80,11 +64,6 @@
   font-style: normal;
   margin-top: 14px;
   margin-bottom: 14px;
-}
-
-.theme-blubook > h4::before {
-  content: "H4";
-  top: 0.4rem;
 }
 
 .theme-blubook h5,
@@ -100,14 +79,6 @@
 .theme-blubook h5::before,
 .theme-blubook h6::before {
   top: 0.2rem;
-}
-
-.theme-blubook > h5::before {
-  content: "H5";
-}
-
-.theme-blubook > h6::before {
-  content: "H6";
 }
 
 .theme-blubook hr {
