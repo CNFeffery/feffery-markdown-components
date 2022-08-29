@@ -1,31 +1,5 @@
 @charset "UTF-8";
 
-/*** Color setting ***/
-:root {
-  --side-bar-bg-color: #183055;
-  --active-file-bg-color: #2f4566;
-  --active-file-text-color: #ffffff;
-  --active-file-border-color: #757575;
-  --active-search-item-bg-color: #23242b;
-  --item-hover-bg-color: #ececec;
-  --item-hover-text-color: #000000;
-  --control-text-color: #ddd;
-  --window-border: 1px solid #183055;
-  --code-cursor: #f0f0f0;
-  --search-select-bg-color: rgba(248, 192, 116, 0.3);
-  --search-select-text-color: rgb(59, 69, 78);
-}
-
-.md-search-hit.md-search-select {
-  background-color: rgb(248, 192, 116);
-}
-
-/*** Btn in search bar ***/
-#filesearch-case-option-btn,
-#filesearch-word-option-btn {
-  background: var(--side-bar-bg-color);
-}
-
 .theme-blubook h1,
 .theme-blubook h2,
 .theme-blubook h3,

@@ -16,57 +16,11 @@
  * GitHub https://github.com/liangjingkanji/DrakeTyporaTheme
  */
 @import url(./drake/font.css);
-@include-when-export url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-:root {
-  --text-color: #333333;
-  --bg-color: #ffffff;
-  --control-text-color: var(--text-color);
-  --meta-content-color: var(--text-color);
-  --active-file-border-color: var(--drake-accent);
-  --rawblock-edit-panel-bd: var(--code-block-bg-color);
-  --item-hover-bg-color: #e5e5e596;
-  --active-file-bg-color: var(--item-hover-bg-color);
-
-  --blur-text-color: rgba(51, 51, 51, 0.5);
-  --drake-accent: #e95f59;
-  --drake-highlight: #d63200;
-  --a-color: var(--drake-highlight);
-  --variable-color: var(--drake-highlight);
-  --outline-active-color: var(--a-color);
-  --code-block-bg-color: #2b2b2b;
-  --code-block-color: #a9b7c6;
-  --title-color: #273849;
-  --blockquote-border-color: var(--drake-accent);
-  --blockquote-color: var(--text-color);
-  --blockquote-bg-color: #fdefee;
-  --strong-color: var(--title-color);
-  --h2-underline-color: var(--title-color);
-  --horizontal-divider-color: var(--title-color);
-  --height-light-color: var(--drake-highlight);
-  --height-light-border-color: var(--drake-highlight);
-  --yaml-color: #777777;
-  --yaml-bg-color: #f7f7f7;
-  --footnotes-bg-color: #3c3d3e;
-  --footnotes-highlight: #ffd760;
-  --table-border-color: #dfe2e5;
-  --table-header-bg-color: #f8f8f8;
-  --table-bg-color: var(--bg-color);
-  --table-n2-bg-color: #f8f8f8;
-  --input-bg-color: var(--item-hover-bg-color);
-  --btn-hover-bg-color: var(--item-hover-bg-color);
-  --checkbox-checked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M425.984 726.016l384-384-59.99-61.995-324.01 324.011-152.021-152.021L213.973 512zm384-598.016q36.01 0 61.013 25.984T896 213.974v596.01q0 34.005-25.003 59.99t-61.013 25.983h-596.01q-36.011 0-61.014-25.984t-25.003-59.989v-596.01q0-34.006 25.003-59.99T213.973 128h596.011z' fill='%2365b73b'/%3E%3C/svg%3E");
-  --checkbox-unchecked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M810.667 213.333v597.334H213.333V213.333h597.334m0-85.333H213.333C166.4 128 128 166.4 128 213.333v597.334C128 857.6 166.4 896 213.333 896h597.334C857.6 896 896 857.6 896 810.667V213.333C896 166.4 857.6 128 810.667 128z' fill='%23333333'/%3E%3C/svg%3E");
-}
-
-p {
-  line-height: var(--text-line-height);
-}
 
 .theme-drake code,
 tt {
   margin: 0 2px;
-  color: var(--drake-highlight);
+  color: #d63200;
 }
 
 .theme-drake blockquote:before {
@@ -77,31 +31,31 @@ tt {
   left: 0;
   top: 0;
   height: 100%;
-  background-color: var(--blockquote-border-color);
+  background-color: #e95f59;
   border-radius: 2px;
 }
 
 .theme-drake blockquote {
-  color: var(--blockquote-color);
+  color: #333333;
   border-radius: 2px;
   padding: 10px 16px;
-  background-color: var(--blockquote-bg-color);
+  background-color: #fdefee;
   position: relative;
   border-left: none;
 }
 
 .theme-drake strong {
-  color: var(--strong-color);
+  color: #273849;
   font-weight: bold;
 }
 .theme-drake blockquote strong {
-  color: var(--blockquote-color);
+  color: #333333;
 }
 
 .theme-drake a {
-  color: var(--a-color);
+  color: #d63200;
   text-decoration: none;
-  border-bottom: 0.2rem solid var(--a-color);
+  border-bottom: 0.2rem solid #d63200;
 }
 
 .theme-drake img {
@@ -122,19 +76,18 @@ tt {
 }
 
 .theme-drake h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--title-font);
+.theme-drake h2,
+.theme-drake h3,
+.theme-drake h4,
+.theme-drake h5,
+.theme-drake h6 {
   position: relative;
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: bold;
   line-height: 1.4;
   cursor: text;
-  color: var(--title-color);
+  color: #273849;
   display: inline-block;
 }
 
@@ -148,7 +101,7 @@ h6 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   padding-bottom: 0.3rem;
-  border-bottom: 0.2rem solid var(--h2-underline-color);
+  border-bottom: 0.2rem solid #273849;
   line-height: 3rem;
 }
 
@@ -169,46 +122,46 @@ h6 {
 }
 
 .theme-drake h1 tt,
-h1 code {
+.theme-drake h1 code {
   font-size: inherit !important;
 }
 
 .theme-drake h2 tt,
-h2 code {
+.theme-drake h2 code {
   font-size: inherit !important;
 }
 
 .theme-drake h3 tt,
-h3 code {
+.theme-drake h3 code {
   font-size: inherit !important;
 }
 
 .theme-drake h4 tt,
-h4 code {
+.theme-drake h4 code {
   font-size: inherit !important;
 }
 
 .theme-drake h5 tt,
-h5 code {
+.theme-drake h5 code {
   font-size: inherit !important;
 }
 
 .theme-drake h6 tt,
-h6 code {
+.theme-drake h6 code {
   font-size: inherit !important;
 }
 
 .theme-drake p,
-blockquote,
-ul,
-ol,
-dl,
-table {
-  margin: var(--p-spacing) 0;
+.theme-drake blockquote,
+.theme-drake ul,
+.theme-drake ol,
+.theme-drake dl,
+.theme-drake table {
+  margin: 0;
 }
 
 .theme-drake li > ol,
-li > ul {
+.theme-drake li > ul {
   margin: 0 0;
 }
 .theme-drake li {
@@ -219,28 +172,28 @@ li > ul {
   height: 2px;
   padding: 0;
   margin: 16px 0;
-  background-color: var(--horizontal-divider-color);
+  background-color: #273849;
   border: 0 none;
   overflow: hidden;
   box-sizing: content-box;
 }
 
 .theme-drake a:first-child h1,
-a:first-child h2,
-a:first-child h3,
-a:first-child h4,
-a:first-child h5,
-a:first-child h6 {
+.theme-drake a:first-child h2,
+.theme-drake a:first-child h3,
+.theme-drake a:first-child h4,
+.theme-drake a:first-child h5,
+.theme-drake a:first-child h6 {
   margin-top: 0;
   padding-top: 0;
 }
 
 .theme-drake h1 p,
-h2 p,
-h3 p,
-h4 p,
-h5 p,
-h6 p {
+.theme-drake h2 p,
+.theme-drake h3 p,
+.theme-drake h4 p,
+.theme-drake h5 p,
+.theme-drake h6 p {
   margin-top: 0;
 }
 
@@ -249,55 +202,55 @@ h6 p {
 }
 
 .theme-drake ul,
-ol {
+.theme-drake ol {
   padding-inline-start: 2em;
 }
 
 .theme-drake ul:first-child,
-ol:first-child {
+.theme-drake ol:first-child {
   margin-top: 0;
 }
 
 .theme-drake ul:last-child,
-ol:last-child {
+.theme-drake ol:last-child {
   margin-bottom: 0;
 }
 
 .theme-drake table tr {
-  border-top: 0.1em solid var(--table-border-color);
+  border-top: 0.1em solid #dfe2e5;
   margin: 0;
   padding: 0;
 }
 
 .theme-drake table th {
   font-weight: bold;
-  border: 0.1em solid var(--table-border-color);
+  border: 0.1em solid #dfe2e5;
   border-bottom: 0;
   margin: 0;
   padding: 6px 13px;
 }
 
 .theme-drake table td {
-  border: 0.1em solid var(--table-border-color);
+  border: 0.1em solid #dfe2e5;
   margin: 0;
   padding: 6px 13px;
 }
 
 .theme-drake table thead {
-  background-color: var(--table-header-bg-color);
+  background-color: #f8f8f8;
 }
 
 .theme-drake table tr:nth-child(2n) {
-  background-color: var(--table-n2-bg-color);
+  background-color: #f8f8f8;
 }
 
 .theme-drake table tr th:first-child,
-table tr td:first-child {
+.theme-drake table tr td:first-child {
   margin-top: 0;
 }
 
 .theme-drake table tr th:last-child,
-table tr td:last-child {
+.theme-drake table tr td:last-child {
   margin-bottom: 0;
 }
 
@@ -307,8 +260,8 @@ table tr td:last-child {
 
 /* height light */
 .theme-drake mark {
-  border: 0.1em solid var(--height-light-border-color);
-  color: var(--height-light-color);
+  border: 0.1em solid #d63200;
+  color: #d63200;
   background-color: transparent;
   padding: 0.1rem 0.5rem;
   border-radius: 2rem;
@@ -351,7 +304,7 @@ table tr td:last-child {
 }
 
 .theme-drake .task-list-item > input:checked:before,
-.task-list-item > input[checked]:before {
+.theme-drake .task-list-item > input[checked]:before {
   background: rgb(101, 183, 59);
   border-width: 1px;
   border: 2px solid rgb(101, 183, 59);
@@ -368,7 +321,7 @@ table tr td:last-child {
 }
 
 .theme-drake .task-list-item > input:checked:after,
-.task-list-item > input[checked]:after {
+.theme-drake .task-list-item > input[checked]:after {
   opacity: 1;
 }
 

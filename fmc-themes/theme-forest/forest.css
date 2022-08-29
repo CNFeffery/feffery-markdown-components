@@ -1,78 +1,4 @@
 @charset "UTF-8";
-@import url("./forest/fonts.css");
-@import url("./forest/code-mirror.css");
-
-/** color vars **/
-:root {
-  /* system vars*/
-  --primary-color: #f0f0f0; /* color of primary buttons */
-  --side-bar-bg-color: #003444;
-  --active-file-bg-color: #004144; /* sidebar active & hover */
-  --active-file-text-color: #ffffff;
-  --active-file-border-color: #757575;
-  --item-hover-text-color: #fff;
-  --item-hover-bg-color: #005c44; /* sidebar footer item hover*/
-  --control-text-color: #ddd;
-  --control-text-hover-color: #fff;
-  --monospace: "SourceHanSansSC", "JetBrains Mono", -apple-system, sans-serif;
-
-  /* custom vars */
-  --theme-primary-color: #00997b; /* rgb(0, 153, 123) */
-  --white-color: #fff;
-
-  /* head */
-  --head-text-color: #333444;
-  --h1-text-color: rgba(0, 52, 68, 0.9);
-  --h5-text-color: var(--theme-primary-color);
-  --h6-text-color: rgba(0, 153, 123, 0.838);
-  --head-prefix-color: #d0d0d0;
-
-  /* text */
-  --text-color: #363c42;
-  --text-search-hit-color: rosybrown;
-
-  /* highlight */
-  --highlight-bg-color: #fff3f3;
-  --highlight-text-color: #ff2f2f;
-
-  /* a link */
-  --a-text-color: var(--theme-primary-color);
-
-  /* annotate */
-  --annotate-text-color: #8caa16;
-
-  /* inline code */
-  --inline-code-bg-color: #f3f3f3;
-  --inline-code-text-color: #00769a;
-
-  /* selection */
-  --selection-text-color: rgba(0, 153, 123, 0.2);
-
-  /* check-box */
-  --checked-text-color: #adb5bd;
-  --line-through-color: #cfd4da;
-  --border-color: #868e96;
-
-  /* table */
-  --table-border-color: #dadcde;
-  --table-cell-bg-color: rgba(0, 153, 123, 0.03);
-
-  /* quote */
-  --quote-bg-color: rgba(0, 153, 123, 0.05);
-  --quote-text-color: #81888d;
-
-  /* sidebar */
-  --sidebar-footer-dropdown-menu-border-color: #212529;
-  --sidebar-footer-dropdown-menu-item-border-color: #adb5bd;
-  --sidebar-footer-item-hover-bg-color: #004544;
-  --siderbar-dropdown-menu-text-color: #fff;
-
-  /* sidebar resizer */
-  --sidebar-resizer: #6eace2;
-
-  /*--window-border: #e5e5e5;*/
-  --window-border: #1f6f57; /*sidebar layout border*/
-}
 
 .theme-forest {
   line-height: 1.6;
@@ -81,17 +7,16 @@
 
 .theme-forest p {
   font-size: 1em;
-  font-family: "SourceHanSansSC", "JetBrains Mono", -apple-system, sans-serif;
   line-height: 1.6;
-  color: var(--text-color);
+  color: #363c42;
 }
 
 .theme-forest h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.theme-forest h2,
+.theme-forest h3,
+.theme-forest h4,
+.theme-forest h5,
+.theme-forest h6 {
   width: auto;
   line-height: 2;
   font-style: normal;
@@ -99,10 +24,11 @@ h6 {
   margin-bottom: 14px;
   position: relative;
 }
+
 .theme-forest h2,
-h3,
-h4 {
-  color: var(--head-text-color);
+.theme-forest h3,
+.theme-forest h4 {
+  color: #333444;
 }
 
 .theme-forest h2::before {
@@ -126,15 +52,15 @@ h4 {
 }
 
 .theme-forest h2::before,
-h3::before,
-h4::before,
-h5::before,
-h6::before {
+.theme-forest h3::before,
+.theme-forest h4::before,
+.theme-forest h5::before,
+.theme-forest h6::before {
   position: absolute;
   right: calc(100% + 2px);
   top: 50%;
   transform: translateY(-50%);
-  color: var(--head-prefix-color);
+  color: #d0d0d0;
   font-size: 0.8rem;
   font-weight: bold;
   line-height: 2;
@@ -146,7 +72,7 @@ h6::before {
   font-size: 2.1rem;
   font-weight: 900;
   text-align: center;
-  color: var(--h1-text-color);
+  color: rgba(0, 52, 68, 0.9);
 }
 .theme-forest h1 > span {
   position: relative;
@@ -156,7 +82,7 @@ h6::before {
   content: "";
   display: block;
   position: absolute;
-  border-top: 3px double var(--h1-text-color);
+  border-top: 3px double rgba(0, 52, 68, 0.9);
   height: 3px;
   width: 15rem;
   max-width: 80%;
@@ -181,16 +107,16 @@ h6::before {
 }
 
 .theme-forest h4,
-#write h5,
-#write h5 {
+.theme-forest h5,
+.theme-forest h5 {
   font-size: 1.2rem;
   font-weight: bold;
 }
 .theme-forest h5 {
-  color: var(--h5-text-color);
+  color: #00997b;
 }
 .theme-forest h6 {
-  color: var(--h6-text-color);
+  color: rgba(0, 153, 123, 0.838);
 }
 .theme-forest > h4::before {
   content: "H4";
@@ -203,7 +129,7 @@ h6::before {
 }
 
 .theme-forest a {
-  color: var(--a-text-color);
+  color: #00997b;
   cursor: pointer;
   padding: 0 3px 0 3px;
   text-decoration: none;
@@ -218,8 +144,8 @@ h6::before {
 }
 
 .theme-forest mark {
-  background: var(--highlight-bg-color);
-  color: var(--highlight-text-color);
+  background: #fff3f3;
+  color: #ff2f2f;
   font-weight: 500;
   padding: 0 2px 0 2px;
   margin: 0 2px 0 2px;
@@ -230,27 +156,24 @@ h6::before {
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
 }
+
 .theme-forest u {
   text-decoration: none;
 }
+
 .theme-forest u > span {
   border-bottom: 1px solid;
-}
-
-.theme-forest span::selection,
-*::selection {
-  background: var(--selection-text-color);
 }
 
 .theme-forest blockquote {
   position: relative;
   padding: 1rem;
-  background-color: var(--quote-bg-color);
+  background-color: #81888d;
   border-radius: 6px;
   line-height: 1;
 }
 .theme-forest blockquote p {
-  color: var(--quote-text-color);
+  color: #81888d;
   margin: 0;
 }
 .theme-forest blockquote::before {
@@ -260,12 +183,12 @@ h6::before {
   left: 0rem;
   height: 100%;
   width: 0.3rem;
-  background: var(--theme-primary-color);
+  background: #00997b;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
 .theme-forest hr {
-  border-top: 1px dashed var(--theme-primary-color);
+  border-top: 1px dashed #00997b;
   transform: scaleY(0.5);
   width: 90%;
 }
@@ -344,27 +267,27 @@ h6::before {
 }
 
 .theme-forest table tr:nth-child(2n),
-table thead {
-  background-color: var(--table-cell-bg-color);
+.theme-forest table thead {
+  background-color: rgba(0, 153, 123, 0.03);
 }
 .theme-forest table thead {
   font-weight: 900;
 }
 
 .theme-forest table tbody tr {
-  border-bottom: 1px solid var(--table-border-color);
+  border-bottom: 1px solid #dadcde;
 }
 .theme-forest table tr:first-of-type {
-  border-top: 1px solid var(--table-border-color);
+  border-top: 1px solid #dadcde;
 }
 .theme-forest table tr th,
-table tr td {
-  border-left: 1px solid var(--table-border-color);
+.theme-forest table tr td {
+  border-left: 1px solid #dadcde;
   padding: 6px 13px;
 }
 .theme-forest table tr th:last-of-type,
-table tr td:last-of-type {
-  border-right: 1px solid var(--table-border-color);
+.theme-forest table tr td:last-of-type {
+  border-right: 1px solid #dadcde;
 }
 
 .theme-forest .highlight pre,
@@ -402,24 +325,24 @@ table tr td:last-of-type {
 }
 
 .theme-forest .task-list-item > input:checked:before,
-.task-list-item > input[checked]:before {
-  background: var(--theme-primary-color);
+.theme-forest .task-list-item > input[checked]:before {
+  background: #00997b;
   border-width: 1px;
-  border: 2px solid var(--theme-primary-color);
+  border: 2px solid #00997b;
 }
 
 .theme-forest .task-list-item > input:before {
-  border: 2px solid var(--border-color);
+  border: 2px solid #868e96;
   width: 1rem;
   height: 1rem;
-  background: var(--white-color);
+  background: #fff;
   content: " ";
   transition: background-color 200ms ease-in-out;
   display: block;
 }
 
 .theme-forest .task-list-item > input:checked:after,
-.task-list-item > input[checked]:after {
+.theme-forest .task-list-item > input[checked]:after {
   opacity: 1;
 }
 
@@ -433,7 +356,7 @@ table tr td:last-of-type {
   left: 0.19rem;
   width: 0.6rem;
   height: 0.375rem;
-  border: 2px solid var(--white-color);
+  border: 2px solid #fff;
   border-top: 0;
   border-right: 0;
   content: " ";
