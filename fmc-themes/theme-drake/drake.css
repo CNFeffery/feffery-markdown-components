@@ -88,7 +88,7 @@ tt {
   line-height: 1.4;
   cursor: text;
   color: #273849;
-  display: inline-block;
+  display: table;
 }
 
 .theme-drake h1 {
@@ -195,10 +195,6 @@ tt {
 .theme-drake h5 p,
 .theme-drake h6 p {
   margin-top: 0;
-}
-
-.theme-drake li p.first {
-  display: inline-block;
 }
 
 .theme-drake ul,
