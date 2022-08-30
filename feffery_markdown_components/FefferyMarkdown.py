@@ -33,9 +33,9 @@ Keyword arguments:
 
 - forceTableAlignCenter (boolean; default False)
 
-- forceTableContentTextAlignCenter (boolean; default False)
+- forceTableContentTextAlignCenter (boolean; default True)
 
-- forceTableHeaderTextAlignCenter (boolean; default False)
+- forceTableHeaderTextAlignCenter (boolean; default True)
 
 - h1ClassName (string; optional)
 

@@ -531,10 +531,10 @@ FefferyMarkdown.propTypes = {
         PropTypes.number
     ]),
 
-    // 设置是否强制所有表格居中，默认为false
+    // 设置是否强制所有表格居中，默认为true
     forceTableAlignCenter: PropTypes.bool,
 
-    // 设置是否强制所有表格标题单元格文字居中，默认为false
+    // 设置是否强制所有表格标题单元格文字居中，默认为true
     forceTableHeaderTextAlignCenter: PropTypes.bool,
 
     // 设置是否强制所有表格内容单元格文字居中，默认为false
@@ -686,8 +686,8 @@ FefferyMarkdown.defaultProps = {
     imagePreview: false,
     imageForceAlignCenter: false,
     forceTableAlignCenter: false,
-    forceTableHeaderTextAlignCenter: false,
-    forceTableContentTextAlignCenter: false,
+    forceTableHeaderTextAlignCenter: true,
+    forceTableContentTextAlignCenter: true,
     checkExternalLink: false,
     externalLinkPrefixWhiteList: [],
     markdownBaseClassName: 'markdown-body',
