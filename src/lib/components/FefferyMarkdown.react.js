@@ -13,6 +13,7 @@ import { Image, ConfigProvider } from 'antd';
 import 'antd/es/image/style/css';
 import enUS from 'antd/es/locale/en_US';
 import zhCN from 'antd/es/locale/zh_CN';
+import { trim } from 'lodash';
 import {
     a11yDark,
     atomDark,
@@ -181,7 +182,8 @@ const FefferyMarkdown = (props) => {
     return (
         <div id={id}
             style={style}
-            className={[markdownBaseClassName, className].filter(s => s).join(' ').replace(/(^\s*)|(\s*$)/g, '')}>
+            /* 对传入的className及markdownBaseClassName进行规整 */
+            className={trim([markdownBaseClassName, className].filter(s => s).join(' '))}>
             <ReactMarkdown
                 linkTarget={linkTarget}
                 remarkPlugins={remarkPlugins}
