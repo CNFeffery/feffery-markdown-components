@@ -537,7 +537,7 @@ FefferyMarkdown.propTypes = {
     // 设置是否强制所有表格标题单元格文字居中，默认为true
     forceTableHeaderTextAlignCenter: PropTypes.bool,
 
-    // 设置是否强制所有表格内容单元格文字居中，默认为false
+    // 设置是否强制所有表格内容单元格文字居中，默认为true
     forceTableContentTextAlignCenter: PropTypes.bool,
 
     // 用于设置各个元素角色的css样式及类名
