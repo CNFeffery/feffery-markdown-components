@@ -7,7 +7,8 @@ app = dash.Dash(__name__)
 app.layout = html.Div(
     [
         fmc.FefferyMarkdown(
-            markdownBaseClassName='theme-pie',
+            titleAsId=True,
+            # markdownBaseClassName='theme-pie',
             checkExternalLink=True,
             safeRedirectUrlPrefix='/safe-redirect?',
             externalLinkPrefixWhiteList=['http://fac.feffery.tech'],

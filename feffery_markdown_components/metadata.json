@@ -587,6 +587,17 @@
           "computed": false
         }
       },
+      "titleAsId": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
       "loading_state": {
         "type": {
           "name": "shape",
