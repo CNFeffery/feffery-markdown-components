@@ -159,7 +159,6 @@ const FefferyMarkdown = (props) => {
         safeRedirectUrlPrefix,
         markdownBaseClassName,
         titleAsId,
-        facAnchorLinkDict,
         setProps
     } = props;
 
@@ -207,6 +206,7 @@ const FefferyMarkdown = (props) => {
             .split('\n')
             .filter(s => s.startsWith('<h'))
             .map(s => s.match(/(\d)>(.+)</))
+            .filter(s => s)
             .map((item, i) => { return { level: parseInt(item[1]), content: item[2], key: i } })
 
         // 为每个标题节点添加其所属最近先辈节点key值
