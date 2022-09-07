@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -13,7 +13,9 @@ import { Image, ConfigProvider } from 'antd';
 import 'antd/es/image/style/css';
 import enUS from 'antd/es/locale/en_US';
 import zhCN from 'antd/es/locale/zh_CN';
-import { trim } from 'lodash';
+import { trim, cloneDeep } from 'lodash';
+import { omitDeep } from 'deepdash-es/standalone';
+import { flatToTree } from './utils';
 import {
     a11yDark,
     atomDark,
@@ -142,6 +144,7 @@ const FefferyMarkdown = (props) => {
         safeRedirectUrlPrefix,
         markdownBaseClassName,
         titleAsId,
+        facAnchorLinkDict,
         setProps
     } = props;
 
@@ -179,6 +182,34 @@ const FefferyMarkdown = (props) => {
             ...codeStyle
         }
     }
+
+    useEffect(() => {
+        // 从markdownStr中解析所有标题信息（级别、内容）
+        let allTitles = Array.from(markdownStr.matchAll(/(#{1,6})\s(.+)(?=\n)/g)).map((e, i) => {
+            return { level: e[1].length, content: e[2], key: i }
+        })
+
+        // 为每个标题节点添加其所属最近先辈节点key值
+        let allTitles_ = cloneDeep(allTitles.map(item => {
+            return { key: item.key, title: item.content, href: `#${item.content}` }
+        }))
+
+        allTitles.forEach(
+            (item, i) => {
+                for (let idx = 0; idx < allTitles.length; idx++) {
+                    if (i <= idx) {
+                        break
+                    } else if (item.level > allTitles[idx].level) {
+                        allTitles_[i].parent = idx
+                    }
+                }
+            }
+        )
+
+        setProps({
+            facAnchorLinkDict: omitDeep(flatToTree(allTitles_), ['key', 'parent'])
+        })
+    }, [markdownStr])
 
     return (
         <div id={id}
@@ -688,6 +719,9 @@ FefferyMarkdown.propTypes = {
     // 设置是否针对标题生成网页元素时，将标题内容作为对应元素的id
     // 从而便于配合AntdAnchor等组件生成目录，默认为false
     titleAsId: PropTypes.bool,
+
+    // 通过markdownStr标题内容自动推导出的适用于fac.AntdAnchor的linkDict结构
+    facAnchorLinkDict: PropTypes.any,
 
     loading_state: PropTypes.shape({
         /**

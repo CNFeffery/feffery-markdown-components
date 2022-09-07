@@ -598,6 +598,13 @@
           "computed": false
         }
       },
+      "facAnchorLinkDict": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": ""
+      },
       "loading_state": {
         "type": {
           "name": "shape",

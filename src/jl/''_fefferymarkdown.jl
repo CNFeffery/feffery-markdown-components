@@ -19,6 +19,7 @@ Keyword arguments:
 - `codeStyle` (Dict; optional)
 - `codeTheme` (a value equal to: 'a11y-dark', 'atom-dark', 'coldark-cold', 'coldark-dark', 'coy', 'coy-without-shadows', 'darcula', 'dracula', 'nord', 'okaidia', 'prism', 'solarizedlight', 'twilight', 'duotone-sea', 'duotone-dark', 'duotone-light', 'duotone-space', 'gh-colors', 'gruvbox-dark', 'material-dark', 'night-owl', 'one-light', 'pojoaque', 'solarized-dark-atom', 'synthwave84', 'z-touch'; optional)
 - `externalLinkPrefixWhiteList` (Array of Strings; optional)
+- `facAnchorLinkDict` (Bool | Real | String | Dict | Array; optional)
 - `forceTableAlignCenter` (Bool; optional)
 - `forceTableContentTextAlignCenter` (Bool; optional)
 - `forceTableHeaderTextAlignCenter` (Bool; optional)
@@ -72,7 +73,7 @@ Those elements have the following types:
 - `trStyle` (String; optional)
 """
 function ''_fefferymarkdown(; kwargs...)
-        available_props = Symbol[:id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :linkTarget, :loading_state, :locale, :markdownBaseClassName, :markdownStr, :renderHtml, :safeRedirectUrlPrefix, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle]
+        available_props = Symbol[:id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :linkTarget, :loading_state, :locale, :markdownBaseClassName, :markdownStr, :renderHtml, :safeRedirectUrlPrefix, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle]
         wild_props = Symbol[]
         return Component("''_fefferymarkdown", "FefferyMarkdown", "feffery_markdown_components", available_props, wild_props; kwargs...)
 end
