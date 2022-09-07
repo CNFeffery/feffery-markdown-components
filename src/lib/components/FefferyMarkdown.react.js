@@ -5,6 +5,10 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
@@ -82,6 +86,17 @@ const str2locale = new Map([
     ['zh-cn', zhCN],
     ['en-us', enUS]
 ])
+
+async function parseMarkdownHeadings(e) {
+    const rawHTML = await unified()
+        .use(remarkParse)
+        .use(remarkGfm)
+        .use(remarkRehype)
+        .use(rehypeStringify)
+        .process(e)
+
+    return rawHTML
+}
 
 // 定义markdown渲染组件FefferyMarkdown，api参数参考https://github.com/remarkjs/react-markdown
 const FefferyMarkdown = (props) => {
@@ -183,11 +198,16 @@ const FefferyMarkdown = (props) => {
         }
     }
 
-    useEffect(() => {
+    useEffect(async () => {
         // 从markdownStr中解析所有标题信息（级别、内容）
-        let allTitles = Array.from(markdownStr.matchAll(/(#{1,6})\s(.+)(?=\n)/g)).map((e, i) => {
-            return { level: e[1].length, content: e[2], key: i }
-        })
+        let rawParseStrArray = await parseMarkdownHeadings(markdownStr)
+
+        let allTitles = rawParseStrArray
+            .value
+            .split('\n')
+            .filter(s => s.startsWith('<h'))
+            .map(s => s.match(/(\d)>(.+)</))
+            .map((item, i) => { return { level: parseInt(item[1]), content: item[2], key: i } })
 
         // 为每个标题节点添加其所属最近先辈节点key值
         let allTitles_ = cloneDeep(allTitles.map(item => {
@@ -372,6 +392,7 @@ const FefferyMarkdown = (props) => {
                         return <td {...props} />
                     },
                     h1: ({ ...props }) => {
+
                         props.style = {
                             ...props.style,
                             ...h1Style
