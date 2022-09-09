@@ -1,94 +1,72 @@
-import feffery_markdown_components as fmc
 import dash
 from dash import html
+import feffery_markdown_components as fmc
+from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
+
 app.layout = html.Div(
     [
+        html.Div(id='toc-anchor-demo'),
         fmc.FefferyMarkdown(
+            id='markdown-auto-toc-demo',
             titleAsId=True,
-            # markdownBaseClassName='theme-pie',
-            checkExternalLink=True,
-            safeRedirectUrlPrefix='/safe-redirect?',
-            externalLinkPrefixWhiteList=['http://fac.feffery.tech'],
             renderHtml=True,
-            # showCopyButton=False,
-            imagePreview=True,
-            # imageForceAlignCenter=True,
-            # imageWidth='50%',
-            forceTableAlignCenter=True,
-            forceTableHeaderTextAlignCenter=True,
-            forceTableContentTextAlignCenter=True,
-            codeBlockStyle={
-                'maxHeight': 200,
-                'border': 'none'
-            },
-            codeStyle={
-                'fontSize': '15px'
-            },
-            markdownStr=r'''
-## 表格
+            markdownStr='''
 
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
-| 1 | 2  |  3 |  4  |
-| 5 | 6  |  7 |  8  |
-| 9 | 10  |  11 |  12  |
+# 1 标题测试
+## 1.1 标题测试
 
-## 待办事项
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
 
-* [ ] to do
-* [x] done
+### 1.1.1 标题测试
 
-`Dash`与`fmc`的安装非常简单，这里建议大家养成好习惯，使用**虚拟环境**来构建我们开发`Dash`应用所使用到的环境，以使用`conda`作为环境管理软件为例，执行下列控制台命令我们来创建一个`Python`版本为`3.8`，名称为`dash-dev-demo`的环境，其中临时使用到国内上海交大的`conda`镜像源：
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
 
-```bash
-conda create -n dash-dev-demo python=3.8 -c https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main -y
-```
+### 1.1.2 标题测试
 
-使用`conda activate dash-dev-demo`激活我们刚刚创建的环境之后，再执行以下命令，就可以完成`Dash`+`fmc`+`fac`环境的搭建啦 😀（[`fac`](http://fac.feffery.tech/)是由我开发维护的另一个功能十分丰富的`Dash`通用网页组件库）：
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
 
-```bash
-pip install dash feffery-antd-components feffery-markdown-components
-```
+## 1.2 标题测试
 
-# 一级标题测试巴拉巴拉巴拉
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
 
-## 二级标题
+# 2 标题测试
+## 2.1 标题测试
 
-### 三级标题
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
 
-#### 四级标题
+### 2.1.1 标题测试
 
-##### 五级标题
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
 
-###### 六级标题
+### 2.1.2 标题测试
 
-- 列表1
-  - 列表1-1
-  - 列表1-2
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
 
-## 自动识别链接
+## 2.2 标题测试
 
-www.example.com, https://example.com, and contact@example.com.
-
-## 删除线
-
-~one~ or ~~two~~ tildes.
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
 
 '''
         )
     ],
     style={
-        'width': '1000px',
-        'margin': '0 auto',
-        'background': 'white',
-        'boxShadow': '0px 0px 12px rgba(0, 0, 0, .12)',
-        'padding': '25px'
+        'width': '800px',
+        'margin': '0 auto'
     }
 )
 
 
+@app.callback(
+    Output('toc-anchor-demo', 'children'),
+    Input('markdown-auto-toc-demo', 'facAnchorLinkDict')
+)
+def demo(facAnchorLinkDict):
+
+    print(facAnchorLinkDict)
+
+
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)
