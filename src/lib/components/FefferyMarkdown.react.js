@@ -198,37 +198,39 @@ const FefferyMarkdown = (props) => {
     }
 
     useEffect(async () => {
-        // 从markdownStr中解析所有标题信息（级别、内容）
-        let rawParseStrArray = await parseMarkdownHeadings(markdownStr)
+        if (titleAsId) {
+            // 从markdownStr中解析所有标题信息（级别、内容）
+            let rawParseStrArray = await parseMarkdownHeadings(markdownStr)
 
-        let allTitles = rawParseStrArray
-            .value
-            .split('\n')
-            .filter(s => s.startsWith('<h'))
-            .map(s => s.match(/(\d)>(.+)</))
-            .filter(s => s)
-            .map((item, i) => { return { level: parseInt(item[1]), content: item[2], key: i } })
+            let allTitles = rawParseStrArray
+                .value
+                .split('\n')
+                .filter(s => s.startsWith('<h'))
+                .map(s => s.match(/(\d)>(.+)</))
+                .filter(s => s)
+                .map((item, i) => { return { level: parseInt(item[1]), content: item[2], key: i } })
 
-        // 为每个标题节点添加其所属最近先辈节点key值
-        let allTitles_ = cloneDeep(allTitles.map(item => {
-            return { key: item.key, title: item.content, href: `#${item.content}` }
-        }))
+            // 为每个标题节点添加其所属最近先辈节点key值
+            let allTitles_ = cloneDeep(allTitles.map(item => {
+                return { key: item.key, title: item.content, href: `#${item.content}` }
+            }))
 
-        allTitles.forEach(
-            (item, i) => {
-                for (let idx = 0; idx < allTitles.length; idx++) {
-                    if (i <= idx) {
-                        break
-                    } else if (item.level > allTitles[idx].level) {
-                        allTitles_[i].parent = idx
+            allTitles.forEach(
+                (item, i) => {
+                    for (let idx = 0; idx < allTitles.length; idx++) {
+                        if (i <= idx) {
+                            break
+                        } else if (item.level > allTitles[idx].level) {
+                            allTitles_[i].parent = idx
+                        }
                     }
                 }
-            }
-        )
+            )
 
-        setProps({
-            facAnchorLinkDict: omitDeep(flatToTree(allTitles_), ['key', 'parent'])
-        })
+            setProps({
+                facAnchorLinkDict: omitDeep(flatToTree(allTitles_), ['key', 'parent'])
+            })
+        }
     }, [markdownStr])
 
     return (
@@ -399,7 +401,7 @@ const FefferyMarkdown = (props) => {
                         }
 
                         if (titleAsId) {
-                            props.id = props.children.join('')
+                            props.id = props?.children?.join('')
                         }
 
                         if (h1ClassName) {
@@ -415,7 +417,7 @@ const FefferyMarkdown = (props) => {
                         }
 
                         if (titleAsId) {
-                            props.id = props.children.join('')
+                            props.id = props?.children?.join('')
                         }
 
                         if (h2ClassName) {
@@ -431,7 +433,7 @@ const FefferyMarkdown = (props) => {
                         }
 
                         if (titleAsId) {
-                            props.id = props.children.join('')
+                            props.id = props?.children?.join('')
                         }
 
                         if (h3ClassName) {
@@ -447,7 +449,7 @@ const FefferyMarkdown = (props) => {
                         }
 
                         if (titleAsId) {
-                            props.id = props.children.join('')
+                            props.id = props?.children?.join('')
                         }
 
                         if (h4ClassName) {
@@ -463,7 +465,7 @@ const FefferyMarkdown = (props) => {
                         }
 
                         if (titleAsId) {
-                            props.id = props.children.join('')
+                            props.id = props?.children?.join('')
                         }
 
                         if (h5ClassName) {
@@ -479,7 +481,7 @@ const FefferyMarkdown = (props) => {
                         }
 
                         if (titleAsId) {
-                            props.id = props.children.join('')
+                            props.id = props?.children?.join('')
                         }
 
                         if (h6ClassName) {
