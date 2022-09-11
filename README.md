@@ -11,7 +11,7 @@
 [![Downloads](https://pepy.tech/badge/feffery-markdown-components/week)](https://pepy.tech/project/feffery-markdown-components)
 </div>
 
-`feffery-components`计划子项目，`Plotly Dash`第三方组件库，基于`react-markdown`，将原始**markdown**文本直接渲染为美观的网页内容 🥳，最新版本：`0.2.1`
+`feffery-components`计划子项目，`Plotly Dash`第三方组件库，基于`react-markdown`，将原始**markdown**文本直接渲染为美观的网页内容 🥳，最新版本：`0.2.3`
 
 ## 1 最新版本安装方式
 
