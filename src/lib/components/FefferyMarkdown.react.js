@@ -103,6 +103,7 @@ const FefferyMarkdown = (props) => {
     // 取得必要属性或参数
     let {
         id,
+        key,
         style,
         className,
         locale,
@@ -238,6 +239,7 @@ const FefferyMarkdown = (props) => {
 
     return (
         <div id={id}
+            key={key}
             style={style}
             /* 对传入的className及markdownBaseClassName进行规整 */
             className={trim([markdownBaseClassName, className].filter(s => s).join(' '))}>
@@ -559,6 +561,8 @@ const FefferyMarkdown = (props) => {
 FefferyMarkdown.propTypes = {
     // id
     id: PropTypes.string,
+
+    key: PropTypes.string,
 
     // 父容器css样式
     style: PropTypes.object,

@@ -11,6 +11,13 @@
         "required": false,
         "description": ""
       },
+      "key": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
       "style": {
         "type": {
           "name": "object"
