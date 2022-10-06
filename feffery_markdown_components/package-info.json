@@ -43,7 +43,8 @@
     "remark-math": "^5.1.0",
     "remark-mermaid": "^0.2.0",
     "remark-rehype": "^10.1.0",
-    "uglifyjs-webpack-plugin": "^2.2.0"
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",

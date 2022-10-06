@@ -48,6 +48,7 @@ import {
     synthwave84,
     zTouch
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { v4 as uuidv4 } from 'uuid';
 
 import 'katex/dist/katex.min.css';
 import 'github-markdown-css';
@@ -238,7 +239,7 @@ const FefferyMarkdown = (props) => {
     }, [markdownStr])
 
     return (
-        <div id={id}
+        <div id={id || uuidv4()}
             key={key}
             style={style}
             /* 对传入的className及markdownBaseClassName进行规整 */
