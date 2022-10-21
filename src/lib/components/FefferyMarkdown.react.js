@@ -164,6 +164,9 @@ const FefferyMarkdown = (props) => {
         setProps
     } = props;
 
+    // 为id设置缺省随机uuid值
+    id = id || uuidv4()
+
     // 配置相关插件
     const remarkPlugins = [remarkGfm, remarkMath]
     const rehypePlugins = [rehypeKatex]
@@ -211,7 +214,7 @@ const FefferyMarkdown = (props) => {
                     .filter(s => s.startsWith('<h'))
                     .map(s => s.match(/(\d)>(.+)</))
                     .filter(s => s)
-                    .map((item, i) => { return { level: parseInt(item[1]), content: item[2], key: i } })
+                    .map((item, i) => { return { level: parseInt(item[1]), content: item[2], key: `markdown${id}-title${i}` } })
 
                 // 为每个标题节点添加其所属最近先辈节点key值
                 let allTitles_ = cloneDeep(allTitles.map(item => {
@@ -239,7 +242,7 @@ const FefferyMarkdown = (props) => {
     }, [markdownStr])
 
     return (
-        <div id={id || uuidv4()}
+        <div id={id}
             key={key}
             style={style}
             /* 对传入的className及markdownBaseClassName进行规整 */
