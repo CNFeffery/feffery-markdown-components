@@ -1,16 +1,19 @@
 import dash
 from dash import html
+import feffery_utils_components as fuc
 import feffery_markdown_components as fmc
 from dash.dependencies import Input, Output
 
-app = dash.Dash(__name__)
-
+app = dash.Dash(
+    __name__,
+    suppress_callback_exceptions=True
+)
 
 app.layout = html.Div(
     [
         html.Div(id='toc-anchor-demo'),
         fmc.FefferyMarkdown(
-            id='markdown-auto-toc-demo',
+            # id='markdown-auto-toc-demo',
             titleAsId=True,
             renderHtml=True,
             markdownStr='''
