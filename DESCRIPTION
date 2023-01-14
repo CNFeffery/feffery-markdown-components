@@ -1,6 +1,6 @@
 Package: fefferyMarkdownComponents
 Title: Better markdown render component in Plotly Dash.
-Version: 0.2.6
+Version: 0.2.7
 Description: Better markdown render component in Plotly Dash.
 Depends: R (>= 3.0.2)
 Imports: 

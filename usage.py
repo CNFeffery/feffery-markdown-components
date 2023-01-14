@@ -1,6 +1,5 @@
 import dash
 from dash import html
-import feffery_utils_components as fuc
 import feffery_markdown_components as fmc
 from dash.dependencies import Input, Output
 
@@ -11,6 +10,20 @@ app = dash.Dash(
 
 app.layout = html.Div(
     [
+        fmc.FefferyMarkdown(
+            markdownStr=r'''
+　　这是行LaTeX公式示例：$E=mc^2$
+
+　　这是块LaTeX公式示例：
+
+$$
+
+\lim_{x \to \infty} \frac{1}{n(n+1)}
+
+$$
+
+'''
+        ),
         html.Div(id='toc-anchor-demo'),
         fmc.FefferyMarkdown(
             # id='markdown-auto-toc-demo',

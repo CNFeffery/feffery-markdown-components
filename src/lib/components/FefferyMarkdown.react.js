@@ -50,7 +50,7 @@ import {
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { v4 as uuidv4 } from 'uuid';
 
-import 'katex/dist/katex.min.css';
+import '../utils/katex/dist/katex.min.css';
 import 'github-markdown-css';
 import './styles.css';
 
@@ -165,7 +165,7 @@ const FefferyMarkdown = (props) => {
     } = props;
 
     // 为id设置缺省随机uuid值
-    id = id || uuidv4()
+    id = id || `feffery-markdown${uuidv4()}`
 
     // 配置相关插件
     const remarkPlugins = [remarkGfm, remarkMath]

@@ -1,6 +1,6 @@
 {
   "name": "feffery_markdown_components",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Better markdown render component in Plotly Dash.",
   "repository": {
     "type": "git",
@@ -26,7 +26,6 @@
     "antd": "4.22.8",
     "deepdash-es": "^5.3.9",
     "github-markdown-css": "^5.0.0",
-    "katex": "^0.15.1",
     "less": "^3.13.1",
     "less-loader": "^5.0.0",
     "lodash": "^4.17.21",
@@ -70,7 +69,7 @@
     "terser-webpack-plugin": "^2.3.0",
     "url-loader": "^4.1.1",
     "webpack": "4.36.1",
-    "webpack-bundle-analyzer": "^4.6.0",
+    "webpack-bundle-analyzer": "^4.7.0",
     "webpack-cli": "3.3.6",
     "webpack-serve": "3.1.0"
   },
