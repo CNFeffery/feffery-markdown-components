@@ -72,9 +72,10 @@ Those elements have the following types:
 - `titleAsId` (Bool; optional)
 - `trClassName` (String; optional)
 - `trStyle` (String; optional)
+- `wrapLongLines` (Bool; optional)
 """
 function ''_fefferymarkdown(; kwargs...)
-        available_props = Symbol[:id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :loading_state, :locale, :markdownBaseClassName, :markdownStr, :renderHtml, :safeRedirectUrlPrefix, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle]
+        available_props = Symbol[:id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :loading_state, :locale, :markdownBaseClassName, :markdownStr, :renderHtml, :safeRedirectUrlPrefix, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle, :wrapLongLines]
         wild_props = Symbol[]
         return Component("''_fefferymarkdown", "FefferyMarkdown", "feffery_markdown_components", available_props, wild_props; kwargs...)
 end

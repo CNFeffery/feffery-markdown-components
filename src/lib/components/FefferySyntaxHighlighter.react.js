@@ -78,6 +78,7 @@ const FefferySyntaxHighlighter = (props) => {
         codeStyle,
         showLineNumbers,
         showCopyButton,
+        wrapLongLines,
         setProps
     } = props;
 
@@ -110,7 +111,7 @@ const FefferySyntaxHighlighter = (props) => {
     }
 
     return (
-        <div id={id} style={{ position: 'relative' }}>
+        <div id={id} style={{ position: 'relative' }} className={'syntax-highlighter-body'}>
             {showCopyButton ?
                 <CopyToClipboard
                     onCopy={() => {
@@ -147,6 +148,7 @@ const FefferySyntaxHighlighter = (props) => {
                 children={String(codeString).replace(/\n$/, '')}
                 style={currentCodeStyle}
                 showLineNumbers={showLineNumbers}
+                wrapLongLines={wrapLongLines}
                 language={language}
                 PreTag="div" />
         </div>
@@ -155,8 +157,9 @@ const FefferySyntaxHighlighter = (props) => {
 
 // 定义参数或属性
 FefferySyntaxHighlighter.propTypes = {
-    // id
     id: PropTypes.string,
+
+    key: PropTypes.string,
 
     // 定义代码内容字符串
     codeString: PropTypes.string.isRequired,
@@ -184,6 +187,9 @@ FefferySyntaxHighlighter.propTypes = {
     // 设置代码块是否显示右上角复制按钮，默认为true
     showCopyButton: PropTypes.bool,
 
+    // 设置是否允许超长行自动换行，默认为true
+    wrapLongLines: PropTypes.bool,
+
     loading_state: PropTypes.shape({
         /**
          * Determines if the component is loading or not
@@ -209,7 +215,9 @@ FefferySyntaxHighlighter.propTypes = {
 // 设置默认参数
 FefferySyntaxHighlighter.defaultProps = {
     codeTheme: 'gh-colors',
-    showLineNumbers: true
+    showLineNumbers: true,
+    showCopyButton: true,
+    wrapLongLines: true
 }
 
 export default FefferySyntaxHighlighter;

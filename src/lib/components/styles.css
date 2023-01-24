@@ -24,6 +24,22 @@
   scrollbar-width: thin;
 }
 
+.syntax-highlighter-body *::-webkit-scrollbar-thumb {
+  background-color: #bfbfbf;
+  outline: none;
+  border-radius: 6px;
+}
+
+.syntax-highlighter-body *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/*火狐浏览器*/
+.syntax-highlighter-body * {
+  scrollbar-width: thin;
+}
+
 .copy-to-clipboard-button:hover {
   opacity: 0.8;
 }
