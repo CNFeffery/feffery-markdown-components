@@ -40,7 +40,7 @@ Keyword arguments:
 
 - showLineNumbers (boolean; default True)
 
-- wrapLongLines (boolean; default True)"""
+- wrapLongLines (boolean; default False)"""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_markdown_components'

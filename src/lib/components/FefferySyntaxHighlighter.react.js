@@ -111,46 +111,52 @@ const FefferySyntaxHighlighter = (props) => {
     }
 
     return (
-        <div id={id} style={{ position: 'relative' }} className={'syntax-highlighter-body'}>
-            {showCopyButton ?
-                <CopyToClipboard
-                    onCopy={() => {
-                        setIsCopied(true);
-                        setTimeout(() => setIsCopied(false), 1500);
-                    }}
-                    style={
-                        {
-                            position: 'absolute',
-                            right: '9px',
-                            top: '7px',
-                            padding: '4px 4px 3px 4px',
-                            margin: 0,
-                            background: 'transparent',
-                            border: '1px solid rgba(27,31,36,0.15)',
-                            cursor: 'pointer',
-                            zIndex: 999,
-                            borderRadius: '5px',
-                            lineHeight: '16px',
+        <div id={id}
+            style={{ position: 'relative' }}
+            className={'syntax-highlighter-body'}>
+            {
+                showCopyButton ?
+                    <CopyToClipboard
+                        onCopy={() => {
+                            setIsCopied(true);
+                            setTimeout(() => setIsCopied(false), 1500);
+                        }}
+                        style={
+                            {
+                                position: 'absolute',
+                                right: '9px',
+                                top: '7px',
+                                padding: '4px 4px 3px 4px',
+                                margin: 0,
+                                background: 'transparent',
+                                border: '1px solid rgba(27,31,36,0.15)',
+                                cursor: 'pointer',
+                                zIndex: 999,
+                                borderRadius: '5px',
+                                lineHeight: '16px',
+                            }
                         }
-                    }
-                    text={String(codeString).replace(/\n$/, '')}
-                >
-                    <button
-                        type="button"
-                        aria-label="Copy to Clipboard Button"
-                        className={'copy-to-clipboard-button'}
+                        text={codeString}
                     >
-                        {isCopied ? <CheckOutlined style={{ color: 'rgb(91, 199, 38)', fontSize: '16px' }} />
-                            : <CopyOutlined style={{ color: '#57606a', fontSize: '16px' }} />}
-                    </button>
-                </CopyToClipboard> : null}
+                        <button
+                            type="button"
+                            aria-label="Copy to Clipboard Button"
+                            className={'copy-to-clipboard-button'}
+                        >
+                            {isCopied ? <CheckOutlined style={{ color: 'rgb(91, 199, 38)', fontSize: '16px' }} />
+                                : <CopyOutlined style={{ color: '#57606a', fontSize: '16px' }} />}
+                        </button>
+                    </CopyToClipboard> :
+                    null
+            }
             <SyntaxHighlighter
-                children={String(codeString).replace(/\n$/, '')}
                 style={currentCodeStyle}
                 showLineNumbers={showLineNumbers}
                 wrapLongLines={wrapLongLines}
                 language={language}
-                PreTag="div" />
+                PreTag="div" >
+                {codeString}
+            </SyntaxHighlighter>
         </div>
     );
 }
@@ -217,7 +223,7 @@ FefferySyntaxHighlighter.defaultProps = {
     codeTheme: 'gh-colors',
     showLineNumbers: true,
     showCopyButton: true,
-    wrapLongLines: true
+    wrapLongLines: false
 }
 
 export default FefferySyntaxHighlighter;

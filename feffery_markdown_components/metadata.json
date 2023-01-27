@@ -849,7 +849,7 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "true",
+          "value": "false",
           "computed": false
         }
       },
