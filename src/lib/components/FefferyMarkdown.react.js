@@ -162,6 +162,7 @@ const FefferyMarkdown = (props) => {
         markdownBaseClassName,
         titleAsId,
         wrapLongLines,
+        codeFallBackLanguage,
         setProps
     } = props;
 
@@ -257,7 +258,7 @@ const FefferyMarkdown = (props) => {
                         const [isCopied, setIsCopied] = useState(false);
                         const match = /language-(\w+)/.exec(className || '')
 
-                        if (!inline && match) {
+                        if (!inline && (match || codeFallBackLanguage)) {
                             return (
                                 <div style={{ position: 'relative' }}>
                                     {showCopyButton ?
@@ -296,7 +297,7 @@ const FefferyMarkdown = (props) => {
                                         children={String(children).replace(/\n$/, '')}
                                         style={currentCodeStyle}
                                         showLineNumbers={showLineNumbers}
-                                        language={match[1]}
+                                        language={match ? match[1] : codeFallBackLanguage}
                                         wrapLongLines={wrapLongLines}
                                         PreTag="div"
                                         {...props} />
@@ -761,6 +762,9 @@ FefferyMarkdown.propTypes = {
 
     // 设置是否允许超长行自动换行，默认为true
     wrapLongLines: PropTypes.bool,
+
+    // 为缺失语言类型描述的代码块设定默认语言
+    codeFallBackLanguage: PropTypes.string,
 
     loading_state: PropTypes.shape({
         /**
