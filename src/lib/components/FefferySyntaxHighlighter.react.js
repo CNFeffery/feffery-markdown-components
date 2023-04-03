@@ -79,6 +79,10 @@ const FefferySyntaxHighlighter = (props) => {
         showLineNumbers,
         showCopyButton,
         wrapLongLines,
+        addedLineNumbers,
+        removedLineNumbers,
+        addedLineStyle,
+        removedLineStyle,
         setProps
     } = props;
 
@@ -154,6 +158,28 @@ const FefferySyntaxHighlighter = (props) => {
                 showLineNumbers={showLineNumbers}
                 wrapLongLines={wrapLongLines}
                 language={language}
+                wrapLines={true}
+                lineProps={
+                    (lineNumber) => {
+                        let style = { display: 'block' }
+                        if (addedLineNumbers.includes(lineNumber)) {
+                            return {
+                                style: {
+                                    ...style,
+                                    ...addedLineStyle
+                                }
+                            };
+                        } else if (removedLineNumbers.includes(lineNumber)) {
+                            return {
+                                style: {
+                                    ...style,
+                                    ...removedLineStyle
+                                }
+                            }
+                        }
+                        return { style };
+                    }
+                }
                 PreTag="div" >
                 {codeString}
             </SyntaxHighlighter>
@@ -196,6 +222,19 @@ FefferySyntaxHighlighter.propTypes = {
     // 设置是否允许超长行自动换行，默认为true
     wrapLongLines: PropTypes.bool,
 
+    // 用于处理差异行代码样式
+    // 用于设置需要施加“新增”效果的代码行下标数组，默认为[]
+    addedLineNumbers: PropTypes.arrayOf(PropTypes.number),
+
+    // 用于设置需要施加“移除”效果的代码行下标数组，默认为[]
+    removedLineNumbers: PropTypes.arrayOf(PropTypes.number),
+
+    // 自定义“新增”效果代码行样式
+    addedLineStyle: PropTypes.object,
+
+    // 自定义“移除”效果代码行样式
+    removedLineStyle: PropTypes.object,
+
     loading_state: PropTypes.shape({
         /**
          * Determines if the component is loading or not
@@ -223,7 +262,11 @@ FefferySyntaxHighlighter.defaultProps = {
     codeTheme: 'gh-colors',
     showLineNumbers: true,
     showCopyButton: true,
-    wrapLongLines: false
+    wrapLongLines: false,
+    addedLineNumbers: [],
+    removedLineNumbers: [],
+    addedLineStyle: { backgroundColor: '#e6ffec' },
+    removedLineStyle: { backgroundColor: '#ffebe9' }
 }
 
 export default FefferySyntaxHighlighter;
