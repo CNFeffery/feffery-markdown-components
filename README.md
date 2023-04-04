@@ -19,19 +19,7 @@
 pip install feffery-markdown-components -U
 ```
 
-## 2 最新开发版本安装方式
-
-```bash
-pip install git+https://github.com/CNFeffery/feffery-markdown-components.git
-```
-
-国内镜像加速安装方式：
-
-```bash
-pip install git+https://github.91chi.fun/https://github.com/CNFeffery/feffery-markdown-components.git
-```
-
-## 3 静态资源 CDN 加速方法
+## 2 静态资源 CDN 加速方法
 
 ```Python
 # 非debug模式下对Dash()传入参数serve_locally=False会强制浏览器端从unpkg cdn加载各个依赖的
@@ -39,6 +27,6 @@ pip install git+https://github.91chi.fun/https://github.com/CNFeffery/feffery-ma
 app = dash.Dash(serve_locally=False)
 ```
 
-## 4 在线文档
+## 3 在线文档
 
 <a href='http://fmc.feffery.tech/' target='_blank'>文档地址</a>
