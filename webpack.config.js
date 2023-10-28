@@ -66,7 +66,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.(js|jsx)$/,
-                    exclude: /(node_modules|bower_components)/,
+                    exclude: /node_modules\/(?!parse5)/,
                     loader: 'babel-loader',
                     options: { presets: ['@babel/env', '@babel/preset-react'] },
                 },

@@ -619,9 +619,16 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "true",
+          "value": "false",
           "computed": false
         }
+      },
+      "codeFallBackLanguage": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
       },
       "loading_state": {
         "type": {
@@ -850,6 +857,56 @@
         "description": "",
         "defaultValue": {
           "value": "false",
+          "computed": false
+        }
+      },
+      "addedLineNumbers": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "number"
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "removedLineNumbers": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "number"
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "addedLineStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{ backgroundColor: '#e6ffec' }",
+          "computed": false
+        }
+      },
+      "removedLineStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{ backgroundColor: '#ffebe9' }",
           "computed": false
         }
       },

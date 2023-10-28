@@ -11,6 +11,10 @@ Keyword arguments:
 
 - id (string; optional)
 
+- addedLineNumbers (list of numbers; optional)
+
+- addedLineStyle (dict; default { backgroundColor: '#e6ffec' })
+
 - codeBlockStyle (dict; optional)
 
 - codeString (string; required)
@@ -36,6 +40,10 @@ Keyword arguments:
     - prop_name (string; optional):
         Holds which property is loading.
 
+- removedLineNumbers (list of numbers; optional)
+
+- removedLineStyle (dict; default { backgroundColor: '#ffebe9' })
+
 - showCopyButton (boolean; default True)
 
 - showLineNumbers (boolean; default True)
@@ -46,10 +54,10 @@ Keyword arguments:
     _namespace = 'feffery_markdown_components'
     _type = 'FefferySyntaxHighlighter'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, codeString=Component.REQUIRED, language=Component.REQUIRED, codeTheme=Component.UNDEFINED, codeBlockStyle=Component.UNDEFINED, codeStyle=Component.UNDEFINED, showLineNumbers=Component.UNDEFINED, showCopyButton=Component.UNDEFINED, wrapLongLines=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'codeBlockStyle', 'codeString', 'codeStyle', 'codeTheme', 'key', 'language', 'loading_state', 'showCopyButton', 'showLineNumbers', 'wrapLongLines']
+    def __init__(self, id=Component.UNDEFINED, key=Component.UNDEFINED, codeString=Component.REQUIRED, language=Component.REQUIRED, codeTheme=Component.UNDEFINED, codeBlockStyle=Component.UNDEFINED, codeStyle=Component.UNDEFINED, showLineNumbers=Component.UNDEFINED, showCopyButton=Component.UNDEFINED, wrapLongLines=Component.UNDEFINED, addedLineNumbers=Component.UNDEFINED, removedLineNumbers=Component.UNDEFINED, addedLineStyle=Component.UNDEFINED, removedLineStyle=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'addedLineNumbers', 'addedLineStyle', 'codeBlockStyle', 'codeString', 'codeStyle', 'codeTheme', 'key', 'language', 'loading_state', 'removedLineNumbers', 'removedLineStyle', 'showCopyButton', 'showLineNumbers', 'wrapLongLines']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'codeBlockStyle', 'codeString', 'codeStyle', 'codeTheme', 'key', 'language', 'loading_state', 'showCopyButton', 'showLineNumbers', 'wrapLongLines']
+        self.available_properties = ['id', 'addedLineNumbers', 'addedLineStyle', 'codeBlockStyle', 'codeString', 'codeStyle', 'codeTheme', 'key', 'language', 'loading_state', 'removedLineNumbers', 'removedLineStyle', 'showCopyButton', 'showLineNumbers', 'wrapLongLines']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
