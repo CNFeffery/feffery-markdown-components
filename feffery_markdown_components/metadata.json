@@ -1,6 +1,6 @@
 {
   "src/lib/components/FefferyMarkdown.react.js": {
-    "description": "",
+    "description": "markdown\u6e32\u67d3\u7ec4\u4ef6FefferyMarkdown",
     "displayName": "FefferyMarkdown",
     "methods": [],
     "props": {
@@ -630,6 +630,27 @@
         "required": false,
         "description": ""
       },
+      "searchKeyword": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "\u641c\u7d22\u5173\u952e\u8bcd"
+      },
+      "highlightStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "`searchKeyword`\u5bf9\u5e94\u641c\u7d22\u7ed3\u679ccss\u6837\u5f0f"
+      },
+      "highlightClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "`searchKeyword`\u5bf9\u5e94\u641c\u7d22\u7ed3\u679ccss\u7c7b\u540d"
+      },
       "loading_state": {
         "type": {
           "name": "shape",
@@ -664,7 +685,7 @@
     }
   },
   "src/lib/components/FefferySyntaxHighlighter.react.js": {
-    "description": "",
+    "description": "\u4ee3\u7801\u8bed\u6cd5\u9ad8\u4eae\u7ec4\u4ef6FefferySyntaxHighlighter",
     "displayName": "FefferySyntaxHighlighter",
     "methods": [],
     "props": {

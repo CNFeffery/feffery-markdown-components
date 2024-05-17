@@ -6,7 +6,7 @@ export ''_fefferymarkdown
     ''_fefferymarkdown(;kwargs...)
 
 A FefferyMarkdown component.
-
+markdown渲染组件FefferyMarkdown
 Keyword arguments:
 - `id` (String; optional)
 - `aClassName` (String; optional)
@@ -36,6 +36,8 @@ Keyword arguments:
 - `h5Style` (Dict; optional)
 - `h6ClassName` (String; optional)
 - `h6Style` (Dict; optional)
+- `highlightClassName` (String; optional): `searchKeyword`对应搜索结果css类名
+- `highlightStyle` (Dict; optional): `searchKeyword`对应搜索结果css样式
 - `hrClassName` (String; optional)
 - `hrStyle` (Dict; optional)
 - `imageFallback` (String; optional)
@@ -57,6 +59,7 @@ Those elements have the following types:
 - `markdownStr` (String; optional)
 - `renderHtml` (Bool; optional)
 - `safeRedirectUrlPrefix` (String; optional)
+- `searchKeyword` (String; optional): 搜索关键词
 - `showCopyButton` (Bool; optional)
 - `showLineNumbers` (Bool; optional)
 - `strongClassName` (String; optional)
@@ -76,7 +79,7 @@ Those elements have the following types:
 - `wrapLongLines` (Bool; optional)
 """
 function ''_fefferymarkdown(; kwargs...)
-        available_props = Symbol[:id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeFallBackLanguage, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :loading_state, :locale, :markdownBaseClassName, :markdownStr, :renderHtml, :safeRedirectUrlPrefix, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle, :wrapLongLines]
+        available_props = Symbol[:id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeFallBackLanguage, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :highlightClassName, :highlightStyle, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :loading_state, :locale, :markdownBaseClassName, :markdownStr, :renderHtml, :safeRedirectUrlPrefix, :searchKeyword, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle, :wrapLongLines]
         wild_props = Symbol[]
         return Component("''_fefferymarkdown", "FefferyMarkdown", "feffery_markdown_components", available_props, wild_props; kwargs...)
 end

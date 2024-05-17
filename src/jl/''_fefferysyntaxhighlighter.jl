@@ -6,7 +6,7 @@ export ''_fefferysyntaxhighlighter
     ''_fefferysyntaxhighlighter(;kwargs...)
 
 A FefferySyntaxHighlighter component.
-
+代码语法高亮组件FefferySyntaxHighlighter
 Keyword arguments:
 - `id` (String; optional)
 - `addedLineNumbers` (Array of Reals; optional)

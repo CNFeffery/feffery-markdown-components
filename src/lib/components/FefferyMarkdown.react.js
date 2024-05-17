@@ -17,7 +17,7 @@ import { Image, ConfigProvider } from 'antd';
 import 'antd/es/image/style/css';
 import enUS from 'antd/es/locale/en_US';
 import zhCN from 'antd/es/locale/zh_CN';
-import { trim, cloneDeep } from 'lodash';
+import { trim, cloneDeep, isString } from 'lodash';
 import { omitDeep } from 'deepdash-es/standalone';
 import { flatToTree } from './utils';
 import {
@@ -88,6 +88,30 @@ const str2locale = new Map([
     ['en-us', enUS]
 ])
 
+const highlightChildren = (children, keyword, highlightStyle, highlightClassName) => {
+    return children.map(
+        child => {
+            if (isString(child) && child.toLowerCase().includes(keyword.toLowerCase())) {
+                let childSplit = child.toLowerCase().split(keyword.toLowerCase());
+                if (childSplit.length > 1) {
+                    let newChild = [];
+                    let currentLength = 0;
+                    for (let i = 0; i < childSplit.length - 1; i++) {
+                        newChild.push(childSplit[i]);
+                        currentLength += childSplit[i].length;
+                        // 追加符合原文内容的高亮搜索结果
+                        newChild.push(<span key="" style={{ background: 'yellow', ...highlightStyle }} className={highlightClassName} >{child.slice(currentLength, currentLength + keyword.length)}</span>);
+                        currentLength += keyword.length;
+                    }
+                    newChild.push(childSplit[childSplit.length - 1]);
+                    return newChild;
+                }
+            }
+            return child;
+        }
+    )
+}
+
 async function parseMarkdownHeadings(e) {
     const rawHTML = await unified()
         .use(remarkParse)
@@ -99,9 +123,10 @@ async function parseMarkdownHeadings(e) {
     return rawHTML
 }
 
-// 定义markdown渲染组件FefferyMarkdown，api参数参考https://github.com/remarkjs/react-markdown
+/**
+ * markdown渲染组件FefferyMarkdown
+ */
 const FefferyMarkdown = (props) => {
-    // 取得必要属性或参数
     let {
         id,
         key,
@@ -163,11 +188,18 @@ const FefferyMarkdown = (props) => {
         titleAsId,
         wrapLongLines,
         codeFallBackLanguage,
+        searchKeyword,
+        highlightStyle,
+        highlightClassName,
         setProps
     } = props;
 
     // 为id设置缺省随机uuid值
-    id = id || `feffery-markdown${uuidv4()}`
+    useEffect(() => {
+        if (!id) {
+            setProps({ id: `feffery-markdown-${uuidv4()}` })
+        }
+    }, [markdownStr])
 
     // 配置相关插件
     const remarkPlugins = [remarkGfm, remarkMath]
@@ -313,12 +345,16 @@ const FefferyMarkdown = (props) => {
                             }
                             return (
                                 <code className={className} {...props}>
-                                    {children}
+                                    {
+                                        searchKeyword ?
+                                            highlightChildren(children, searchKeyword, highlightStyle, highlightClassName) :
+                                            children
+                                    }
                                 </code>
                             );
                         }
                     },
-                    img: ({ ...props }) => {
+                    img: ({ node, ...props }) => {
                         return <ConfigProvider locale={str2locale.get(locale)}>
                             <div style={
                                 {
@@ -334,7 +370,7 @@ const FefferyMarkdown = (props) => {
                             </div>
                         </ConfigProvider>
                     },
-                    table: ({ ...props }) => {
+                    table: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...tableStyle
@@ -351,7 +387,7 @@ const FefferyMarkdown = (props) => {
                         }
                         return <table {...props} />
                     },
-                    thead: ({ ...props }) => {
+                    thead: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...theadStyle
@@ -362,7 +398,7 @@ const FefferyMarkdown = (props) => {
 
                         return <thead {...props} />
                     },
-                    tr: ({ ...props }) => {
+                    tr: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...trStyle
@@ -373,7 +409,7 @@ const FefferyMarkdown = (props) => {
 
                         return <tr {...props} />
                     },
-                    th: ({ ...props }) => {
+                    th: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...thStyle
@@ -387,9 +423,13 @@ const FefferyMarkdown = (props) => {
                         if (thClassName) {
                             props.className = `${props.className} ${thClassName}`
                         }
+
+                        if (searchKeyword) {
+                            return <th {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <th {...props} />
                     },
-                    td: ({ ...props }) => {
+                    td: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...tdStyle
@@ -403,10 +443,13 @@ const FefferyMarkdown = (props) => {
                         if (tdClassName) {
                             props.className = `${props.className} ${tdClassName}`
                         }
+
+                        if (searchKeyword) {
+                            return <td {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <td {...props} />
                     },
-                    h1: ({ ...props }) => {
-
+                    h1: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...h1Style
@@ -420,9 +463,12 @@ const FefferyMarkdown = (props) => {
                             props.className = `${props.className} ${h1ClassName}`
                         }
 
+                        if (searchKeyword) {
+                            return <h1 {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <h1 {...props} />
                     },
-                    h2: ({ ...props }) => {
+                    h2: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...h2Style
@@ -436,9 +482,12 @@ const FefferyMarkdown = (props) => {
                             props.className = `${props.className} ${h2ClassName}`
                         }
 
+                        if (searchKeyword) {
+                            return <h2 {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <h2 {...props} />
                     },
-                    h3: ({ ...props }) => {
+                    h3: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...h3Style
@@ -452,9 +501,12 @@ const FefferyMarkdown = (props) => {
                             props.className = `${props.className} ${h3ClassName}`
                         }
 
+                        if (searchKeyword) {
+                            return <h3 {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <h3 {...props} />
                     },
-                    h4: ({ ...props }) => {
+                    h4: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...h4Style
@@ -468,9 +520,12 @@ const FefferyMarkdown = (props) => {
                             props.className = `${props.className} ${h4ClassName}`
                         }
 
+                        if (searchKeyword) {
+                            return <h4 {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <h4 {...props} />
                     },
-                    h5: ({ ...props }) => {
+                    h5: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...h5Style
@@ -484,9 +539,12 @@ const FefferyMarkdown = (props) => {
                             props.className = `${props.className} ${h5ClassName}`
                         }
 
+                        if (searchKeyword) {
+                            return <h5 {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <h5 {...props} />
                     },
-                    h6: ({ ...props }) => {
+                    h6: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...h6Style
@@ -500,9 +558,12 @@ const FefferyMarkdown = (props) => {
                             props.className = `${props.className} ${h6ClassName}`
                         }
 
+                        if (searchKeyword) {
+                            return <h6 {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <h6 {...props} />
                     },
-                    a: ({ ...props }) => {
+                    a: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...aStyle
@@ -511,9 +572,12 @@ const FefferyMarkdown = (props) => {
                             props.className = `${props.className} ${aClassName}`
                         }
 
+                        if (searchKeyword) {
+                            return <a {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <a {...props} />
                     },
-                    blockquote: ({ ...props }) => {
+                    blockquote: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...blockquoteStyle
@@ -522,9 +586,12 @@ const FefferyMarkdown = (props) => {
                             props.className = `${props.className} ${blockquoteClassName}`
                         }
 
+                        if (searchKeyword) {
+                            return <blockquote {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <blockquote {...props} />
                     },
-                    hr: ({ ...props }) => {
+                    hr: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...hrStyle
@@ -535,7 +602,7 @@ const FefferyMarkdown = (props) => {
 
                         return <hr {...props} />
                     },
-                    strong: ({ ...props }) => {
+                    strong: ({ node, ...props }) => {
                         props.style = {
                             ...props.style,
                             ...strongStyle
@@ -544,7 +611,28 @@ const FefferyMarkdown = (props) => {
                             props.className = `${props.className} ${strongClassName}`
                         }
 
+                        if (searchKeyword) {
+                            return <strong {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
                         return <strong {...props} />
+                    },
+                    p: ({ node, ...props }) => {
+                        if (searchKeyword) {
+                            return <p {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
+                        return <p {...props} />
+                    },
+                    span: ({ ...props }) => {
+                        if (searchKeyword) {
+                            return <span {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
+                        return <span {...props} />
+                    },
+                    li: ({ ...props }) => {
+                        if (searchKeyword) {
+                            return <li {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
+                        }
+                        return <li {...props} />
                     }
                 }}
                 transformLinkUri={(href, children, title) => {
@@ -557,9 +645,7 @@ const FefferyMarkdown = (props) => {
 
                     return href;
                 }}
-            >
-                {markdownStr}
-            </ReactMarkdown>
+            >{markdownStr}</ReactMarkdown>
         </div>
     );
 }
@@ -765,6 +851,21 @@ FefferyMarkdown.propTypes = {
 
     // 为缺失语言类型描述的代码块设定默认语言
     codeFallBackLanguage: PropTypes.string,
+
+    /**
+     * 搜索关键词
+     */
+    searchKeyword: PropTypes.string,
+
+    /**
+     * `searchKeyword`对应搜索结果css样式
+     */
+    highlightStyle: PropTypes.object,
+
+    /**
+     * `searchKeyword`对应搜索结果css类名
+     */
+    highlightClassName: PropTypes.string,
 
     loading_state: PropTypes.shape({
         /**

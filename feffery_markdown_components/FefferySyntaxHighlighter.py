@@ -5,7 +5,7 @@ from dash.development.base_component import Component, _explicitize_args
 
 class FefferySyntaxHighlighter(Component):
     """A FefferySyntaxHighlighter component.
-
+代码语法高亮组件FefferySyntaxHighlighter
 
 Keyword arguments:
 

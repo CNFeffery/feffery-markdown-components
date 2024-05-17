@@ -66,9 +66,10 @@ const str2theme = new Map([
     ['z-touch', zTouch]
 ])
 
-// 定义代码语法高亮组件FefferySyntaxHighlighter，api参数参考https://github.com/react-syntax-highlighter/react-syntax-highlighter
+/**
+ * 代码语法高亮组件FefferySyntaxHighlighter
+ */
 const FefferySyntaxHighlighter = (props) => {
-    // 取得必要属性或参数
     let {
         id,
         codeString,
