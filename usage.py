@@ -8,7 +8,13 @@ app.layout = html.Div(
     [
         html.Div(
             fmc.FefferyMarkdown(
+                imagePreview=True,
+                imageForceAlignCenter=True,
+                imageWidth=100,
+                imageHeight=100,
                 markdownStr="""
+![](/_favicon.ico?v=2.16.1)
+
 # A demo of `react-markdown`
 
 `react-markdown` is a markdown component for React.
