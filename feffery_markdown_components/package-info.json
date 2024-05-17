@@ -22,8 +22,8 @@
   "author": "CNFeffery <fefferypzy@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
-    "antd": "4.22.8",
+    "@ant-design/icons": "^5.3.7",
+    "antd": "^5.17.2",
     "deepdash-es": "^5.3.9",
     "github-markdown-css": "^5.0.0",
     "less": "^3.13.1",

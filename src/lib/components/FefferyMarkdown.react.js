@@ -1,5 +1,7 @@
+// react核心
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+// react-markdown核心
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -9,17 +11,20 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { CopyToClipboard } from "react-copy-to-clipboard";
+// antd核心
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import CopyOutlined from '@ant-design/icons/CopyOutlined';
 import { Image, ConfigProvider } from 'antd';
-import 'antd/es/image/style/css';
-import enUS from 'antd/es/locale/en_US';
-import zhCN from 'antd/es/locale/zh_CN';
+import zhCN from 'antd/lib/locale/zh_CN';
+import enUS from 'antd/lib/locale/en_US';
+// 辅助库
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { trim, cloneDeep, isString } from 'lodash';
 import { omitDeep } from 'deepdash-es/standalone';
 import { flatToTree } from './utils';
+import { v4 as uuidv4 } from 'uuid';
+// 代码主题
 import {
     a11yDark,
     atomDark,
@@ -48,8 +53,7 @@ import {
     synthwave84,
     zTouch
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { v4 as uuidv4 } from 'uuid';
-
+// 必要样式文件
 import '../utils/katex/dist/katex.min.css';
 import 'github-markdown-css';
 import './styles.css';
@@ -87,6 +91,8 @@ const str2locale = new Map([
     ['zh-cn', zhCN],
     ['en-us', enUS]
 ])
+
+const defaultImageFallback = 'data:image/png;base64,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'
 
 const highlightChildren = (children, keyword, highlightStyle, highlightClassName) => {
     return children.map(
@@ -363,7 +369,7 @@ const FefferyMarkdown = (props) => {
                             }>
                                 <Image {...props}
                                     preview={imagePreview}
-                                    fallback={imageFallback}
+                                    fallback={imageFallback || defaultImageFallback}
                                     width={imageWidth}
                                     height={imageHeight}
                                 />
@@ -650,26 +656,46 @@ const FefferyMarkdown = (props) => {
     );
 }
 
-// 定义参数或属性
 FefferyMarkdown.propTypes = {
-    // id
+    /**
+     * 组件唯一id
+     */
     id: PropTypes.string,
 
+    /**
+     * 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
+     */
     key: PropTypes.string,
 
-    // 父容器css样式
+    /**
+     * 根容器css样式
+     */
     style: PropTypes.object,
 
-    // 父容器css类名
+    /**
+     * 根容器css类名
+     */
     className: PropTypes.string,
 
-    // 配置相关文案国际化，可选的有'en-us'、'zh-cn'，默认为'zh-cn'
+    /**
+     * 组件文案语种，可选项有`'zh-cn'`、`'en-us'`
+     * 默认值：`'zh-cn'`
+     */
     locale: PropTypes.oneOf(['en-us', 'zh-cn']),
 
-    // 设置要渲染的原始markdown内容
+    /**
+     * markdown字符串
+     */
     markdownStr: PropTypes.string,
 
     // 设置代码风格主题，默认为'gh-colors'
+    /**
+     * 针对文档中的代码块，设置所应用的代码主题，可选项有`'a11y-dark'`、`'atom-dark'`、`'coldark-cold'`、`'coldark-dark'`、`'coy'`、
+     * `'coy-without-shadows'`、`'darcula'`、`'dracula'`、`'nord'`、`'okaidia'`、`'prism'`、`'solarizedlight'`、`'twilight'`、
+     * `'duotone-sea'`、`'duotone-dark'`、`'duotone-light'`、`'duotone-space'`、`'gh-colors'`、`'gruvbox-dark'`、`'material-dark'`、
+     * `'night-owl'`、`'one-light'`、`'pojoaque'`、`'solarized-dark-atom'`、`'synthwave84'`、`'z-touch'`
+     * 默认值：`'gh-colors'`
+     */
     codeTheme: PropTypes.oneOf([
         'a11y-dark', 'atom-dark', 'coldark-cold', 'coldark-dark', 'coy', 'coy-without-shadows', 'darcula', 'dracula',
         'nord', 'okaidia', 'prism', 'solarizedlight', 'twilight', 'duotone-sea', 'duotone-dark', 'duotone-light',
@@ -677,179 +703,295 @@ FefferyMarkdown.propTypes = {
         'solarized-dark-atom', 'synthwave84', 'z-touch'
     ]),
 
-    // 设置是否渲染markdown中的html源码，默认为false
+    /**
+     * 是否解析渲染`markdownStr`中的html源码
+     * 默认值：`false`
+     */
     renderHtml: PropTypes.bool,
 
-    // 设置markdown中链接的跳转方式，默认为'_blank'
+    /**
+     * markdown中链接的跳转方式
+     * 默认值：`'_blank'`
+     */
     linkTarget: PropTypes.string,
 
-    // 额外设置代码块容器css样式
+    /**
+     * 针对文档中的代码块，设置额外css样式
+     */
     codeBlockStyle: PropTypes.object,
 
-    // 额外设置代码内容css样式
+    /**
+     * 针对文档中的代码内容，设置额外css样式
+     */
     codeStyle: PropTypes.object,
 
-    // 设置代码块是否显示行号，默认为true
+    /**
+     * 代码块是否显示行号
+     * 默认值：`true`
+     */
     showLineNumbers: PropTypes.bool,
 
-    // 设置代码块是否显示右上角复制按钮，默认为true
+    /**
+     * 代码块是否显示右上角复制按钮
+     * 默认值：`true`
+     */
     showCopyButton: PropTypes.bool,
 
-    // 设置图片是否添加交互查看功能，默认为false
+    /**
+     * 针对文档中的图片，是否添加交互查看功能
+     * 默认值：`false`
+     */
     imagePreview: PropTypes.bool,
 
-    // 设置图片加载失败后回滚显示的占位图片地址，默认为fmc内置占位图
+    /**
+     * 针对文档中的图片，设置资源加载失败时的占位图资源地址
+     */
     imageFallback: PropTypes.string,
 
-    // 设置是否强制居中所有图片内容，默认为false
+    /**
+     * 针对文档中的图片，是否强制居中显示
+     * 默认值：`false`
+     */
     imageForceAlignCenter: PropTypes.bool,
 
-    // 为所有图片内容强制设置统一的宽度
+    /**
+     * 为文档中的所有图片强制设置统一的宽度
+     */
     imageWidth: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
     ]),
 
-    // 为所有图片内容强制设置统一的高度
+    /**
+     * 为文档中的所有图片强制设置统一的高度
+     */
     imageHeight: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
     ]),
 
-    // 设置是否强制所有表格居中，默认为true
+    /**
+     * 针对文档中的表格，是否强制居中显示
+     * 默认值：`true`
+     */
     forceTableAlignCenter: PropTypes.bool,
 
-    // 设置是否强制所有表格标题单元格文字居中，默认为true
+    /**
+     * 针对文档中的表格，是否强制表头单元格内文字居中
+     * 默认值：`true`
+     */
     forceTableHeaderTextAlignCenter: PropTypes.bool,
 
-    // 设置是否强制所有表格内容单元格文字居中，默认为true
+    /**
+     * 针对文档中的表格，是否强制普通单元格内文字居中
+     * 默认值：`true`
+     */
     forceTableContentTextAlignCenter: PropTypes.bool,
 
-    // 用于设置各个元素角色的css样式及类名
-    // 一级标题css样式
+    /**
+     * 针对文档中的一级标题内容，设置额外css样式
+     */
     h1Style: PropTypes.object,
 
-    // 一级标题css类名
+    /**
+     * 针对文档中的一级标题内容，设置额外css类名
+     */
     h1ClassName: PropTypes.string,
 
-    // 二级标题css样式
+    /**
+     * 针对文档中的二级标题内容，设置额外css样式
+     */
     h2Style: PropTypes.object,
 
-    // 二级标题css类名
+    /**
+     * 针对文档中的二级标题内容，设置额外css类名
+     */
     h2ClassName: PropTypes.string,
 
-    // 三级标题css样式
+    /**
+     * 针对文档中的三级标题内容，设置额外css样式
+     */
     h3Style: PropTypes.object,
 
-    // 三级标题css类名
+    /**
+     * 针对文档中的三级标题内容，设置额外css类名
+     */
     h3ClassName: PropTypes.string,
 
-    // 四级标题css样式
+    /**
+     * 针对文档中的四级标题内容，设置额外css样式
+     */
     h4Style: PropTypes.object,
 
-    // 四级标题css类名
+    /**
+     * 针对文档中的四级标题内容，设置额外css类名
+     */
     h4ClassName: PropTypes.string,
 
-    // 五级标题css样式
+    /**
+     * 针对文档中的五级标题内容，设置额外css样式
+     */
     h5Style: PropTypes.object,
 
-    // 五级标题css类名
+    /**
+     * 针对文档中的五级标题内容，设置额外css类名
+     */
     h5ClassName: PropTypes.string,
 
-    // 六级标题css样式
+    /**
+     * 针对文档中的六级标题内容，设置额外css样式
+     */
     h6Style: PropTypes.object,
 
-    // 六级标题css类名
+    /**
+     * 针对文档中的六级标题内容，设置额外css类名
+     */
     h6ClassName: PropTypes.string,
 
-    // 表格css样式
+    /**
+     * 针对文档中的表格内容，设置额外css样式
+     */
     tableStyle: PropTypes.object,
 
-    // 表格css类名
+    /**
+     * 针对文档中的表格内容，设置额外css类名
+     */
     tableClassName: PropTypes.string,
 
-    // 表头css样式
+    /**
+     * 针对文档中的表格表头内容，设置额外css样式
+     */
     theadStyle: PropTypes.object,
 
-    // 表头css类名
+    /**
+     * 针对文档中的表格表头内容，设置额外css类名
+     */
     theadClassName: PropTypes.string,
 
-    // 数据行css样式
+    /**
+     * 针对文档中的表格数据行内容，设置额外css样式
+     */
     trStyle: PropTypes.string,
 
-    // 数据行css类名
+    /**
+     * 针对文档中的表格数据行内容，设置额外css类名
+     */
     trClassName: PropTypes.string,
 
-    // 表头单元格css样式
+    /**
+     * 针对文档中的表格表头单元格内容，设置额外css样式
+     */
     thStyle: PropTypes.object,
 
-    // 表头单元格css类名
+    /**
+     * 针对文档中的表格表头单元格内容，设置额外css类名
+     */
     thClassName: PropTypes.string,
 
-    // 数据单元格css样式
+    /**
+     * 针对文档中的表格数据单元格内容，设置额外css样式
+     */
     tdStyle: PropTypes.string,
 
-    // 数据单元格css类名
+    /**
+     * 针对文档中的表格数据单元格内容，设置额外css类名
+     */
     tdClassName: PropTypes.string,
 
-    // 链接css样式
+    /**
+     * 针对文档中的链接内容，设置额外css样式
+     */
     aStyle: PropTypes.object,
 
-    // 链接css类名
+    /**
+     * 针对文档中的链接内容，设置额外css类名
+     */
     aClassName: PropTypes.string,
 
-    // 引用块css样式
+    /**
+     * 针对文档中的引用块内容，设置额外css样式
+     */
     blockquoteStyle: PropTypes.object,
 
-    // 引用块css类名
+    /**
+     * 针对文档中的引用块内容，设置额外css类名
+     */
     blockquoteClassName: PropTypes.string,
 
-    // 行内代码css样式
+    /**
+     * 针对文档中的行内代码内容，设置额外css样式
+     */
     inlineCodeStyle: PropTypes.object,
 
-    // 行内代码css类名
+    /**
+     * 针对文档中的行内代码内容，设置额外css类名
+     */
     inlineCodeClassName: PropTypes.string,
 
-    // 水平分割线css样式
+    /**
+     * 针对文档中的水平分割线内容，设置额外css样式
+     */
     hrStyle: PropTypes.object,
 
-    // 水平分割线css类名
+    /**
+     * 针对文档中的水平分割线内容，设置额外css类名
+     */
     hrClassName: PropTypes.string,
 
-    // 加粗内容css样式
+    /**
+     * 针对文档中的加粗内容，设置额外css样式
+     */
     strongStyle: PropTypes.object,
 
-    // 加粗内容css类名
+    /**
+     * 针对文档中的加粗内容，设置额外css类名
+     */
     strongClassName: PropTypes.string,
 
-    // 设置是否对markdown内容中的外部链接进行检查，默认为false
-    // 当checkExternalLink=true且safeRedirectUrlPrefix有定义时才会开启链接安全跳转功能
+    /**
+     * 是否针对文档内容中的外部链接进行安全检查，需配合有效的`safeRedirectUrlPrefix`
+     * 默认值：`false`
+     */
     checkExternalLink: PropTypes.bool,
 
-    // 用于在外部链接检查的基础上进行白名单补充，当markdown内容中的非内部链接以
-    // 此白名单中的某一个为前缀时，亦允许直接跳转
+    /**
+     * 当开启外部链接安全检查时，用于设置一系列白名单链接前缀，以这些白名单链接前缀开头的链接将忽略安全检查
+     */
     externalLinkPrefixWhiteList: PropTypes.arrayOf(PropTypes.string),
 
-    // 设置针对非内部链接且非白名单外部链接进行跳转时，应当进行中转安全跳转的接口url前缀
-    // 譬如针对外部链接https://www.baidu.com/，使用自行开发的中转跳转接口/safe-redirect?target=https://www.baidu.com/
-    // 那么此处的中转安全跳转接口url前缀即为"/safe-redirect?target="
+    /**
+     * 当开启外部链接安全检查时，用于定义链接点击跳转到的中转接口url前缀，譬如：
+     * 针对外部链接`https://www.baidu.com/`，设置`safeRedirectUrlPrefix='/safe-redirect?target='`后，用户点击此外部链接，将跳转至
+     * `/safe-redirect?target=https://www.baidu.com/`
+     */
     safeRedirectUrlPrefix: PropTypes.string,
 
-    // 手动设置markdown内容容器的css类名，通常用于完全自主定义markdown样式时使用
-    // 默认为'markdown-body'
+    /**
+     * 手动覆盖文档容器的css类名，通常在需要完全自定义文档样式时使用
+     * 默认值：`'markdown-body'`
+     */
     markdownBaseClassName: PropTypes.string,
 
-    // 设置是否针对标题生成网页元素时，将标题内容作为对应元素的id
-    // 从而便于配合AntdAnchor等组件生成目录，默认为false
+    /**
+     * 针对文档渲染结果中的各标题元素，是否将标题内容作为对应元素的id，以便于配合`AntdAnchor`等组件生成目录
+     * 默认值：`false`
+     */
     titleAsId: PropTypes.bool,
 
-    // 通过markdownStr标题内容自动推导出的适用于fac.AntdAnchor的linkDict结构
+    /**
+     * 监听基于文档标题内容自动推导计算出的目录结构，可直接配合`fac`组件库中的`AntdAnchor`组件使用
+     */
     facAnchorLinkDict: PropTypes.any,
 
-    // 设置是否允许超长行自动换行，默认为true
+    /**
+     * 针对超长行内容是否允许自动换行
+     * 默认值：`true`
+     */
     wrapLongLines: PropTypes.bool,
 
-    // 为缺失语言类型描述的代码块设定默认语言
+    /**
+     * 当文档中存在源语言描述缺失的代码块时，设置缺省回滚的编程语言类型
+     */
     codeFallBackLanguage: PropTypes.string,
 
     /**
@@ -858,12 +1000,12 @@ FefferyMarkdown.propTypes = {
     searchKeyword: PropTypes.string,
 
     /**
-     * `searchKeyword`对应搜索结果css样式
+     * `searchKeyword`对应搜索结果额外css样式
      */
     highlightStyle: PropTypes.object,
 
     /**
-     * `searchKeyword`对应搜索结果css类名
+     * `searchKeyword`对应搜索结果额外css类名
      */
     highlightClassName: PropTypes.string,
 
@@ -905,8 +1047,7 @@ FefferyMarkdown.defaultProps = {
     externalLinkPrefixWhiteList: [],
     markdownBaseClassName: 'markdown-body',
     titleAsId: false,
-    wrapLongLines: false,
-    imageFallback: 'data:image/png;base64,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'
+    wrapLongLines: false
 }
 
 export default FefferyMarkdown;

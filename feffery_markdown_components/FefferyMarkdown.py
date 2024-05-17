@@ -9,89 +9,132 @@ markdown渲染组件FefferyMarkdown
 
 Keyword arguments:
 
-- id (string; optional)
+- id (string; optional):
+    组件唯一id.
 
-- aClassName (string; optional)
+- aClassName (string; optional):
+    针对文档中的链接内容，设置额外css类名.
 
-- aStyle (dict; optional)
+- aStyle (dict; optional):
+    针对文档中的链接内容，设置额外css样式.
 
-- blockquoteClassName (string; optional)
+- blockquoteClassName (string; optional):
+    针对文档中的引用块内容，设置额外css类名.
 
-- blockquoteStyle (dict; optional)
+- blockquoteStyle (dict; optional):
+    针对文档中的引用块内容，设置额外css样式.
 
-- checkExternalLink (boolean; default False)
+- checkExternalLink (boolean; default False):
+    是否针对文档内容中的外部链接进行安全检查，需配合有效的`safeRedirectUrlPrefix`  默认值：`False`.
 
-- className (string; optional)
+- className (string; optional):
+    根容器css类名.
 
-- codeBlockStyle (dict; optional)
+- codeBlockStyle (dict; optional):
+    针对文档中的代码块，设置额外css样式.
 
-- codeFallBackLanguage (string; optional)
+- codeFallBackLanguage (string; optional):
+    当文档中存在源语言描述缺失的代码块时，设置缺省回滚的编程语言类型.
 
-- codeStyle (dict; optional)
+- codeStyle (dict; optional):
+    针对文档中的代码内容，设置额外css样式.
 
-- codeTheme (a value equal to: 'a11y-dark', 'atom-dark', 'coldark-cold', 'coldark-dark', 'coy', 'coy-without-shadows', 'darcula', 'dracula', 'nord', 'okaidia', 'prism', 'solarizedlight', 'twilight', 'duotone-sea', 'duotone-dark', 'duotone-light', 'duotone-space', 'gh-colors', 'gruvbox-dark', 'material-dark', 'night-owl', 'one-light', 'pojoaque', 'solarized-dark-atom', 'synthwave84', 'z-touch'; default 'gh-colors')
+- codeTheme (a value equal to: 'a11y-dark', 'atom-dark', 'coldark-cold', 'coldark-dark', 'coy', 'coy-without-shadows', 'darcula', 'dracula', 'nord', 'okaidia', 'prism', 'solarizedlight', 'twilight', 'duotone-sea', 'duotone-dark', 'duotone-light', 'duotone-space', 'gh-colors', 'gruvbox-dark', 'material-dark', 'night-owl', 'one-light', 'pojoaque', 'solarized-dark-atom', 'synthwave84', 'z-touch'; default 'gh-colors'):
+    针对文档中的代码块，设置所应用的代码主题，可选项有`'a11y-dark'`、`'atom-dark'`、`'coldark-cold'`、`'coldark-dark'`、`'coy'`、
+    `'coy-without-shadows'`、`'darcula'`、`'dracula'`、`'nord'`、`'okaidia'`、`'prism'`、`'solarizedlight'`、`'twilight'`、
+    `'duotone-sea'`、`'duotone-dark'`、`'duotone-light'`、`'duotone-space'`、`'gh-colors'`、`'gruvbox-dark'`、`'material-dark'`、
+    `'night-owl'`、`'one-light'`、`'pojoaque'`、`'solarized-dark-atom'`、`'synthwave84'`、`'z-touch'`
+    默认值：`'gh-colors'`.
 
-- externalLinkPrefixWhiteList (list of strings; optional)
+- externalLinkPrefixWhiteList (list of strings; optional):
+    当开启外部链接安全检查时，用于设置一系列白名单链接前缀，以这些白名单链接前缀开头的链接将忽略安全检查.
 
-- facAnchorLinkDict (boolean | number | string | dict | list; optional)
+- facAnchorLinkDict (boolean | number | string | dict | list; optional):
+    监听基于文档标题内容自动推导计算出的目录结构，可直接配合`fac`组件库中的`AntdAnchor`组件使用.
 
-- forceTableAlignCenter (boolean; default False)
+- forceTableAlignCenter (boolean; default False):
+    针对文档中的表格，是否强制居中显示  默认值：`True`.
 
-- forceTableContentTextAlignCenter (boolean; default True)
+- forceTableContentTextAlignCenter (boolean; default True):
+    针对文档中的表格，是否强制普通单元格内文字居中  默认值：`True`.
 
-- forceTableHeaderTextAlignCenter (boolean; default True)
+- forceTableHeaderTextAlignCenter (boolean; default True):
+    针对文档中的表格，是否强制表头单元格内文字居中  默认值：`True`.
 
-- h1ClassName (string; optional)
+- h1ClassName (string; optional):
+    针对文档中的一级标题内容，设置额外css类名.
 
-- h1Style (dict; optional)
+- h1Style (dict; optional):
+    针对文档中的一级标题内容，设置额外css样式.
 
-- h2ClassName (string; optional)
+- h2ClassName (string; optional):
+    针对文档中的二级标题内容，设置额外css类名.
 
-- h2Style (dict; optional)
+- h2Style (dict; optional):
+    针对文档中的二级标题内容，设置额外css样式.
 
-- h3ClassName (string; optional)
+- h3ClassName (string; optional):
+    针对文档中的三级标题内容，设置额外css类名.
 
-- h3Style (dict; optional)
+- h3Style (dict; optional):
+    针对文档中的三级标题内容，设置额外css样式.
 
-- h4ClassName (string; optional)
+- h4ClassName (string; optional):
+    针对文档中的四级标题内容，设置额外css类名.
 
-- h4Style (dict; optional)
+- h4Style (dict; optional):
+    针对文档中的四级标题内容，设置额外css样式.
 
-- h5ClassName (string; optional)
+- h5ClassName (string; optional):
+    针对文档中的五级标题内容，设置额外css类名.
 
-- h5Style (dict; optional)
+- h5Style (dict; optional):
+    针对文档中的五级标题内容，设置额外css样式.
 
-- h6ClassName (string; optional)
+- h6ClassName (string; optional):
+    针对文档中的六级标题内容，设置额外css类名.
 
-- h6Style (dict; optional)
+- h6Style (dict; optional):
+    针对文档中的六级标题内容，设置额外css样式.
 
 - highlightClassName (string; optional):
-    `searchKeyword`对应搜索结果css类名.
+    `searchKeyword`对应搜索结果额外css类名.
 
 - highlightStyle (dict; optional):
-    `searchKeyword`对应搜索结果css样式.
+    `searchKeyword`对应搜索结果额外css样式.
 
-- hrClassName (string; optional)
+- hrClassName (string; optional):
+    针对文档中的水平分割线内容，设置额外css类名.
 
-- hrStyle (dict; optional)
+- hrStyle (dict; optional):
+    针对文档中的水平分割线内容，设置额外css样式.
 
-- imageFallback (string; default 'data:image/png;base64,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')
+- imageFallback (string; optional):
+    针对文档中的图片，设置资源加载失败时的占位图资源地址.
 
-- imageForceAlignCenter (boolean; default False)
+- imageForceAlignCenter (boolean; default False):
+    针对文档中的图片，是否强制居中显示  默认值：`False`.
 
-- imageHeight (string | number; optional)
+- imageHeight (string | number; optional):
+    为文档中的所有图片强制设置统一的高度.
 
-- imagePreview (boolean; default False)
+- imagePreview (boolean; default False):
+    针对文档中的图片，是否添加交互查看功能  默认值：`False`.
 
-- imageWidth (string | number; optional)
+- imageWidth (string | number; optional):
+    为文档中的所有图片强制设置统一的宽度.
 
-- inlineCodeClassName (string; optional)
+- inlineCodeClassName (string; optional):
+    针对文档中的行内代码内容，设置额外css类名.
 
-- inlineCodeStyle (dict; optional)
+- inlineCodeStyle (dict; optional):
+    针对文档中的行内代码内容，设置额外css样式.
 
-- key (string; optional)
+- key (string; optional):
+    对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果.
 
-- linkTarget (string; default '_blank')
+- linkTarget (string; default '_blank'):
+    markdown中链接的跳转方式  默认值：`'_blank'`.
 
 - loading_state (dict; optional)
 
@@ -106,52 +149,77 @@ Keyword arguments:
     - prop_name (string; optional):
         Holds which property is loading.
 
-- locale (a value equal to: 'en-us', 'zh-cn'; default 'zh-cn')
+- locale (a value equal to: 'en-us', 'zh-cn'; default 'zh-cn'):
+    组件文案语种，可选项有`'zh-cn'`、`'en-us'`  默认值：`'zh-cn'`.
 
-- markdownBaseClassName (string; default 'markdown-body')
+- markdownBaseClassName (string; default 'markdown-body'):
+    手动覆盖文档容器的css类名，通常在需要完全自定义文档样式时使用  默认值：`'markdown-body'`.
 
-- markdownStr (string; optional)
+- markdownStr (string; optional):
+    markdown字符串.
 
-- renderHtml (boolean; optional)
+- renderHtml (boolean; optional):
+    是否解析渲染`markdownStr`中的html源码  默认值：`False`.
 
-- safeRedirectUrlPrefix (string; optional)
+- safeRedirectUrlPrefix (string; optional):
+    当开启外部链接安全检查时，用于定义链接点击跳转到的中转接口url前缀，譬如：
+    针对外部链接`https://www.baidu.com/`，设置`safeRedirectUrlPrefix='/safe-redirect?target='`后，用户点击此外部链接，将跳转至
+    `/safe-redirect?target=https://www.baidu.com/`.
 
 - searchKeyword (string; optional):
     搜索关键词.
 
-- showCopyButton (boolean; default True)
+- showCopyButton (boolean; default True):
+    代码块是否显示右上角复制按钮  默认值：`True`.
 
-- showLineNumbers (boolean; default True)
+- showLineNumbers (boolean; default True):
+    代码块是否显示行号  默认值：`True`.
 
-- strongClassName (string; optional)
+- strongClassName (string; optional):
+    针对文档中的加粗内容，设置额外css类名.
 
-- strongStyle (dict; optional)
+- strongStyle (dict; optional):
+    针对文档中的加粗内容，设置额外css样式.
 
-- style (dict; optional)
+- style (dict; optional):
+    根容器css样式.
 
-- tableClassName (string; optional)
+- tableClassName (string; optional):
+    针对文档中的表格内容，设置额外css类名.
 
-- tableStyle (dict; optional)
+- tableStyle (dict; optional):
+    针对文档中的表格内容，设置额外css样式.
 
-- tdClassName (string; optional)
+- tdClassName (string; optional):
+    针对文档中的表格数据单元格内容，设置额外css类名.
 
-- tdStyle (string; optional)
+- tdStyle (string; optional):
+    针对文档中的表格数据单元格内容，设置额外css样式.
 
-- thClassName (string; optional)
+- thClassName (string; optional):
+    针对文档中的表格表头单元格内容，设置额外css类名.
 
-- thStyle (dict; optional)
+- thStyle (dict; optional):
+    针对文档中的表格表头单元格内容，设置额外css样式.
 
-- theadClassName (string; optional)
+- theadClassName (string; optional):
+    针对文档中的表格表头内容，设置额外css类名.
 
-- theadStyle (dict; optional)
+- theadStyle (dict; optional):
+    针对文档中的表格表头内容，设置额外css样式.
 
-- titleAsId (boolean; default False)
+- titleAsId (boolean; default False):
+    针对文档渲染结果中的各标题元素，是否将标题内容作为对应元素的id，以便于配合`AntdAnchor`等组件生成目录
+    默认值：`False`.
 
-- trClassName (string; optional)
+- trClassName (string; optional):
+    针对文档中的表格数据行内容，设置额外css类名.
 
-- trStyle (string; optional)
+- trStyle (string; optional):
+    针对文档中的表格数据行内容，设置额外css样式.
 
-- wrapLongLines (boolean; default False)"""
+- wrapLongLines (boolean; default False):
+    针对超长行内容是否允许自动换行  默认值：`True`."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'feffery_markdown_components'
