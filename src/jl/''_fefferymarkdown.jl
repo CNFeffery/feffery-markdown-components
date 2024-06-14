@@ -4,10 +4,14 @@ export ''_fefferymarkdown
 
 """
     ''_fefferymarkdown(;kwargs...)
+    ''_fefferymarkdown(children::Any;kwargs...)
+    ''_fefferymarkdown(children_maker::Function;kwargs...)
+
 
 A FefferyMarkdown component.
 markdown渲染组件FefferyMarkdown
 Keyword arguments:
+- `children` (a list of or a singular dash component, string or number; optional): 强制渲染呈现的内容，优先级高于`markdownStr`、`placeholder`
 - `id` (String; optional): 组件唯一id
 - `aClassName` (String; optional): 针对文档中的链接内容，设置额外css类名
 - `aStyle` (Dict; optional): 针对文档中的链接内容，设置额外css样式
@@ -70,6 +74,7 @@ Those elements have the following types:
 - `markdownBaseClassName` (String; optional): 手动覆盖文档容器的css类名，通常在需要完全自定义文档样式时使用
 默认值：`'markdown-body'`
 - `markdownStr` (String; optional): markdown字符串
+- `placeholder` (a list of or a singular dash component, string or number; optional): 组件型，设置当`markdownStr`为空时的占位内容
 - `renderHtml` (Bool; optional): 是否解析渲染`markdownStr`中的html源码
 默认值：`false`
 - `safeRedirectUrlPrefix` (String; optional): 当开启外部链接安全检查时，用于定义链接点击跳转到的中转接口url前缀，譬如：
@@ -99,8 +104,11 @@ Those elements have the following types:
 默认值：`true`
 """
 function ''_fefferymarkdown(; kwargs...)
-        available_props = Symbol[:id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeFallBackLanguage, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :highlightClassName, :highlightStyle, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :loading_state, :locale, :markdownBaseClassName, :markdownStr, :renderHtml, :safeRedirectUrlPrefix, :searchKeyword, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle, :wrapLongLines]
+        available_props = Symbol[:children, :id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeFallBackLanguage, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :highlightClassName, :highlightStyle, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :loading_state, :locale, :markdownBaseClassName, :markdownStr, :placeholder, :renderHtml, :safeRedirectUrlPrefix, :searchKeyword, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle, :wrapLongLines]
         wild_props = Symbol[]
         return Component("''_fefferymarkdown", "FefferyMarkdown", "feffery_markdown_components", available_props, wild_props; kwargs...)
 end
+
+''_fefferymarkdown(children::Any; kwargs...) = ''_fefferymarkdown(;kwargs..., children = children)
+''_fefferymarkdown(children_maker::Function; kwargs...) = ''_fefferymarkdown(children_maker(); kwargs...)
 

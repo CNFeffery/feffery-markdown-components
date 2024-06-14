@@ -136,10 +136,12 @@ const FefferyMarkdown = (props) => {
     let {
         id,
         key,
+        children,
         style,
         className,
         locale,
         markdownStr,
+        placeholder,
         codeTheme,
         renderHtml,
         linkTarget,
@@ -280,6 +282,14 @@ const FefferyMarkdown = (props) => {
         }
         updateLinkDict()
     }, [markdownStr])
+
+    if (children) {
+        return <>{children}</>
+    }
+
+    if (!markdownStr || markdownStr === '') {
+        return <>{placeholder}</>
+    }
 
     return (
         <div id={id}
@@ -668,6 +678,11 @@ FefferyMarkdown.propTypes = {
     key: PropTypes.string,
 
     /**
+     * 强制渲染呈现的内容，优先级高于`markdownStr`、`placeholder`
+     */
+    children: PropTypes.node,
+
+    /**
      * 根容器css样式
      */
     style: PropTypes.object,
@@ -687,6 +702,11 @@ FefferyMarkdown.propTypes = {
      * markdown字符串
      */
     markdownStr: PropTypes.string,
+
+    /**
+     * 组件型，设置当`markdownStr`为空时的占位内容
+     */
+    placeholder: PropTypes.node,
 
     // 设置代码风格主题，默认为'gh-colors'
     /**
