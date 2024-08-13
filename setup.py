@@ -1,5 +1,5 @@
+import io
 import json
-import os
 from setuptools import setup
 
 
@@ -11,15 +11,23 @@ package_name = package["name"].replace(" ", "_").replace("-", "_")
 setup(
     name=package_name,
     version=package["version"],
+    author_email=package['email'],
+    homepage='https://github.com/CNFeffery/feffery-markdown-components',
     author=package['author'],
     packages=[package_name],
     include_package_data=True,
+    package_data={
+        'feffery_markdown_components': ['*']
+    },
     license=package['license'],
     description=package.get('description', package_name),
+    long_description=io.open("README.md", encoding="utf-8").read(),
+    long_description_content_type="text/markdown",
     install_requires=[
-        'dash>=2.8.0'
+        'dash>=2.10.2, !=2.16.0'
     ],
     classifiers=[
         'Framework :: Dash',
     ],
+    url='https://github.com/CNFeffery/feffery-markdown-components'
 )
