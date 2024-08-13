@@ -103,13 +103,20 @@ const highlightChildren = (children, keyword, highlightStyle, highlightClassName
                     let newChild = [];
                     let currentLength = 0;
                     for (let i = 0; i < childSplit.length - 1; i++) {
-                        newChild.push(childSplit[i]);
+                        newChild.push(child.slice(currentLength, currentLength + childSplit[i].length));
                         currentLength += childSplit[i].length;
                         // 追加符合原文内容的高亮搜索结果
-                        newChild.push(<span key="" style={{ background: 'yellow', ...highlightStyle }} className={highlightClassName} >{child.slice(currentLength, currentLength + keyword.length)}</span>);
+                        newChild.push(
+                            <span key=""
+                                style={{ background: 'yellow', ...highlightStyle }}
+                                className={highlightClassName} >
+                                {child.slice(currentLength, currentLength + keyword.length)}
+                            </span>
+                        );
                         currentLength += keyword.length;
                     }
-                    newChild.push(childSplit[childSplit.length - 1]);
+                    // 追加末尾剩余部分
+                    newChild.push(child.slice(currentLength, child.length - 1));
                     return newChild;
                 }
             }
