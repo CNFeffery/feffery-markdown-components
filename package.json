@@ -1,6 +1,6 @@
 {
   "name": "feffery_markdown_components",
-  "version": "0.3.0-rc3",
+  "version": "0.3.0-rc4",
   "description": "Better markdown render component in Plotly Dash.",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "scripts": {
     "start": "webpack-serve --config ./webpack.serve.config.js --open",
     "build:js": "webpack --mode production",
-    "build:backends": "dash-generate-components ./src/lib/components feffery_markdown_components -p package-info.json --r-prefix '' --jl-prefix '' --ignore \\.test\\.",
+    "build:backends": "dash-generate-components ./src/lib/components feffery_markdown_components --keep-prop-order ALL -p package-info.json --r-prefix '' --jl-prefix '' --ignore \\.test\\.",
     "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py_and_r)",
     "build": "npm run build:js && npm run build:backends",
     "build:activated": "npm run build:js && npm run build:backends-activated"
