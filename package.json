@@ -26,7 +26,6 @@
     "@ant-design/icons": "^5.3.7",
     "antd": "^5.17.2",
     "deepdash-es": "^5.3.9",
-    "github-markdown-css": "^5.0.0",
     "less": "^3.13.1",
     "less-loader": "^5.0.0",
     "lodash": "^4.17.21",

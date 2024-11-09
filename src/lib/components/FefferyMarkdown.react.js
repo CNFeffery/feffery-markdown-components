@@ -55,7 +55,7 @@ import {
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 // 必要样式文件
 import '../utils/katex/dist/katex.min.css';
-import 'github-markdown-css';
+import '../styles/github-markdown-css';
 import './styles.css';
 
 const str2theme = new Map([

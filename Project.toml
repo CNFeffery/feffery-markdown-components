@@ -1,8 +1,8 @@
 
 name = "FefferyMarkdownComponents"
-uuid = "1b08a953-4be3-4667-9a23-aca8b6e3c1d7"
+uuid = "1b08a953-4be3-4667-9a23-098b9fa3ccc7"
 authors = ["CNFeffery <fefferypzy@gmail.com>"]
-version = "0.3.0-rc3"
+version = "0.3.0-rc4"
 
 [deps]
 Dash = "1b08a953-4be3-4667-9a23-3db579824955"
