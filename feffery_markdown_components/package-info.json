@@ -1,6 +1,6 @@
 {
   "name": "feffery_markdown_components",
-  "version": "0.3.0-rc4",
+  "version": "0.3.0",
   "description": "Better markdown render component in Plotly Dash.",
   "repository": {
     "type": "git",
