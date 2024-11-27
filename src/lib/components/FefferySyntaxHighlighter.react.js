@@ -1,11 +1,8 @@
+// react核心
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-    CheckOutlined,
-    CopyOutlined
-} from '@ant-design/icons';
+// react-syntax-highlighter核心
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
     a11yDark,
     atomDark,
@@ -34,8 +31,13 @@ import {
     synthwave84,
     zTouch
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-import './styles.css'
+// antd核心
+import {
+    CheckOutlined,
+    CopyOutlined
+} from '@ant-design/icons';
+// 辅助库
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const str2theme = new Map([
     ['a11y-dark', a11yDark],
@@ -188,19 +190,35 @@ const FefferySyntaxHighlighter = (props) => {
     );
 }
 
-// 定义参数或属性
 FefferySyntaxHighlighter.propTypes = {
+    /**
+     * 组件唯一id
+     */
     id: PropTypes.string,
 
+    /**
+     * 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
+     */
     key: PropTypes.string,
 
-    // 定义代码内容字符串
+    /**
+     * 代码内容字符串
+     */
     codeString: PropTypes.string.isRequired,
 
-    // 定义编程语言类型
+    /**
+     * 必填，代码语言
+     */
     language: PropTypes.string.isRequired,
 
-    // 设置代码风格主题，默认为'gh-colors'
+    /**
+     * 代码高亮主题，可选项有`'a11y-dark'`、`'atom-dark'`、`'coldark-cold'`、`'coldark-dark'`、`'coy'`、
+     * `'coy-without-shadows'`、`'darcula'`、`'dracula'`、`'nord'`、`'okaidia'`、`'prism'`、`'solarizedlight'`、
+     * `'twilight'`、`'duotone-sea'`、`'duotone-dark'`、`'duotone-light'`、`'duotone-space'`、`'gh-colors'`、
+     * `'gruvbox-dark'`、`'material-dark'`、`'night-owl'`、`'one-light'`、`'pojoaque'`、`'solarized-dark-atom'`、
+     * `'synthwave84'`、`'z-touch'`
+     * 默认值：`'gh-colors'`
+     */
     codeTheme: PropTypes.oneOf([
         'a11y-dark', 'atom-dark', 'coldark-cold', 'coldark-dark', 'coy', 'coy-without-shadows', 'darcula', 'dracula',
         'nord', 'okaidia', 'prism', 'solarizedlight', 'twilight', 'duotone-sea', 'duotone-dark', 'duotone-light',
@@ -208,32 +226,54 @@ FefferySyntaxHighlighter.propTypes = {
         'solarized-dark-atom', 'synthwave84', 'z-touch'
     ]),
 
-    // 额外设置代码块容器css样式
+    /**
+     * 代码块容器css样式
+     */
     codeBlockStyle: PropTypes.object,
 
-    // 额外设置代码内容css样式
+    /**
+     * 代码内容css样式
+     */
     codeStyle: PropTypes.object,
 
-    // 设置代码块是否显示行号，默认为true
+    /**
+     * 代码块是否显示行号
+     * 默认值：`true`
+     */
     showLineNumbers: PropTypes.bool,
 
-    // 设置代码块是否显示右上角复制按钮，默认为true
+    /**
+     * 代码块是否在右上角显示复制按钮
+     * 默认值：`true`
+     */
     showCopyButton: PropTypes.bool,
 
-    // 设置是否允许超长行自动换行，默认为true
+    /**
+     * 是否允许超长代码行自动换行
+     * 默认值：`false`
+     */
     wrapLongLines: PropTypes.bool,
 
-    // 用于处理差异行代码样式
-    // 用于设置需要施加“新增”效果的代码行下标数组，默认为[]
+    /**
+     * 配置需要渲染为差异比较新增行的代码行下标列表
+     * 默认值：`[]`
+     */
     addedLineNumbers: PropTypes.arrayOf(PropTypes.number),
 
-    // 用于设置需要施加“移除”效果的代码行下标数组，默认为[]
+    /**
+     * 配置需要渲染为差异比较移除行的代码行下标列表
+     * 默认值：`[]`
+     */
     removedLineNumbers: PropTypes.arrayOf(PropTypes.number),
 
-    // 自定义“新增”效果代码行样式
+    /**
+     * 差异比较新增行css样式
+     */
     addedLineStyle: PropTypes.object,
 
-    // 自定义“移除”效果代码行样式
+    /**
+     * 差异比较移除行css样式
+     */
     removedLineStyle: PropTypes.object,
 
     loading_state: PropTypes.shape({
@@ -258,7 +298,6 @@ FefferySyntaxHighlighter.propTypes = {
     setProps: PropTypes.func
 };
 
-// 设置默认参数
 FefferySyntaxHighlighter.defaultProps = {
     codeTheme: 'gh-colors',
     showLineNumbers: true,

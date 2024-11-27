@@ -53,10 +53,9 @@ import {
     synthwave84,
     zTouch
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
-// 必要样式文件
+// css样式
 import '../utils/katex/dist/katex.min.css';
 import '../styles/github-markdown-css';
-import './styles.css';
 
 const str2theme = new Map([
     ['a11y-dark', a11yDark],
