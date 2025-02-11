@@ -38,6 +38,7 @@ import {
 } from '@ant-design/icons';
 // 辅助库
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useLoading } from './utils';
 
 const str2theme = new Map([
     ['a11y-dark', a11yDark],
@@ -71,23 +72,22 @@ const str2theme = new Map([
 /**
  * 代码语法高亮组件FefferySyntaxHighlighter
  */
-const FefferySyntaxHighlighter = (props) => {
-    let {
-        id,
-        codeString,
-        language,
-        codeTheme,
-        codeBlockStyle,
-        codeStyle,
-        showLineNumbers,
-        showCopyButton,
-        wrapLongLines,
-        addedLineNumbers,
-        removedLineNumbers,
-        addedLineStyle,
-        removedLineStyle,
-        setProps
-    } = props;
+const FefferySyntaxHighlighter = ({
+    id,
+    codeString,
+    language,
+    codeTheme = 'gh-colors',
+    codeBlockStyle,
+    codeStyle,
+    showLineNumbers = true,
+    showCopyButton = true,
+    wrapLongLines = false,
+    addedLineNumbers = [],
+    removedLineNumbers = [],
+    addedLineStyle = { backgroundColor: '#e6ffec' },
+    removedLineStyle = { backgroundColor: '#ffebe9' },
+    setProps
+}) => {
 
     const [isCopied, setIsCopied] = useState(false);
 
@@ -120,7 +120,8 @@ const FefferySyntaxHighlighter = (props) => {
     return (
         <div id={id}
             style={{ position: 'relative' }}
-            className={'syntax-highlighter-body'}>
+            className={'syntax-highlighter-body'}
+            data-dash-is-loading={useLoading()}>
             {
                 showCopyButton ?
                     <CopyToClipboard
@@ -276,37 +277,11 @@ FefferySyntaxHighlighter.propTypes = {
      */
     removedLineStyle: PropTypes.object,
 
-    loading_state: PropTypes.shape({
-        /**
-         * Determines if the component is loading or not
-         */
-        is_loading: PropTypes.bool,
-        /**
-         * Holds which property is loading
-         */
-        prop_name: PropTypes.string,
-        /**
-         * Holds the name of the component that is loading
-         */
-        component_name: PropTypes.string
-    }),
-
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func
 };
-
-FefferySyntaxHighlighter.defaultProps = {
-    codeTheme: 'gh-colors',
-    showLineNumbers: true,
-    showCopyButton: true,
-    wrapLongLines: false,
-    addedLineNumbers: [],
-    removedLineNumbers: [],
-    addedLineStyle: { backgroundColor: '#e6ffec' },
-    removedLineStyle: { backgroundColor: '#ffebe9' }
-}
 
 export default FefferySyntaxHighlighter;
