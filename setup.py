@@ -6,28 +6,30 @@ from setuptools import setup
 with open('package.json') as f:
     package = json.load(f)
 
-package_name = package["name"].replace(" ", "_").replace("-", "_")
+package_name = (
+    package['name'].replace(' ', '_').replace('-', '_')
+)
 
 setup(
     name=package_name,
-    version=package["version"],
+    version=package['version'],
     author_email=package['email'],
     homepage='https://github.com/CNFeffery/feffery-markdown-components',
     author=package['author'],
     packages=[package_name],
     include_package_data=True,
-    package_data={
-        'feffery_markdown_components': ['*']
-    },
+    package_data={'feffery_markdown_components': ['*']},
     license=package['license'],
     description=package.get('description', package_name),
-    long_description=io.open("README.md", encoding="utf-8").read(),
-    long_description_content_type="text/markdown",
+    long_description=io.open(
+        'README.md', encoding='utf-8'
+    ).read(),
+    long_description_content_type='text/markdown',
     install_requires=[
-        'dash>=2.10.2, !=2.16.0, !=2.18.0, <=2.18.2'
+        'dash>=3.0.0',
     ],
     classifiers=[
         'Framework :: Dash',
     ],
-    url='https://github.com/CNFeffery/feffery-markdown-components'
+    url='https://github.com/CNFeffery/feffery-markdown-components',
 )
