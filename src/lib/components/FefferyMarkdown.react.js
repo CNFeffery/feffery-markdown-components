@@ -22,7 +22,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { trim, cloneDeep, isString } from 'lodash';
 import { omitDeep } from 'deepdash-es/standalone';
-import { flatToTree } from './utils';
+import { flatToTree, useLoading } from './utils';
 import { v4 as uuidv4 } from 'uuid';
 // 代码主题
 import {
@@ -138,75 +138,74 @@ async function parseMarkdownHeadings(e) {
 /**
  * markdown渲染组件FefferyMarkdown
  */
-const FefferyMarkdown = (props) => {
-    let {
-        id,
-        key,
-        children,
-        style,
-        className,
-        locale,
-        markdownStr,
-        placeholder,
-        codeTheme,
-        renderHtml,
-        linkTarget,
-        codeBlockStyle,
-        codeStyle,
-        showLineNumbers,
-        showCopyButton,
-        imagePreview,
-        imageFallback,
-        imageForceAlignCenter,
-        imageWidth,
-        imageHeight,
-        forceTableAlignCenter,
-        forceTableHeaderTextAlignCenter,
-        forceTableContentTextAlignCenter,
-        h1Style,
-        h1ClassName,
-        h2Style,
-        h2ClassName,
-        h3Style,
-        h3ClassName,
-        h4Style,
-        h4ClassName,
-        h5Style,
-        h5ClassName,
-        h6Style,
-        h6ClassName,
-        tableStyle,
-        tableClassName,
-        theadStyle,
-        theadClassName,
-        trStyle,
-        trClassName,
-        thStyle,
-        thClassName,
-        tdStyle,
-        tdClassName,
-        aStyle,
-        aClassName,
-        blockquoteStyle,
-        blockquoteClassName,
-        inlineCodeStyle,
-        inlineCodeClassName,
-        hrStyle,
-        hrClassName,
-        strongStyle,
-        strongClassName,
-        checkExternalLink,
-        externalLinkPrefixWhiteList,
-        safeRedirectUrlPrefix,
-        markdownBaseClassName,
-        titleAsId,
-        wrapLongLines,
-        codeFallBackLanguage,
-        searchKeyword,
-        highlightStyle,
-        highlightClassName,
-        setProps
-    } = props;
+const FefferyMarkdown = ({
+    id,
+    key,
+    children,
+    style,
+    className,
+    locale = 'zh-cn',
+    markdownStr,
+    placeholder,
+    codeTheme = 'gh-colors',
+    renderHtml,
+    linkTarget = '_blank',
+    codeBlockStyle,
+    codeStyle,
+    showLineNumbers = true,
+    showCopyButton = true,
+    imagePreview = false,
+    imageFallback,
+    imageForceAlignCenter = false,
+    imageWidth,
+    imageHeight,
+    forceTableAlignCenter = false,
+    forceTableHeaderTextAlignCenter = true,
+    forceTableContentTextAlignCenter = true,
+    h1Style,
+    h1ClassName,
+    h2Style,
+    h2ClassName,
+    h3Style,
+    h3ClassName,
+    h4Style,
+    h4ClassName,
+    h5Style,
+    h5ClassName,
+    h6Style,
+    h6ClassName,
+    tableStyle,
+    tableClassName,
+    theadStyle,
+    theadClassName,
+    trStyle,
+    trClassName,
+    thStyle,
+    thClassName,
+    tdStyle,
+    tdClassName,
+    aStyle,
+    aClassName,
+    blockquoteStyle,
+    blockquoteClassName,
+    inlineCodeStyle,
+    inlineCodeClassName,
+    hrStyle,
+    hrClassName,
+    strongStyle,
+    strongClassName,
+    checkExternalLink = false,
+    externalLinkPrefixWhiteList = [],
+    safeRedirectUrlPrefix,
+    markdownBaseClassName = 'markdown-body',
+    titleAsId = false,
+    wrapLongLines = false,
+    codeFallBackLanguage,
+    searchKeyword,
+    highlightStyle,
+    highlightClassName,
+    setProps
+}) => {
 
     // 为id设置缺省随机uuid值
     useEffect(() => {
@@ -302,7 +301,8 @@ const FefferyMarkdown = (props) => {
             key={key}
             style={style}
             /* 对传入的className及markdownBaseClassName进行规整 */
-            className={trim([markdownBaseClassName, className].filter(s => s).join(' '))}>
+            className={trim([markdownBaseClassName, className].filter(s => s).join(' '))}
+            data-dash-is-loading={useLoading()}>
             <ReactMarkdown
                 linkTarget={linkTarget}
                 remarkPlugins={remarkPlugins}
@@ -1035,45 +1035,11 @@ FefferyMarkdown.propTypes = {
      */
     highlightClassName: PropTypes.string,
 
-    loading_state: PropTypes.shape({
-        /**
-         * Determines if the component is loading or not
-         */
-        is_loading: PropTypes.bool,
-        /**
-         * Holds which property is loading
-         */
-        prop_name: PropTypes.string,
-        /**
-         * Holds the name of the component that is loading
-         */
-        component_name: PropTypes.string
-    }),
-
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func
 };
-
-// 设置默认参数
-FefferyMarkdown.defaultProps = {
-    linkTarget: '_blank',
-    codeTheme: 'gh-colors',
-    showLineNumbers: true,
-    locale: 'zh-cn',
-    showCopyButton: true,
-    imagePreview: false,
-    imageForceAlignCenter: false,
-    forceTableAlignCenter: false,
-    forceTableHeaderTextAlignCenter: true,
-    forceTableContentTextAlignCenter: true,
-    checkExternalLink: false,
-    externalLinkPrefixWhiteList: [],
-    markdownBaseClassName: 'markdown-body',
-    titleAsId: false,
-    wrapLongLines: false
-}
 
 export default FefferyMarkdown;

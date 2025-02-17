@@ -1,6 +1,6 @@
 {
   "name": "feffery_markdown_components",
-  "version": "0.4.0",
+  "version": "0.4.0-rc1",
   "description": "Better markdown render component in Plotly Dash.",
   "repository": {
     "type": "git",
@@ -61,9 +61,9 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-react": "^7.14.2",
     "prop-types": "^15.7.2",
-    "react": "^17.0.2",
+    "react": "^18.3.1",
     "react-docgen": "^4.1.1",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.3.1",
     "style-loader": "^0.23.1",
     "styled-jsx": "^3.2.1",
     "terser-webpack-plugin": "^2.3.0",

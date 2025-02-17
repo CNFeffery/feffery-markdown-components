@@ -16,4 +16,6 @@ const flatToTree = (rawFlat) => {
     return rawFlat;
 }
 
-export { flatToTree };
+const useLoading = () => window.dash_component_api.useDashContext().useLoading() || undefined;
+
+export { flatToTree, useLoading };

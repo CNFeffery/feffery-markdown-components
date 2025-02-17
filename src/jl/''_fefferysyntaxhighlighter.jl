@@ -23,11 +23,6 @@ Keyword arguments:
 默认值：`'gh-colors'`
 - `key` (String; optional): 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
 - `language` (String; required): 必填，代码语言
-- `loading_state` (optional): . loading_state has the following type: lists containing elements 'is_loading', 'prop_name', 'component_name'.
-Those elements have the following types:
-  - `is_loading` (Bool; optional): Determines if the component is loading or not
-  - `prop_name` (String; optional): Holds which property is loading
-  - `component_name` (String; optional): Holds the name of the component that is loading
 - `removedLineNumbers` (Array of Reals; optional): 配置需要渲染为差异比较移除行的代码行下标列表
 默认值：`[]`
 - `removedLineStyle` (Dict; optional): 差异比较移除行css样式
@@ -39,7 +34,7 @@ Those elements have the following types:
 默认值：`false`
 """
 function ''_fefferysyntaxhighlighter(; kwargs...)
-        available_props = Symbol[:id, :addedLineNumbers, :addedLineStyle, :codeBlockStyle, :codeString, :codeStyle, :codeTheme, :key, :language, :loading_state, :removedLineNumbers, :removedLineStyle, :showCopyButton, :showLineNumbers, :wrapLongLines]
+        available_props = Symbol[:id, :addedLineNumbers, :addedLineStyle, :codeBlockStyle, :codeString, :codeStyle, :codeTheme, :key, :language, :removedLineNumbers, :removedLineStyle, :showCopyButton, :showLineNumbers, :wrapLongLines]
         wild_props = Symbol[]
         return Component("''_fefferysyntaxhighlighter", "FefferySyntaxHighlighter", "feffery_markdown_components", available_props, wild_props; kwargs...)
 end
