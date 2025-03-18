@@ -2,7 +2,7 @@ import dash
 from dash import html
 import feffery_markdown_components as fmc
 
-app = dash.Dash(__name__, compress=True)
+app = dash.Dash(__name__, compress=True, eager_loading=True)
 
 app.layout = html.Div(
     [

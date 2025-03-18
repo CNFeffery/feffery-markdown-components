@@ -1,6 +1,13 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+import typing  # noqa: F401
+import numbers # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
+try:
+    from dash.development.base_component import ComponentType # noqa: F401
+except ImportError:
+    ComponentType = typing.TypeVar("ComponentType", bound=Component)
 
 
 class FefferyMarkdown(Component):
@@ -17,9 +24,6 @@ Keyword arguments:
 
 - children (a list of or a singular dash component, string or number; optional):
     强制渲染呈现的内容，优先级高于`markdownStr`、`placeholder`.
-
-- style (dict; optional):
-    根容器css样式.
 
 - className (string; optional):
     根容器css类名.
@@ -212,29 +216,86 @@ Keyword arguments:
     `searchKeyword`对应搜索结果额外css样式.
 
 - highlightClassName (string; optional):
-    `searchKeyword`对应搜索结果额外css类名.
-
-- loading_state (dict; optional)
-
-    `loading_state` is a dict with keys:
-
-    - is_loading (boolean; optional):
-        Determines if the component is loading or not.
-
-    - prop_name (string; optional):
-        Holds which property is loading.
-
-    - component_name (string; optional):
-        Holds the name of the component that is loading."""
+    `searchKeyword`对应搜索结果额外css类名."""
     _children_props = ['placeholder']
     _base_nodes = ['placeholder', 'children']
     _namespace = 'feffery_markdown_components'
     _type = 'FefferyMarkdown'
+
     @_explicitize_args
-    def __init__(self, children=None, id=Component.UNDEFINED, key=Component.UNDEFINED, style=Component.UNDEFINED, className=Component.UNDEFINED, locale=Component.UNDEFINED, markdownStr=Component.UNDEFINED, placeholder=Component.UNDEFINED, codeTheme=Component.UNDEFINED, renderHtml=Component.UNDEFINED, linkTarget=Component.UNDEFINED, codeBlockStyle=Component.UNDEFINED, codeStyle=Component.UNDEFINED, showLineNumbers=Component.UNDEFINED, showCopyButton=Component.UNDEFINED, imagePreview=Component.UNDEFINED, imageFallback=Component.UNDEFINED, imageForceAlignCenter=Component.UNDEFINED, imageWidth=Component.UNDEFINED, imageHeight=Component.UNDEFINED, forceTableAlignCenter=Component.UNDEFINED, forceTableHeaderTextAlignCenter=Component.UNDEFINED, forceTableContentTextAlignCenter=Component.UNDEFINED, h1Style=Component.UNDEFINED, h1ClassName=Component.UNDEFINED, h2Style=Component.UNDEFINED, h2ClassName=Component.UNDEFINED, h3Style=Component.UNDEFINED, h3ClassName=Component.UNDEFINED, h4Style=Component.UNDEFINED, h4ClassName=Component.UNDEFINED, h5Style=Component.UNDEFINED, h5ClassName=Component.UNDEFINED, h6Style=Component.UNDEFINED, h6ClassName=Component.UNDEFINED, tableStyle=Component.UNDEFINED, tableClassName=Component.UNDEFINED, theadStyle=Component.UNDEFINED, theadClassName=Component.UNDEFINED, trStyle=Component.UNDEFINED, trClassName=Component.UNDEFINED, thStyle=Component.UNDEFINED, thClassName=Component.UNDEFINED, tdStyle=Component.UNDEFINED, tdClassName=Component.UNDEFINED, aStyle=Component.UNDEFINED, aClassName=Component.UNDEFINED, blockquoteStyle=Component.UNDEFINED, blockquoteClassName=Component.UNDEFINED, inlineCodeStyle=Component.UNDEFINED, inlineCodeClassName=Component.UNDEFINED, hrStyle=Component.UNDEFINED, hrClassName=Component.UNDEFINED, strongStyle=Component.UNDEFINED, strongClassName=Component.UNDEFINED, checkExternalLink=Component.UNDEFINED, externalLinkPrefixWhiteList=Component.UNDEFINED, safeRedirectUrlPrefix=Component.UNDEFINED, markdownBaseClassName=Component.UNDEFINED, titleAsId=Component.UNDEFINED, facAnchorLinkDict=Component.UNDEFINED, wrapLongLines=Component.UNDEFINED, codeFallBackLanguage=Component.UNDEFINED, searchKeyword=Component.UNDEFINED, highlightStyle=Component.UNDEFINED, highlightClassName=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'key', 'children', 'style', 'className', 'locale', 'markdownStr', 'placeholder', 'codeTheme', 'renderHtml', 'linkTarget', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'imagePreview', 'imageFallback', 'imageForceAlignCenter', 'imageWidth', 'imageHeight', 'forceTableAlignCenter', 'forceTableHeaderTextAlignCenter', 'forceTableContentTextAlignCenter', 'h1Style', 'h1ClassName', 'h2Style', 'h2ClassName', 'h3Style', 'h3ClassName', 'h4Style', 'h4ClassName', 'h5Style', 'h5ClassName', 'h6Style', 'h6ClassName', 'tableStyle', 'tableClassName', 'theadStyle', 'theadClassName', 'trStyle', 'trClassName', 'thStyle', 'thClassName', 'tdStyle', 'tdClassName', 'aStyle', 'aClassName', 'blockquoteStyle', 'blockquoteClassName', 'inlineCodeStyle', 'inlineCodeClassName', 'hrStyle', 'hrClassName', 'strongStyle', 'strongClassName', 'checkExternalLink', 'externalLinkPrefixWhiteList', 'safeRedirectUrlPrefix', 'markdownBaseClassName', 'titleAsId', 'facAnchorLinkDict', 'wrapLongLines', 'codeFallBackLanguage', 'searchKeyword', 'highlightStyle', 'highlightClassName', 'loading_state']
+    def __init__(
+        self,
+        children: typing.Optional[typing.Union[str, int, float, ComponentType, typing.Sequence[typing.Union[str, int, float, ComponentType]]]] = None,
+        id: typing.Optional[typing.Union[str, dict]] = None,
+        key: typing.Optional[str] = None,
+        style: typing.Optional[typing.Any] = None,
+        className: typing.Optional[str] = None,
+        locale: typing.Optional[Literal["en-us", "zh-cn"]] = None,
+        markdownStr: typing.Optional[str] = None,
+        placeholder: typing.Optional[typing.Union[str, int, float, ComponentType, typing.Sequence[typing.Union[str, int, float, ComponentType]]]] = None,
+        codeTheme: typing.Optional[Literal["a11y-dark", "atom-dark", "coldark-cold", "coldark-dark", "coy", "coy-without-shadows", "darcula", "dracula", "nord", "okaidia", "prism", "solarizedlight", "twilight", "duotone-sea", "duotone-dark", "duotone-light", "duotone-space", "gh-colors", "gruvbox-dark", "material-dark", "night-owl", "one-light", "pojoaque", "solarized-dark-atom", "synthwave84", "z-touch"]] = None,
+        renderHtml: typing.Optional[bool] = None,
+        linkTarget: typing.Optional[str] = None,
+        codeBlockStyle: typing.Optional[dict] = None,
+        codeStyle: typing.Optional[dict] = None,
+        showLineNumbers: typing.Optional[bool] = None,
+        showCopyButton: typing.Optional[bool] = None,
+        imagePreview: typing.Optional[bool] = None,
+        imageFallback: typing.Optional[str] = None,
+        imageForceAlignCenter: typing.Optional[bool] = None,
+        imageWidth: typing.Optional[typing.Union[str, typing.Union[int, float, numbers.Number]]] = None,
+        imageHeight: typing.Optional[typing.Union[str, typing.Union[int, float, numbers.Number]]] = None,
+        forceTableAlignCenter: typing.Optional[bool] = None,
+        forceTableHeaderTextAlignCenter: typing.Optional[bool] = None,
+        forceTableContentTextAlignCenter: typing.Optional[bool] = None,
+        h1Style: typing.Optional[dict] = None,
+        h1ClassName: typing.Optional[str] = None,
+        h2Style: typing.Optional[dict] = None,
+        h2ClassName: typing.Optional[str] = None,
+        h3Style: typing.Optional[dict] = None,
+        h3ClassName: typing.Optional[str] = None,
+        h4Style: typing.Optional[dict] = None,
+        h4ClassName: typing.Optional[str] = None,
+        h5Style: typing.Optional[dict] = None,
+        h5ClassName: typing.Optional[str] = None,
+        h6Style: typing.Optional[dict] = None,
+        h6ClassName: typing.Optional[str] = None,
+        tableStyle: typing.Optional[dict] = None,
+        tableClassName: typing.Optional[str] = None,
+        theadStyle: typing.Optional[dict] = None,
+        theadClassName: typing.Optional[str] = None,
+        trStyle: typing.Optional[str] = None,
+        trClassName: typing.Optional[str] = None,
+        thStyle: typing.Optional[dict] = None,
+        thClassName: typing.Optional[str] = None,
+        tdStyle: typing.Optional[str] = None,
+        tdClassName: typing.Optional[str] = None,
+        aStyle: typing.Optional[dict] = None,
+        aClassName: typing.Optional[str] = None,
+        blockquoteStyle: typing.Optional[dict] = None,
+        blockquoteClassName: typing.Optional[str] = None,
+        inlineCodeStyle: typing.Optional[dict] = None,
+        inlineCodeClassName: typing.Optional[str] = None,
+        hrStyle: typing.Optional[dict] = None,
+        hrClassName: typing.Optional[str] = None,
+        strongStyle: typing.Optional[dict] = None,
+        strongClassName: typing.Optional[str] = None,
+        checkExternalLink: typing.Optional[bool] = None,
+        externalLinkPrefixWhiteList: typing.Optional[typing.Sequence[str]] = None,
+        safeRedirectUrlPrefix: typing.Optional[str] = None,
+        markdownBaseClassName: typing.Optional[str] = None,
+        titleAsId: typing.Optional[bool] = None,
+        facAnchorLinkDict: typing.Optional[typing.Any] = None,
+        wrapLongLines: typing.Optional[bool] = None,
+        codeFallBackLanguage: typing.Optional[str] = None,
+        searchKeyword: typing.Optional[str] = None,
+        highlightStyle: typing.Optional[dict] = None,
+        highlightClassName: typing.Optional[str] = None,
+        **kwargs
+    ):
+        self._prop_names = ['id', 'key', 'children', 'style', 'className', 'locale', 'markdownStr', 'placeholder', 'codeTheme', 'renderHtml', 'linkTarget', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'imagePreview', 'imageFallback', 'imageForceAlignCenter', 'imageWidth', 'imageHeight', 'forceTableAlignCenter', 'forceTableHeaderTextAlignCenter', 'forceTableContentTextAlignCenter', 'h1Style', 'h1ClassName', 'h2Style', 'h2ClassName', 'h3Style', 'h3ClassName', 'h4Style', 'h4ClassName', 'h5Style', 'h5ClassName', 'h6Style', 'h6ClassName', 'tableStyle', 'tableClassName', 'theadStyle', 'theadClassName', 'trStyle', 'trClassName', 'thStyle', 'thClassName', 'tdStyle', 'tdClassName', 'aStyle', 'aClassName', 'blockquoteStyle', 'blockquoteClassName', 'inlineCodeStyle', 'inlineCodeClassName', 'hrStyle', 'hrClassName', 'strongStyle', 'strongClassName', 'checkExternalLink', 'externalLinkPrefixWhiteList', 'safeRedirectUrlPrefix', 'markdownBaseClassName', 'titleAsId', 'facAnchorLinkDict', 'wrapLongLines', 'codeFallBackLanguage', 'searchKeyword', 'highlightStyle', 'highlightClassName']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'children', 'style', 'className', 'locale', 'markdownStr', 'placeholder', 'codeTheme', 'renderHtml', 'linkTarget', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'imagePreview', 'imageFallback', 'imageForceAlignCenter', 'imageWidth', 'imageHeight', 'forceTableAlignCenter', 'forceTableHeaderTextAlignCenter', 'forceTableContentTextAlignCenter', 'h1Style', 'h1ClassName', 'h2Style', 'h2ClassName', 'h3Style', 'h3ClassName', 'h4Style', 'h4ClassName', 'h5Style', 'h5ClassName', 'h6Style', 'h6ClassName', 'tableStyle', 'tableClassName', 'theadStyle', 'theadClassName', 'trStyle', 'trClassName', 'thStyle', 'thClassName', 'tdStyle', 'tdClassName', 'aStyle', 'aClassName', 'blockquoteStyle', 'blockquoteClassName', 'inlineCodeStyle', 'inlineCodeClassName', 'hrStyle', 'hrClassName', 'strongStyle', 'strongClassName', 'checkExternalLink', 'externalLinkPrefixWhiteList', 'safeRedirectUrlPrefix', 'markdownBaseClassName', 'titleAsId', 'facAnchorLinkDict', 'wrapLongLines', 'codeFallBackLanguage', 'searchKeyword', 'highlightStyle', 'highlightClassName', 'loading_state']
+        self.available_properties = ['id', 'key', 'children', 'style', 'className', 'locale', 'markdownStr', 'placeholder', 'codeTheme', 'renderHtml', 'linkTarget', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'imagePreview', 'imageFallback', 'imageForceAlignCenter', 'imageWidth', 'imageHeight', 'forceTableAlignCenter', 'forceTableHeaderTextAlignCenter', 'forceTableContentTextAlignCenter', 'h1Style', 'h1ClassName', 'h2Style', 'h2ClassName', 'h3Style', 'h3ClassName', 'h4Style', 'h4ClassName', 'h5Style', 'h5ClassName', 'h6Style', 'h6ClassName', 'tableStyle', 'tableClassName', 'theadStyle', 'theadClassName', 'trStyle', 'trClassName', 'thStyle', 'thClassName', 'tdStyle', 'tdClassName', 'aStyle', 'aClassName', 'blockquoteStyle', 'blockquoteClassName', 'inlineCodeStyle', 'inlineCodeClassName', 'hrStyle', 'hrClassName', 'strongStyle', 'strongClassName', 'checkExternalLink', 'externalLinkPrefixWhiteList', 'safeRedirectUrlPrefix', 'markdownBaseClassName', 'titleAsId', 'facAnchorLinkDict', 'wrapLongLines', 'codeFallBackLanguage', 'searchKeyword', 'highlightStyle', 'highlightClassName']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
