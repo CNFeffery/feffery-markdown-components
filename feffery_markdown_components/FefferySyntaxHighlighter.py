@@ -1,13 +1,21 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 import typing  # noqa: F401
-import numbers # noqa: F401
 from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
-try:
-    from dash.development.base_component import ComponentType # noqa: F401
-except ImportError:
-    ComponentType = typing.TypeVar("ComponentType", bound=Component)
+
+ComponentType = typing.Union[
+    str,
+    int,
+    float,
+    Component,
+    None,
+    typing.Sequence[typing.Union[str, int, float, Component, None]],
+]
+
+NumberType = typing.Union[
+    typing.SupportsFloat, typing.SupportsInt, typing.SupportsComplex
+]
 
 
 class FefferySyntaxHighlighter(Component):
@@ -66,7 +74,7 @@ Keyword arguments:
     _namespace = 'feffery_markdown_components'
     _type = 'FefferySyntaxHighlighter'
 
-    @_explicitize_args
+
     def __init__(
         self,
         id: typing.Optional[typing.Union[str, dict]] = None,
@@ -79,8 +87,8 @@ Keyword arguments:
         showLineNumbers: typing.Optional[bool] = None,
         showCopyButton: typing.Optional[bool] = None,
         wrapLongLines: typing.Optional[bool] = None,
-        addedLineNumbers: typing.Optional[typing.Sequence[typing.Union[int, float, numbers.Number]]] = None,
-        removedLineNumbers: typing.Optional[typing.Sequence[typing.Union[int, float, numbers.Number]]] = None,
+        addedLineNumbers: typing.Optional[typing.Sequence[NumberType]] = None,
+        removedLineNumbers: typing.Optional[typing.Sequence[NumberType]] = None,
         addedLineStyle: typing.Optional[dict] = None,
         removedLineStyle: typing.Optional[dict] = None,
         **kwargs
@@ -100,3 +108,5 @@ Keyword arguments:
                     'Required argument `' + k + '` was not specified.')
 
         super(FefferySyntaxHighlighter, self).__init__(**args)
+
+setattr(FefferySyntaxHighlighter, "__init__", _explicitize_args(FefferySyntaxHighlighter.__init__))

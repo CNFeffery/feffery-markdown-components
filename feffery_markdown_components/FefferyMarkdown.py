@@ -1,13 +1,21 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 import typing  # noqa: F401
-import numbers # noqa: F401
 from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
-try:
-    from dash.development.base_component import ComponentType # noqa: F401
-except ImportError:
-    ComponentType = typing.TypeVar("ComponentType", bound=Component)
+
+ComponentType = typing.Union[
+    str,
+    int,
+    float,
+    Component,
+    None,
+    typing.Sequence[typing.Union[str, int, float, Component, None]],
+]
+
+NumberType = typing.Union[
+    typing.SupportsFloat, typing.SupportsInt, typing.SupportsComplex
+]
 
 
 class FefferyMarkdown(Component):
@@ -222,17 +230,17 @@ Keyword arguments:
     _namespace = 'feffery_markdown_components'
     _type = 'FefferyMarkdown'
 
-    @_explicitize_args
+
     def __init__(
         self,
-        children: typing.Optional[typing.Union[str, int, float, ComponentType, typing.Sequence[typing.Union[str, int, float, ComponentType]]]] = None,
+        children: typing.Optional[ComponentType] = None,
         id: typing.Optional[typing.Union[str, dict]] = None,
         key: typing.Optional[str] = None,
         style: typing.Optional[typing.Any] = None,
         className: typing.Optional[str] = None,
         locale: typing.Optional[Literal["en-us", "zh-cn"]] = None,
         markdownStr: typing.Optional[str] = None,
-        placeholder: typing.Optional[typing.Union[str, int, float, ComponentType, typing.Sequence[typing.Union[str, int, float, ComponentType]]]] = None,
+        placeholder: typing.Optional[ComponentType] = None,
         codeTheme: typing.Optional[Literal["a11y-dark", "atom-dark", "coldark-cold", "coldark-dark", "coy", "coy-without-shadows", "darcula", "dracula", "nord", "okaidia", "prism", "solarizedlight", "twilight", "duotone-sea", "duotone-dark", "duotone-light", "duotone-space", "gh-colors", "gruvbox-dark", "material-dark", "night-owl", "one-light", "pojoaque", "solarized-dark-atom", "synthwave84", "z-touch"]] = None,
         renderHtml: typing.Optional[bool] = None,
         linkTarget: typing.Optional[str] = None,
@@ -243,8 +251,8 @@ Keyword arguments:
         imagePreview: typing.Optional[bool] = None,
         imageFallback: typing.Optional[str] = None,
         imageForceAlignCenter: typing.Optional[bool] = None,
-        imageWidth: typing.Optional[typing.Union[str, typing.Union[int, float, numbers.Number]]] = None,
-        imageHeight: typing.Optional[typing.Union[str, typing.Union[int, float, numbers.Number]]] = None,
+        imageWidth: typing.Optional[typing.Union[str, NumberType]] = None,
+        imageHeight: typing.Optional[typing.Union[str, NumberType]] = None,
         forceTableAlignCenter: typing.Optional[bool] = None,
         forceTableHeaderTextAlignCenter: typing.Optional[bool] = None,
         forceTableContentTextAlignCenter: typing.Optional[bool] = None,
@@ -303,3 +311,5 @@ Keyword arguments:
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
 
         super(FefferyMarkdown, self).__init__(children=children, **args)
+
+setattr(FefferyMarkdown, "__init__", _explicitize_args(FefferyMarkdown.__init__))
