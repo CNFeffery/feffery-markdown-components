@@ -230,6 +230,10 @@ const FefferyMarkdown = ({
                 mermaid.run({
                     nodes: mermaidNodes
                 });
+                // 恢复各图表容器样式可见性
+                mermaidNodes.forEach(mermaidNode => {
+                    mermaidNode.style.display = 'block';
+                })
             }
         }
     })
@@ -335,7 +339,7 @@ const FefferyMarkdown = ({
                         if (!inline && (match || codeFallBackLanguage)) {
                             if (mermaidOptions && match && match[1] === 'mermaid') {
                                 return (
-                                    <div className={mermaidContainerClassName} style={{ position: 'relative', textAlign: 'center' }}>
+                                    <div className={mermaidContainerClassName} style={{ position: 'relative', textAlign: 'center', display: 'none' }}>
                                         {String(children).replace(/\n$/, '')}
                                     </div>
                                 )
