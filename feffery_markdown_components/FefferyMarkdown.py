@@ -224,11 +224,29 @@ Keyword arguments:
     `searchKeyword`对应搜索结果额外css样式.
 
 - highlightClassName (string; optional):
-    `searchKeyword`对应搜索结果额外css类名."""
+    `searchKeyword`对应搜索结果额外css类名.
+
+- mermaidOptions (dict; default False):
+    针对代码块中的`mermaid`类型代码，配置图表渲染相关功能参数  默认值：`False`.
+
+    `mermaidOptions` is a boolean | dict with keys:
+
+    - theme (a value equal to: 'default', 'base', 'dark', 'forest', 'neutral', 'null'; optional):
+        `mermaid`图表内置主题，可选项有`'default'`、`'base'`、`'dark'`、`'forest'`、`'neutral'`、`'None'`.
+
+- mermaidContainerClassName (string; default '_mermaid-container'):
+    当开启`mermaid`图表渲染功能时，为各图表所在容器设置统一的`css`类名
+    默认值：`'_mermaid-container'`."""
     _children_props = ['placeholder']
     _base_nodes = ['placeholder', 'children']
     _namespace = 'feffery_markdown_components'
     _type = 'FefferyMarkdown'
+    MermaidOptions = TypedDict(
+        "MermaidOptions",
+            {
+            "theme": NotRequired[Literal["default", "base", "dark", "forest", "neutral", "null"]]
+        }
+    )
 
 
     def __init__(
@@ -299,11 +317,13 @@ Keyword arguments:
         searchKeyword: typing.Optional[str] = None,
         highlightStyle: typing.Optional[dict] = None,
         highlightClassName: typing.Optional[str] = None,
+        mermaidOptions: typing.Optional[typing.Union[bool, "MermaidOptions"]] = None,
+        mermaidContainerClassName: typing.Optional[str] = None,
         **kwargs
     ):
-        self._prop_names = ['id', 'key', 'children', 'style', 'className', 'locale', 'markdownStr', 'placeholder', 'codeTheme', 'renderHtml', 'linkTarget', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'imagePreview', 'imageFallback', 'imageForceAlignCenter', 'imageWidth', 'imageHeight', 'forceTableAlignCenter', 'forceTableHeaderTextAlignCenter', 'forceTableContentTextAlignCenter', 'h1Style', 'h1ClassName', 'h2Style', 'h2ClassName', 'h3Style', 'h3ClassName', 'h4Style', 'h4ClassName', 'h5Style', 'h5ClassName', 'h6Style', 'h6ClassName', 'tableStyle', 'tableClassName', 'theadStyle', 'theadClassName', 'trStyle', 'trClassName', 'thStyle', 'thClassName', 'tdStyle', 'tdClassName', 'aStyle', 'aClassName', 'blockquoteStyle', 'blockquoteClassName', 'inlineCodeStyle', 'inlineCodeClassName', 'hrStyle', 'hrClassName', 'strongStyle', 'strongClassName', 'checkExternalLink', 'externalLinkPrefixWhiteList', 'safeRedirectUrlPrefix', 'markdownBaseClassName', 'titleAsId', 'facAnchorLinkDict', 'wrapLongLines', 'codeFallBackLanguage', 'searchKeyword', 'highlightStyle', 'highlightClassName']
+        self._prop_names = ['id', 'key', 'children', 'style', 'className', 'locale', 'markdownStr', 'placeholder', 'codeTheme', 'renderHtml', 'linkTarget', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'imagePreview', 'imageFallback', 'imageForceAlignCenter', 'imageWidth', 'imageHeight', 'forceTableAlignCenter', 'forceTableHeaderTextAlignCenter', 'forceTableContentTextAlignCenter', 'h1Style', 'h1ClassName', 'h2Style', 'h2ClassName', 'h3Style', 'h3ClassName', 'h4Style', 'h4ClassName', 'h5Style', 'h5ClassName', 'h6Style', 'h6ClassName', 'tableStyle', 'tableClassName', 'theadStyle', 'theadClassName', 'trStyle', 'trClassName', 'thStyle', 'thClassName', 'tdStyle', 'tdClassName', 'aStyle', 'aClassName', 'blockquoteStyle', 'blockquoteClassName', 'inlineCodeStyle', 'inlineCodeClassName', 'hrStyle', 'hrClassName', 'strongStyle', 'strongClassName', 'checkExternalLink', 'externalLinkPrefixWhiteList', 'safeRedirectUrlPrefix', 'markdownBaseClassName', 'titleAsId', 'facAnchorLinkDict', 'wrapLongLines', 'codeFallBackLanguage', 'searchKeyword', 'highlightStyle', 'highlightClassName', 'mermaidOptions', 'mermaidContainerClassName']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'children', 'style', 'className', 'locale', 'markdownStr', 'placeholder', 'codeTheme', 'renderHtml', 'linkTarget', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'imagePreview', 'imageFallback', 'imageForceAlignCenter', 'imageWidth', 'imageHeight', 'forceTableAlignCenter', 'forceTableHeaderTextAlignCenter', 'forceTableContentTextAlignCenter', 'h1Style', 'h1ClassName', 'h2Style', 'h2ClassName', 'h3Style', 'h3ClassName', 'h4Style', 'h4ClassName', 'h5Style', 'h5ClassName', 'h6Style', 'h6ClassName', 'tableStyle', 'tableClassName', 'theadStyle', 'theadClassName', 'trStyle', 'trClassName', 'thStyle', 'thClassName', 'tdStyle', 'tdClassName', 'aStyle', 'aClassName', 'blockquoteStyle', 'blockquoteClassName', 'inlineCodeStyle', 'inlineCodeClassName', 'hrStyle', 'hrClassName', 'strongStyle', 'strongClassName', 'checkExternalLink', 'externalLinkPrefixWhiteList', 'safeRedirectUrlPrefix', 'markdownBaseClassName', 'titleAsId', 'facAnchorLinkDict', 'wrapLongLines', 'codeFallBackLanguage', 'searchKeyword', 'highlightStyle', 'highlightClassName']
+        self.available_properties = ['id', 'key', 'children', 'style', 'className', 'locale', 'markdownStr', 'placeholder', 'codeTheme', 'renderHtml', 'linkTarget', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'imagePreview', 'imageFallback', 'imageForceAlignCenter', 'imageWidth', 'imageHeight', 'forceTableAlignCenter', 'forceTableHeaderTextAlignCenter', 'forceTableContentTextAlignCenter', 'h1Style', 'h1ClassName', 'h2Style', 'h2ClassName', 'h3Style', 'h3ClassName', 'h4Style', 'h4ClassName', 'h5Style', 'h5ClassName', 'h6Style', 'h6ClassName', 'tableStyle', 'tableClassName', 'theadStyle', 'theadClassName', 'trStyle', 'trClassName', 'thStyle', 'thClassName', 'tdStyle', 'tdClassName', 'aStyle', 'aClassName', 'blockquoteStyle', 'blockquoteClassName', 'inlineCodeStyle', 'inlineCodeClassName', 'hrStyle', 'hrClassName', 'strongStyle', 'strongClassName', 'checkExternalLink', 'externalLinkPrefixWhiteList', 'safeRedirectUrlPrefix', 'markdownBaseClassName', 'titleAsId', 'facAnchorLinkDict', 'wrapLongLines', 'codeFallBackLanguage', 'searchKeyword', 'highlightStyle', 'highlightClassName', 'mermaidOptions', 'mermaidContainerClassName']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

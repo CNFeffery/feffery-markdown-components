@@ -69,6 +69,12 @@ Keyword arguments:
 - `markdownBaseClassName` (String; optional): 手动覆盖文档容器的css类名，通常在需要完全自定义文档样式时使用
 默认值：`'markdown-body'`
 - `markdownStr` (String; optional): markdown字符串
+- `mermaidContainerClassName` (String; optional): 当开启`mermaid`图表渲染功能时，为各图表所在容器设置统一的`css`类名
+默认值：`'_mermaid-container'`
+- `mermaidOptions` (optional): 针对代码块中的`mermaid`类型代码，配置图表渲染相关功能参数
+默认值：`false`. mermaidOptions has the following type: Bool | lists containing elements 'theme'.
+Those elements have the following types:
+  - `theme` (a value equal to: 'default', 'base', 'dark', 'forest', 'neutral', 'null'; optional): `mermaid`图表内置主题，可选项有`'default'`、`'base'`、`'dark'`、`'forest'`、`'neutral'`、`'null'`
 - `placeholder` (a list of or a singular dash component, string or number; optional): 组件型，设置当`markdownStr`为空时的占位内容
 - `renderHtml` (Bool; optional): 是否解析渲染`markdownStr`中的html源码
 默认值：`false`
@@ -99,7 +105,7 @@ Keyword arguments:
 默认值：`true`
 """
 function ''_fefferymarkdown(; kwargs...)
-        available_props = Symbol[:children, :id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeFallBackLanguage, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :highlightClassName, :highlightStyle, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :locale, :markdownBaseClassName, :markdownStr, :placeholder, :renderHtml, :safeRedirectUrlPrefix, :searchKeyword, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle, :wrapLongLines]
+        available_props = Symbol[:children, :id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeFallBackLanguage, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :highlightClassName, :highlightStyle, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :locale, :markdownBaseClassName, :markdownStr, :mermaidContainerClassName, :mermaidOptions, :placeholder, :renderHtml, :safeRedirectUrlPrefix, :searchKeyword, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle, :wrapLongLines]
         wild_props = Symbol[]
         return Component("''_fefferymarkdown", "FefferyMarkdown", "feffery_markdown_components", available_props, wild_props; kwargs...)
 end

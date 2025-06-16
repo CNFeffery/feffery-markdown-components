@@ -204,6 +204,8 @@ const FefferyMarkdown = ({
     searchKeyword,
     highlightStyle,
     highlightClassName,
+    mermaidOptions = false,
+    mermaidContainerClassName = '_mermaid-container',
     setProps
 }) => {
 
@@ -213,6 +215,24 @@ const FefferyMarkdown = ({
             setProps({ id: `feffery-markdown-${uuidv4()}` })
         }
     }, [markdownStr])
+
+    // 每次重绘后，主动渲染全部mermaid图表
+    useEffect(() => {
+        if (mermaidOptions) {
+            mermaid.initialize({
+                startOnLoad: false,  // 禁用自动渲染
+                securityLevel: 'loose', // 允许使用HTML标签
+                ...mermaidOptions
+            });
+            // 搜索全部mermaid图表元素
+            let mermaidNodes = document.querySelectorAll(`.${mermaidContainerClassName}`);
+            if (mermaidNodes.length > 0) {
+                mermaid.run({
+                    nodes: mermaidNodes
+                });
+            }
+        }
+    })
 
     // 配置相关插件
     const remarkPlugins = [remarkGfm, remarkMath]
@@ -313,6 +333,13 @@ const FefferyMarkdown = ({
                         const match = /language-(\w+)/.exec(className || '')
 
                         if (!inline && (match || codeFallBackLanguage)) {
+                            if (mermaidOptions && match && match[1] === 'mermaid') {
+                                return (
+                                    <div className={mermaidContainerClassName} style={{ position: 'relative', textAlign: 'center' }}>
+                                        {String(children).replace(/\n$/, '')}
+                                    </div>
+                                )
+                            }
                             return (
                                 <div style={{ position: 'relative' }}>
                                     {showCopyButton ?
@@ -1034,6 +1061,26 @@ FefferyMarkdown.propTypes = {
      * `searchKeyword`对应搜索结果额外css类名
      */
     highlightClassName: PropTypes.string,
+
+    /**
+     * 针对代码块中的`mermaid`类型代码，配置图表渲染相关功能参数
+     * 默认值：`false`
+     */
+    mermaidOptions: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.shape({
+            /**
+             * `mermaid`图表内置主题，可选项有`'default'`、`'base'`、`'dark'`、`'forest'`、`'neutral'`、`'null'`
+             */
+            theme: PropTypes.oneOf(['default', 'base', 'dark', 'forest', 'neutral', 'null']),
+        }),
+    ]),
+
+    /**
+     * 当开启`mermaid`图表渲染功能时，为各图表所在容器设置统一的`css`类名
+     * 默认值：`'_mermaid-container'`
+     */
+    mermaidContainerClassName: PropTypes.string,
 
     /**
      * Dash-assigned callback that should be called to report property changes
