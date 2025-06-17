@@ -14,7 +14,7 @@
 
 English | [简体中文](./README.md)
 
-A sub-project of the `feffery-components` plan, this `Plotly Dash` third-party component library, based on `react-markdown`, renders original ****markdown**** text directly into beautiful web content 🥳, latest stable version: `0.3.1` (2025-02-05)
+A sub-project of the `feffery-components` plan, this `Plotly Dash` third-party component library, based on `react-markdown`, renders original ****markdown**** text directly into beautiful web content 🥳, latest stable version: `0.3.2` (2025-06-17)
 
 ## Dash Version Compatibility
 
@@ -32,7 +32,7 @@ pip install feffery-markdown-components -U
 ## 2 Installation Method for Latest Pre-release Version
 
 > [!NOTE]
-> Latest pre-release version (2025-04-26): `0.4.0rc2`
+> Latest pre-release version (2025-06-17): `0.4.0rc3`
 
 ```bash
 pip install feffery-markdown-components --pre -U
