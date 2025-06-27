@@ -31,7 +31,7 @@ pip install feffery-markdown-components -U
 ## 2 最新预发布版本安装方式
 
 > [!NOTE]
-> 最新预发布版本（2025-06-17）：`0.4.0rc3`
+> 最新预发布版本（2025-06-27）：`0.4.0rc4`
 
 ```bash
 pip install feffery-markdown-components --pre -U

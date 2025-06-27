@@ -26,7 +26,7 @@ setup(
     ).read(),
     long_description_content_type='text/markdown',
     install_requires=[
-        'dash>=3.0.4',
+        'dash>=3.1.0',
     ],
     classifiers=[
         'Framework :: Dash',
