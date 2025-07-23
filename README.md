@@ -13,7 +13,7 @@
 
 简体中文 | [English](./README-en_US.md)
 
-`feffery-components`计划子项目，`Plotly Dash`第三方组件库，基于`react-markdown`，将原始**markdown**文本直接渲染为美观的网页内容 🥳，最新稳定版本：`0.3.2`（2025-06-17）
+`feffery-components`计划子项目，`Plotly Dash`第三方组件库，基于`react-markdown`，将原始**markdown**文本直接渲染为美观的网页内容 🥳，最新稳定版本：`0.4.0`（2025-07-23）
 
 ## Dash版本兼容性说明
 

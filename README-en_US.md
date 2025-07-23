@@ -14,7 +14,7 @@
 
 English | [简体中文](./README.md)
 
-A sub-project of the `feffery-components` plan, this `Plotly Dash` third-party component library, based on `react-markdown`, renders original ****markdown**** text directly into beautiful web content 🥳, latest stable version: `0.3.2` (2025-06-17)
+A sub-project of the `feffery-components` plan, this `Plotly Dash` third-party component library, based on `react-markdown`, renders original ****markdown**** text directly into beautiful web content 🥳, latest stable version: `0.4.0` (2025-07-23)
 
 ## Dash Version Compatibility
 
