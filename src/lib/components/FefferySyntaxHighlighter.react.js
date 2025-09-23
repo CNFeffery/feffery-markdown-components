@@ -1,5 +1,5 @@
 // react核心
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 // react-syntax-highlighter核心
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -38,7 +38,6 @@ import {
 } from '@ant-design/icons';
 // 辅助库
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { useLoading } from './utils';
 
 const str2theme = new Map([
     ['a11y-dark', a11yDark],
@@ -120,8 +119,7 @@ const FefferySyntaxHighlighter = ({
     return (
         <div id={id}
             style={{ position: 'relative' }}
-            className={'syntax-highlighter-body'}
-            data-dash-is-loading={useLoading()}>
+            className={'syntax-highlighter-body'}>
             {
                 showCopyButton ?
                     <CopyToClipboard

@@ -1,5 +1,5 @@
 // react核心
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // react-markdown核心
 import ReactMarkdown from 'react-markdown';
@@ -22,7 +22,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { trim, cloneDeep, isString } from 'lodash';
 import { omitDeep } from 'deepdash-es/standalone';
-import { flatToTree, useLoading } from './utils';
+import { flatToTree } from './utils';
 import { v4 as uuidv4 } from 'uuid';
 // 代码主题
 import {
@@ -322,11 +322,9 @@ const FefferyMarkdown = ({
 
     return (
         <div id={id}
-            key={key}
             style={style}
             /* 对传入的className及markdownBaseClassName进行规整 */
-            className={trim([markdownBaseClassName, className].filter(s => s).join(' '))}
-            data-dash-is-loading={useLoading()}>
+            className={trim([markdownBaseClassName, className].filter(s => s).join(' '))}>
             <ReactMarkdown
                 linkTarget={linkTarget}
                 remarkPlugins={remarkPlugins}
