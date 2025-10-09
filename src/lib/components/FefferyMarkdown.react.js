@@ -150,6 +150,7 @@ const FefferyMarkdown = ({
     codeTheme = 'gh-colors',
     renderHtml,
     linkTarget = '_blank',
+    linkTransformFunc,
     codeBlockStyle,
     codeStyle,
     showLineNumbers = true,
@@ -622,7 +623,13 @@ const FefferyMarkdown = ({
                         if (aClassName) {
                             props.className = `${props.className} ${aClassName}`
                         }
-
+                        if (linkTransformFunc) {
+                            try {
+                                props.href = eval(linkTransformFunc)(props.href)
+                            } catch (error) {
+                                console.error(error)
+                            }
+                        }
                         if (searchKeyword) {
                             return <a {...props} children={highlightChildren(props.children, searchKeyword, highlightStyle, highlightClassName)} />
                         }
@@ -769,6 +776,11 @@ FefferyMarkdown.propTypes = {
      * 默认值：`'_blank'`
      */
     linkTarget: PropTypes.string,
+
+    /**
+     * 针对markdown中原始的链接地址，定义用于产生实际链接地址的`javascript`函数字符串
+     */
+    linkTransformFunc: PropTypes.string,
 
     /**
      * 针对文档中的代码块，设置额外css样式

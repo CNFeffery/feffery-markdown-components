@@ -64,6 +64,7 @@ Keyword arguments:
 - `key` (String; optional): 对当前组件的`key`值进行更新，可实现强制重绘当前组件的效果
 - `linkTarget` (String; optional): markdown中链接的跳转方式
 默认值：`'_blank'`
+- `linkTransformFunc` (String; optional): 针对markdown中原始的链接地址，定义用于产生实际链接地址的`javascript`函数字符串
 - `locale` (a value equal to: 'en-us', 'zh-cn'; optional): 组件文案语种，可选项有`'zh-cn'`、`'en-us'`
 默认值：`'zh-cn'`
 - `markdownBaseClassName` (String; optional): 手动覆盖文档容器的css类名，通常在需要完全自定义文档样式时使用
@@ -105,7 +106,7 @@ Those elements have the following types:
 默认值：`true`
 """
 function ''_fefferymarkdown(; kwargs...)
-        available_props = Symbol[:children, :id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeFallBackLanguage, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :highlightClassName, :highlightStyle, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :locale, :markdownBaseClassName, :markdownStr, :mermaidContainerClassName, :mermaidOptions, :placeholder, :renderHtml, :safeRedirectUrlPrefix, :searchKeyword, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle, :wrapLongLines]
+        available_props = Symbol[:children, :id, :aClassName, :aStyle, :blockquoteClassName, :blockquoteStyle, :checkExternalLink, :className, :codeBlockStyle, :codeFallBackLanguage, :codeStyle, :codeTheme, :externalLinkPrefixWhiteList, :facAnchorLinkDict, :forceTableAlignCenter, :forceTableContentTextAlignCenter, :forceTableHeaderTextAlignCenter, :h1ClassName, :h1Style, :h2ClassName, :h2Style, :h3ClassName, :h3Style, :h4ClassName, :h4Style, :h5ClassName, :h5Style, :h6ClassName, :h6Style, :highlightClassName, :highlightStyle, :hrClassName, :hrStyle, :imageFallback, :imageForceAlignCenter, :imageHeight, :imagePreview, :imageWidth, :inlineCodeClassName, :inlineCodeStyle, :key, :linkTarget, :linkTransformFunc, :locale, :markdownBaseClassName, :markdownStr, :mermaidContainerClassName, :mermaidOptions, :placeholder, :renderHtml, :safeRedirectUrlPrefix, :searchKeyword, :showCopyButton, :showLineNumbers, :strongClassName, :strongStyle, :style, :tableClassName, :tableStyle, :tdClassName, :tdStyle, :thClassName, :thStyle, :theadClassName, :theadStyle, :titleAsId, :trClassName, :trStyle, :wrapLongLines]
         wild_props = Symbol[]
         return Component("''_fefferymarkdown", "FefferyMarkdown", "feffery_markdown_components", available_props, wild_props; kwargs...)
 end
