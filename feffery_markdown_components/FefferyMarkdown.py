@@ -240,7 +240,7 @@ Keyword arguments:
 - mermaidContainerClassName (string; default '_mermaid-container'):
     当开启`mermaid`图表渲染功能时，为各图表所在容器设置统一的`css`类名
     默认值：`'_mermaid-container'`."""
-    _children_props = ['placeholder']
+    _children_props: typing.List[str] = ['placeholder']
     _base_nodes = ['placeholder', 'children']
     _namespace = 'feffery_markdown_components'
     _type = 'FefferyMarkdown'

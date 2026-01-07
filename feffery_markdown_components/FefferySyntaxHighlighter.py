@@ -52,6 +52,9 @@ Keyword arguments:
 - showLineNumbers (boolean; default True):
     代码块是否显示行号  默认值：`True`.
 
+- startingLineNumber (number; optional):
+    代码块行号起始值.
+
 - showCopyButton (boolean; default True):
     代码块是否在右上角显示复制按钮  默认值：`True`.
 
@@ -69,7 +72,7 @@ Keyword arguments:
 
 - removedLineStyle (dict; default { backgroundColor: '#ffebe9' }):
     差异比较移除行css样式."""
-    _children_props = []
+    _children_props: typing.List[str] = []
     _base_nodes = ['children']
     _namespace = 'feffery_markdown_components'
     _type = 'FefferySyntaxHighlighter'
@@ -85,6 +88,7 @@ Keyword arguments:
         codeBlockStyle: typing.Optional[dict] = None,
         codeStyle: typing.Optional[dict] = None,
         showLineNumbers: typing.Optional[bool] = None,
+        startingLineNumber: typing.Optional[NumberType] = None,
         showCopyButton: typing.Optional[bool] = None,
         wrapLongLines: typing.Optional[bool] = None,
         addedLineNumbers: typing.Optional[typing.Sequence[NumberType]] = None,
@@ -93,9 +97,9 @@ Keyword arguments:
         removedLineStyle: typing.Optional[dict] = None,
         **kwargs
     ):
-        self._prop_names = ['id', 'key', 'codeString', 'language', 'codeTheme', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'wrapLongLines', 'addedLineNumbers', 'removedLineNumbers', 'addedLineStyle', 'removedLineStyle']
+        self._prop_names = ['id', 'key', 'codeString', 'language', 'codeTheme', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'startingLineNumber', 'showCopyButton', 'wrapLongLines', 'addedLineNumbers', 'removedLineNumbers', 'addedLineStyle', 'removedLineStyle']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'key', 'codeString', 'language', 'codeTheme', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'showCopyButton', 'wrapLongLines', 'addedLineNumbers', 'removedLineNumbers', 'addedLineStyle', 'removedLineStyle']
+        self.available_properties = ['id', 'key', 'codeString', 'language', 'codeTheme', 'codeBlockStyle', 'codeStyle', 'showLineNumbers', 'startingLineNumber', 'showCopyButton', 'wrapLongLines', 'addedLineNumbers', 'removedLineNumbers', 'addedLineStyle', 'removedLineStyle']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

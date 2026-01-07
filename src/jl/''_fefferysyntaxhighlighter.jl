@@ -30,11 +30,12 @@ Keyword arguments:
 默认值：`true`
 - `showLineNumbers` (Bool; optional): 代码块是否显示行号
 默认值：`true`
+- `startingLineNumber` (Real; optional): 代码块行号起始值
 - `wrapLongLines` (Bool; optional): 是否允许超长代码行自动换行
 默认值：`false`
 """
 function ''_fefferysyntaxhighlighter(; kwargs...)
-        available_props = Symbol[:id, :addedLineNumbers, :addedLineStyle, :codeBlockStyle, :codeString, :codeStyle, :codeTheme, :key, :language, :removedLineNumbers, :removedLineStyle, :showCopyButton, :showLineNumbers, :wrapLongLines]
+        available_props = Symbol[:id, :addedLineNumbers, :addedLineStyle, :codeBlockStyle, :codeString, :codeStyle, :codeTheme, :key, :language, :removedLineNumbers, :removedLineStyle, :showCopyButton, :showLineNumbers, :startingLineNumber, :wrapLongLines]
         wild_props = Symbol[]
         return Component("''_fefferysyntaxhighlighter", "FefferySyntaxHighlighter", "feffery_markdown_components", available_props, wild_props; kwargs...)
 end

@@ -79,6 +79,7 @@ const FefferySyntaxHighlighter = ({
     codeBlockStyle,
     codeStyle,
     showLineNumbers = true,
+    startingLineNumber,
     showCopyButton = true,
     wrapLongLines = false,
     addedLineNumbers = [],
@@ -158,6 +159,7 @@ const FefferySyntaxHighlighter = ({
             <SyntaxHighlighter
                 style={currentCodeStyle}
                 showLineNumbers={showLineNumbers}
+                startingLineNumber={startingLineNumber}
                 wrapLongLines={wrapLongLines}
                 language={language}
                 wrapLines={true}
@@ -240,6 +242,11 @@ FefferySyntaxHighlighter.propTypes = {
      * 默认值：`true`
      */
     showLineNumbers: PropTypes.bool,
+
+    /**
+     * 代码块行号起始值
+     */
+    startingLineNumber: PropTypes.number,
 
     /**
      * 代码块是否在右上角显示复制按钮
